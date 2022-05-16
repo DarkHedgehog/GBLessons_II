@@ -447,11 +447,11 @@
             </objects>
             <point key="canvasLocation" x="2292.753623188406" y="-241.07142857142856"/>
         </scene>
-        <!--Favorites-->
+        <!--Groups-->
         <scene sceneID="LDQ-A7-JhL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KMj-dN-GI5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="pencil" catalog="system" id="HmU-wX-LbL"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="pencil" catalog="system" id="HmU-wX-LbL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gva-Qz-7fV">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
