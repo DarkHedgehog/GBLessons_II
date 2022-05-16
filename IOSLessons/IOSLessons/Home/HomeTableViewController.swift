@@ -7,7 +7,9 @@
 
 import UIKit
 
-class TableTableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController {
+
+    var personsData = personDataSource
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,24 +24,20 @@ class TableTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        return personsData.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "homeCells", for: indexPath) as? HomeCell else {
+            preconditionFailure("Error cast to HomeCell")
+        }
 
-        // Configure the cell...
-        var content = cell.defaultContentConfiguration()
-        content.text = "dsagsdgsda"
-        content.secondaryText = "dsagsdga"
-        cell.contentConfiguration = content
-        cell.backgroundColor = .purple
+        cell.labelView.text = personsData[indexPath.row].label
+        cell.pictureView.image = personsData[indexPath.row].image
 
         return cell
     }
