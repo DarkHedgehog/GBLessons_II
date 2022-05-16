@@ -62,8 +62,8 @@ class HomeCollectionViewController: UICollectionViewController {
             preconditionFailure("Error cast to HomeCollectionViewCell")
         }
 
-//        cell.labelView.text = personsData[indexPath.row].label
-//        cell.imageView.image = personsData[indexPath.row].image
+        cell.labelView.text = personsData[indexPath.row].label
+        cell.imageView.image = personsData[indexPath.row].image
         // Configure the cell
 
         return cell
@@ -109,5 +109,10 @@ extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
             let widthPerItem = availableWidth / itemsPerRow
 
             return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+
+        return sectionInsets.left
     }
 }
