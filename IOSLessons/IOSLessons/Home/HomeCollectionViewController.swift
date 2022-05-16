@@ -8,28 +8,29 @@
 import UIKit
 
 
-private let itemsPerRow: CGFloat = 3
+private let itemsPerRow: CGFloat = 2
 
 private let sectionInsets = UIEdgeInsets(
   top: 50.0,
   left: 20.0,
-  bottom: 50.0,
+  bottom: 10.0,
   right: 20.0)
-
-//private let reuseIdentifier = "HomeCollectionCell1"
 
 class HomeCollectionViewController: UICollectionViewController {
 
-    var personsData = personDataSource
+    var personsData = personImagesDataSource
+
+    var personId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        personsData = personImagesDataSource.filter { $0.personId == personId }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-//        self.collectionView!.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //        self.collectionView!.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -62,8 +63,9 @@ class HomeCollectionViewController: UICollectionViewController {
             preconditionFailure("Error cast to HomeCollectionViewCell")
         }
 
-        cell.labelView.text = personsData[indexPath.row].label
+        cell.labelView.text = personsData[indexPath.row].description
         cell.imageView.image = personsData[indexPath.row].image
+        cell.backgroundColor = .lightGray
         // Configure the cell
 
         return cell
@@ -101,18 +103,19 @@ class HomeCollectionViewController: UICollectionViewController {
     */
 
 }
-
+//
 extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-            let availableWidth = view.frame.width - paddingSpace
-            let widthPerItem = availableWidth / itemsPerRow
-
-            return CGSize(width: widthPerItem, height: widthPerItem)
+//        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+//        let availableWidth = view.frame.width - paddingSpace
+//        let widthPerItem = availableWidth / itemsPerRow
+//
+//        return CGSize(width: widthPerItem, height: widthPerItem)
+        return CGSize(width: 20, height: 20)
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-
-        return sectionInsets.left
-    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//
+//        return sectionInsets.left
+//    }
 }

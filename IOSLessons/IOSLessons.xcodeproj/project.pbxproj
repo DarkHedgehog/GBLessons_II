@@ -94,6 +94,7 @@
 				7586282B281C0AFF006B1D4E /* SceneDelegate.swift */,
 				7586282D281C0AFF006B1D4E /* ViewController.swift */,
 				7586282F281C0AFF006B1D4E /* Main.storyboard */,
+				751B73942832D2C200AE62E3 /* PersonData.swift */,
 				75862832281C0B01006B1D4E /* Assets.xcassets */,
 				75862834281C0B01006B1D4E /* LaunchScreen.storyboard */,
 				75862837281C0B01006B1D4E /* Info.plist */,
@@ -104,7 +105,6 @@
 		75D296B32832D93300EFEB19 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				751B73942832D2C200AE62E3 /* PersonData.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
