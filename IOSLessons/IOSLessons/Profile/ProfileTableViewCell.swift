@@ -1,5 +1,5 @@
 //
-//  GroupTableViewCell.swift
+//  GroupTableCellViewTableViewCell.swift
 //  IOSLessons
 //
 //  Created by Aleksandr Derevenskih on 18.05.2022.
@@ -7,12 +7,11 @@
 
 import UIKit
 
-class GroupTableViewCell: UITableViewCell {
+class ProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var picture: UIImageView!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    
+    @IBOutlet weak var label: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

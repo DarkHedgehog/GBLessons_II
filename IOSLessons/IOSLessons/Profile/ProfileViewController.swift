@@ -45,7 +45,7 @@ extension ProfileViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "profileCells", for: indexPath) as? GroupTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "profileCells", for: indexPath) as? ProfileTableViewCell else {
             preconditionFailure("Error cast to GroupTableViewCell")
         }
 
