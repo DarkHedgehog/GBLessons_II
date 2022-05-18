@@ -1,5 +1,5 @@
 //
-//  GroupsTableViewController.swift
+//  AllGroupsTableViewController.swift
 //  IOSLessons
 //
 //  Created by Aleksandr Derevenskih on 18.05.2022.
@@ -7,18 +7,9 @@
 
 import UIKit
 
-class GroupsTableViewController: UITableViewController {
+class AllGroupsTableViewController: UITableViewController {
 
-    @IBAction func addSelectedGroup(segue: UIStoryboardSegue) {
-        if let source = segue.source as? AllGroupsTableViewController,
-           let indexPath = source.tableView.indexPathForSelectedRow {
-            let group = availableGroups[indexPath.row]
-            let groupId = group.id
-            currentUserProfile.groupIds.append(groupId)
-            tableView.reloadData()
-        }
-    }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,19 +29,15 @@ class GroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return currentUserProfile.groupIds.count
+        return availableGroups.count
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupTableViewCell", for: indexPath) as? GroupTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupTableViewCell", for: indexPath) as? AllGroupTableViewCell else {
             preconditionFailure("Error cast to GroupTableViewCell")
         }
 
-        guard let group = availableGroups.first(where: {$0.id == currentUserProfile.groupIds[indexPath.row]}) else {
-            cell.nameLabel.text = "unknown group"
-            return cell
-        }
+        let group = availableGroups[indexPath.row]
 
         cell.picture.image = group.image
         cell.nameLabel.text = group.name
@@ -58,7 +45,6 @@ class GroupsTableViewController: UITableViewController {
 
         return cell
     }
-
 
     /*
     // Override to support conditional editing of the table view.
@@ -68,17 +54,17 @@ class GroupsTableViewController: UITableViewController {
     }
     */
 
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let groupId = currentUserProfile.groupIds[indexPath.row]
-            currentUserProfile.groupIds.removeAll(where: {$0 == groupId })
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
+    */
 
     /*
     // Override to support rearranging the table view.
