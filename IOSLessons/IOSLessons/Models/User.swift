@@ -11,5 +11,6 @@ import UIKit
 struct User {
     var id: String
     var image: UIImage?
-    var label: String
+    var name: String
+    var groupIds: [String] = []
 }

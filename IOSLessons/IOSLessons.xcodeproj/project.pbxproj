@@ -19,10 +19,15 @@
 		75862831281C0AFF006B1D4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7586282F281C0AFF006B1D4E /* Main.storyboard */; };
 		75862833281C0B01006B1D4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75862832281C0B01006B1D4E /* Assets.xcassets */; };
 		75862836281C0B01006B1D4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75862834281C0B01006B1D4E /* LaunchScreen.storyboard */; };
+		75A693202834DB5C00419C4C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6931F2834DB5C00419C4C /* ProfileViewController.swift */; };
+		75A693242834DC2F00419C4C /* GroupTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693232834DC2F00419C4C /* GroupTableView.swift */; };
+		75A693262834DF8000419C4C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693252834DF8000419C4C /* ProfileView.swift */; };
+		75A693292834E14100419C4C /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693282834E14100419C4C /* GroupTableViewCell.swift */; };
 		75E0887A2832F35D00AB56A4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E088792832F35D00AB56A4 /* User.swift */; };
 		75E0887C2832F3A300AB56A4 /* UserPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E0887B2832F3A300AB56A4 /* UserPost.swift */; };
 		75E0887E2832F3BC00AB56A4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E0887D2832F3BC00AB56A4 /* Group.swift */; };
 		75E088802832F53E00AB56A4 /* GroupsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E0887F2832F53E00AB56A4 /* GroupsData.swift */; };
+		75E088822832F6E700AB56A4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E088812832F6E700AB56A4 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,10 +45,15 @@
 		75862832281C0B01006B1D4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75862835281C0B01006B1D4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75862837281C0B01006B1D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75A6931F2834DB5C00419C4C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		75A693232834DC2F00419C4C /* GroupTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableView.swift; sourceTree = "<group>"; };
+		75A693252834DF8000419C4C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		75A693282834E14100419C4C /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		75E088792832F35D00AB56A4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		75E0887B2832F3A300AB56A4 /* UserPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPost.swift; sourceTree = "<group>"; };
 		75E0887D2832F3BC00AB56A4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		75E0887F2832F53E00AB56A4 /* GroupsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsData.swift; sourceTree = "<group>"; };
+		75E088812832F6E700AB56A4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +105,8 @@
 		75862828281C0AFF006B1D4E /* IOSLessons */ = {
 			isa = PBXGroup;
 			children = (
+				75A693272834E11800419C4C /* Groups */,
+				75A6931E2834DB0300419C4C /* Profile */,
 				75E088782832F33200AB56A4 /* Models */,
 				75D296B32832D93300EFEB19 /* DataSources */,
 				751B73932832D1BD00AE62E3 /* Extensions */,
@@ -110,11 +122,30 @@
 			path = IOSLessons;
 			sourceTree = "<group>";
 		};
+		75A6931E2834DB0300419C4C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				75A6931F2834DB5C00419C4C /* ProfileViewController.swift */,
+				75A693232834DC2F00419C4C /* GroupTableView.swift */,
+				75A693252834DF8000419C4C /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		75A693272834E11800419C4C /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				75A693282834E14100419C4C /* GroupTableViewCell.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
 		75D296B32832D93300EFEB19 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
 				751B73942832D2C200AE62E3 /* PersonData.swift */,
 				75E0887F2832F53E00AB56A4 /* GroupsData.swift */,
+				75E088812832F6E700AB56A4 /* Profile.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -203,16 +234,21 @@
 				754D9029282144D900FC3413 /* HomeTableViewController.swift in Sources */,
 				7586282E281C0AFF006B1D4E /* ViewController.swift in Sources */,
 				751B73952832D2C200AE62E3 /* PersonData.swift in Sources */,
+				75E088822832F6E700AB56A4 /* Profile.swift in Sources */,
 				75E0887E2832F3BC00AB56A4 /* Group.swift in Sources */,
 				751B73992832D42800AE62E3 /* HomeCell.swift in Sources */,
 				7586282A281C0AFF006B1D4E /* AppDelegate.swift in Sources */,
 				75E0887C2832F3A300AB56A4 /* UserPost.swift in Sources */,
 				754399C32832DD7D0021B5E3 /* HomeCollectionViewCell.swift in Sources */,
+				75A693262834DF8000419C4C /* ProfileView.swift in Sources */,
 				754D902B2821475600FC3413 /* UIViewController+showAlert.swift in Sources */,
 				754399C12832DCB20021B5E3 /* HomeCollectionViewController.swift in Sources */,
 				75E0887A2832F35D00AB56A4 /* User.swift in Sources */,
+				75A693202834DB5C00419C4C /* ProfileViewController.swift in Sources */,
 				75E088802832F53E00AB56A4 /* GroupsData.swift in Sources */,
+				75A693292834E14100419C4C /* GroupTableViewCell.swift in Sources */,
 				7586282C281C0AFF006B1D4E /* SceneDelegate.swift in Sources */,
+				75A693242834DC2F00419C4C /* GroupTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

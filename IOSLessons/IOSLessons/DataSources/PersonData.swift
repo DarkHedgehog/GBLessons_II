@@ -11,8 +11,8 @@ import UIKit
 
 
 let personDataSource: [User] = [
-    User(id: "0", image: UIImage.init(systemName: "sun.max.fill"), label: "Вася Пупкин"),
-    User(id: "1", image: UIImage.init(systemName: "person"), label: "Пупа Васькин"),
+    User(id: "0", image: UIImage.init(systemName: "sun.max.fill"), name: "Вася Пупкин"),
+    User(id: "1", image: UIImage.init(systemName: "person"), name: "Пупа Васькин"),
 ]
 
 let personImagesDataSource: [UserPost] = [

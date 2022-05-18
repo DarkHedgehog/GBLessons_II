@@ -36,7 +36,7 @@ class HomeTableViewController: UITableViewController {
             preconditionFailure("Error cast to HomeCell")
         }
 
-        cell.labelView.text = personsData[indexPath.row].label
+        cell.labelView.text = personsData[indexPath.row].name
         cell.pictureView.image = personsData[indexPath.row].image
 
         return cell
@@ -87,7 +87,7 @@ class HomeTableViewController: UITableViewController {
         if segue.identifier == "showHomeCollection",
            let destination = segue.destination as? HomeCollectionViewController,
            let indexPath = tableView.indexPathForSelectedRow {
-            destination.title = personsData[indexPath.row].label
+            destination.title = personsData[indexPath.row].name
             destination.personId = personsData[indexPath.row].id
         }
     }
