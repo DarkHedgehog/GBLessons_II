@@ -12,4 +12,6 @@ struct UserPost {
     var personId: String
     var image: UIImage?
     var description: String
+    var likeCount: Int
+    var isLiked: Bool
 }

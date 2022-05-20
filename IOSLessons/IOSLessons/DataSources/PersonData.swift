@@ -16,10 +16,10 @@ let personDataSource: [User] = [
 ]
 
 let personImagesDataSource: [UserPost] = [
-    UserPost(personId: "0", image: UIImage.init(systemName: "person.fill.turn.left"), description: "Горизонт завален"),
-    UserPost(personId: "0", image: UIImage.init(systemName: "externaldrive.fill.badge.person.crop"), description: "Люблю вареники"),
-    UserPost(personId: "0", image: UIImage.init(systemName: "person.fill.xmark"), description: "Не люблю Пупу"),
-    UserPost(personId: "1", image: UIImage.init(systemName: "externaldrive.badge.person.crop"), description: "Вася у машины"),
-    UserPost(personId: "1", image: UIImage.init(systemName: "person.fill.badge.plus"), description: "Просто мужик"),
-    UserPost(personId: "1", image: UIImage.init(systemName: "shareplay"), description: "Радуга зацените"),
+    UserPost(personId: "0", image: UIImage.init(systemName: "person.fill.turn.left"), description: "Горизонт завален", likeCount: 10, isLiked: false),
+    UserPost(personId: "0", image: UIImage.init(systemName: "externaldrive.fill.badge.person.crop"), description: "Люблю вареники", likeCount: 1, isLiked: true),
+    UserPost(personId: "0", image: UIImage.init(systemName: "person.fill.xmark"), description: "Не люблю Пупу", likeCount: 20, isLiked: false),
+    UserPost(personId: "1", image: UIImage.init(systemName: "externaldrive.badge.person.crop"), description: "Вася у машины", likeCount: 321, isLiked: false),
+    UserPost(personId: "1", image: UIImage.init(systemName: "person.fill.badge.plus"), description: "Просто мужик", likeCount: 100, isLiked: true),
+    UserPost(personId: "1", image: UIImage.init(systemName: "shareplay"), description: "Радуга зацените", likeCount: 100, isLiked: false),
 ]

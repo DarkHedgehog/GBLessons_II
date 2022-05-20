@@ -7,8 +7,11 @@
 
 import UIKit
 
-@IBDesignable
 
+fileprivate let HEART_LIKED_NAME = "heart.fill"
+fileprivate let HEART_NOLIKED_NAME = "heart"
+
+@IBDesignable
 class LikeControl: UIControl {
 
     var likeCountLabel: UILabel = UILabel()
@@ -29,10 +32,10 @@ class LikeControl: UIControl {
 
         backgroundColor = UIColor.lightGray
 
+        updateHeartImage()
 
-        likeImage.image = UIImage(systemName: "heart.fill")
-        likeImage.tintColor = .systemRed
         likeImage.frame = CGRect(x: 2, y: 4, width: frame.height-4, height: frame.height-8)
+        likeImage.isUserInteractionEnabled = true
         addSubview(likeImage)
 
         likeCountLabel.frame = CGRect(x: likeImage.frame.width + 5,
@@ -45,7 +48,6 @@ class LikeControl: UIControl {
         likeCountLabel.textColor = .brown
         likeCountLabel.textAlignment = .left
         likeCountLabel.font = likeCountLabel.font.withSize(40.0)
-//        likeCount.layer.borderWidth = 1
         addSubview(likeCountLabel)
 
         layer.cornerRadius = 8
@@ -73,4 +75,43 @@ class LikeControl: UIControl {
        }
     }
 
+    @IBInspectable var isLiked: Bool  = false {
+       didSet {
+           updateHeartImage()
+           setNeedsDisplay()
+       }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for subview in subviews {
+            for touch in touches {
+                let point = touch.location(in: subview)
+                if !subview.isHidden && subview.alpha > 0 && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
+                    if subview === likeImage {
+                        isLiked = !isLiked
+                        likeCount += isLiked ? +1 : -1                        
+                        return
+                    }
+                }
+            }
+        }
+
+    }
+//    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+//        for subview in subviews {
+//            if !subview.isHidden && subview.alpha > 0 && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
+//                if subview === likeImage {
+//                    print (event?.type.hashValue)
+//                    return true
+//                }
+//                return true
+//            }
+//        }
+//        return false
+//    }
+
+    private func updateHeartImage() {
+        likeImage.image = UIImage(systemName: isLiked ? HEART_LIKED_NAME : HEART_NOLIKED_NAME)
+        likeImage.tintColor = isLiked ? .systemRed : .black
+    }
 }

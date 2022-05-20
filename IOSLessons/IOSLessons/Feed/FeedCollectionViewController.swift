@@ -65,6 +65,8 @@ class FeedCollectionViewController: UICollectionViewController {
 
         cell.labelView.text = personsData[indexPath.row].description
         cell.imageView.image = personsData[indexPath.row].image
+        cell.likeControl.isLiked = personsData[indexPath.row].isLiked
+        cell.likeControl.likeCount = personsData[indexPath.row].likeCount
         cell.backgroundColor = .lightGray
         // Configure the cell
 

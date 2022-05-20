@@ -11,4 +11,5 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var labelView: UILabel!
+    @IBOutlet weak var likeControl: LikeControl!
 }
