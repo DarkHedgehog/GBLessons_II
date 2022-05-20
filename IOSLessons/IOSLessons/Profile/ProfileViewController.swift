@@ -10,7 +10,7 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var groupsTable: UITableView!
-    @IBOutlet weak var avatarImage: UIImageView!
+//    @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var profileText: UILabel!
 
     var userProfile: User?
@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         groupsTable.dataSource = self
         userProfile = currentUserProfile
-        avatarImage.image = userProfile?.image
+//        avatarImage.image = userProfile?.image
         profileText.text = userProfile?.name
 
         // Do any additional setup after loading the view.

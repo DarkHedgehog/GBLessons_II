@@ -37,7 +37,7 @@ class Avatar: UIControl {
         // add the border to subview
         let borderView = UIView()
         borderView.frame = bounds
-        borderView.layer.cornerRadius = 120
+        borderView.layer.cornerRadius = frame.width/2
         borderView.layer.borderColor = UIColor.black.cgColor
         borderView.layer.borderWidth = 1.0
         borderView.layer.masksToBounds = true
