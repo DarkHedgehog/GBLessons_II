@@ -8,15 +8,15 @@
 import UIKit
 
 
-private let itemsPerRow: CGFloat = 2
+//private let itemsPerRow: CGFloat = 1
+//
+//private let sectionInsets = UIEdgeInsets(
+//  top: 50.0,
+//  left: 20.0,
+//  bottom: 10.0,
+//  right: 20.0)
 
-private let sectionInsets = UIEdgeInsets(
-  top: 50.0,
-  left: 20.0,
-  bottom: 10.0,
-  right: 20.0)
-
-class HomeCollectionViewController: UICollectionViewController {
+class FeedCollectionViewController: UICollectionViewController {
 
     var personsData = personImagesDataSource
 
@@ -59,7 +59,7 @@ class HomeCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionCell", for: indexPath) as? HomeCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionCell", for: indexPath) as? FeedCollectionViewCell else {
             preconditionFailure("Error cast to HomeCollectionViewCell")
         }
 
@@ -103,19 +103,9 @@ class HomeCollectionViewController: UICollectionViewController {
     */
 
 }
-//
-extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
+
+extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-//        let availableWidth = view.frame.width - paddingSpace
-//        let widthPerItem = availableWidth / itemsPerRow
-//
-//        return CGSize(width: widthPerItem, height: widthPerItem)
-        return CGSize(width: 20, height: 20)
+        return CGSize(width: view.frame.width, height: view.frame.width)
     }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//
-//        return sectionInsets.left
-//    }
 }

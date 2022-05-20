@@ -85,7 +85,7 @@ class HomeTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "showHomeCollection",
-           let destination = segue.destination as? HomeCollectionViewController,
+           let destination = segue.destination as? FeedCollectionViewController,
            let indexPath = tableView.indexPathForSelectedRow {
             destination.title = personsData[indexPath.row].name
             destination.personId = personsData[indexPath.row].id

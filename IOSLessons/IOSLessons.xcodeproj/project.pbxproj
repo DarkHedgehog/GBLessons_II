@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		750CA7872837AFC70005D656 /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CA7862837AFC70005D656 /* LikeControl.swift */; };
 		751B73952832D2C200AE62E3 /* PersonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B73942832D2C200AE62E3 /* PersonData.swift */; };
 		751B73992832D42800AE62E3 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B73982832D42800AE62E3 /* HomeCell.swift */; };
-		754399C12832DCB20021B5E3 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754399C02832DCB20021B5E3 /* HomeCollectionViewController.swift */; };
-		754399C32832DD7D0021B5E3 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754399C22832DD7D0021B5E3 /* HomeCollectionViewCell.swift */; };
+		754399C12832DCB20021B5E3 /* FeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754399C02832DCB20021B5E3 /* FeedCollectionViewController.swift */; };
+		754399C32832DD7D0021B5E3 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754399C22832DD7D0021B5E3 /* FeedCollectionViewCell.swift */; };
 		754D9029282144D900FC3413 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D9028282144D900FC3413 /* HomeTableViewController.swift */; };
 		754D902B2821475600FC3413 /* UIViewController+showAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D902A2821475600FC3413 /* UIViewController+showAlert.swift */; };
 		754E6F47283787CF00F4A920 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E6F46283787CF00F4A920 /* CanvasViewController.swift */; };
@@ -39,10 +40,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		750CA7862837AFC70005D656 /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
 		751B73942832D2C200AE62E3 /* PersonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonData.swift; sourceTree = "<group>"; };
 		751B73982832D42800AE62E3 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
-		754399C02832DCB20021B5E3 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
-		754399C22832DD7D0021B5E3 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		754399C02832DCB20021B5E3 /* FeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewController.swift; sourceTree = "<group>"; };
+		754399C22832DD7D0021B5E3 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		754D9028282144D900FC3413 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		754D902A2821475600FC3413 /* UIViewController+showAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+showAlert.swift"; sourceTree = "<group>"; };
 		754E6F46283787CF00F4A920 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
@@ -83,13 +85,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		750CA7832837AF7C0005D656 /* LikeControl */ = {
+			isa = PBXGroup;
+			children = (
+				750CA7862837AFC70005D656 /* LikeControl.swift */,
+			);
+			path = LikeControl;
+			sourceTree = "<group>";
+		};
 		751B73922832D1AF00AE62E3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				754D9028282144D900FC3413 /* HomeTableViewController.swift */,
 				751B73982832D42800AE62E3 /* HomeCell.swift */,
-				754399C02832DCB20021B5E3 /* HomeCollectionViewController.swift */,
-				754399C22832DD7D0021B5E3 /* HomeCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -100,6 +108,16 @@
 				754D902A2821475600FC3413 /* UIViewController+showAlert.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		751C446A2837A90100E3EB0D /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				750CA7832837AF7C0005D656 /* LikeControl */,
+				754399C02832DCB20021B5E3 /* FeedCollectionViewController.swift */,
+				754399C22832DD7D0021B5E3 /* FeedCollectionViewCell.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		754E6F4A28378FE900F4A920 /* Avatar */ = {
@@ -130,6 +148,7 @@
 		75862828281C0AFF006B1D4E /* IOSLessons */ = {
 			isa = PBXGroup;
 			children = (
+				751C446A2837A90100E3EB0D /* Feed */,
 				75A693272834E11800419C4C /* Groups */,
 				75A6931E2834DB0300419C4C /* Profile */,
 				75E088782832F33200AB56A4 /* Models */,
@@ -274,11 +293,11 @@
 				751B73992832D42800AE62E3 /* HomeCell.swift in Sources */,
 				7586282A281C0AFF006B1D4E /* AppDelegate.swift in Sources */,
 				75E0887C2832F3A300AB56A4 /* UserPost.swift in Sources */,
-				754399C32832DD7D0021B5E3 /* HomeCollectionViewCell.swift in Sources */,
+				754399C32832DD7D0021B5E3 /* FeedCollectionViewCell.swift in Sources */,
 				75A693262834DF8000419C4C /* ProfileView.swift in Sources */,
 				754D902B2821475600FC3413 /* UIViewController+showAlert.swift in Sources */,
 				754E6F4C283791C300F4A920 /* Avatar.swift in Sources */,
-				754399C12832DCB20021B5E3 /* HomeCollectionViewController.swift in Sources */,
+				754399C12832DCB20021B5E3 /* FeedCollectionViewController.swift in Sources */,
 				75E0887A2832F35D00AB56A4 /* User.swift in Sources */,
 				75A693202834DB5C00419C4C /* ProfileViewController.swift in Sources */,
 				75E088802832F53E00AB56A4 /* GroupsData.swift in Sources */,
@@ -288,6 +307,7 @@
 				75A693242834DC2F00419C4C /* GroupTableView.swift in Sources */,
 				754E6F47283787CF00F4A920 /* CanvasViewController.swift in Sources */,
 				75A6932D2834E9C400419C4C /* GroupTableViewCell.swift in Sources */,
+				750CA7872837AFC70005D656 /* LikeControl.swift in Sources */,
 				75A693312834F36D00419C4C /* AllGroupTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

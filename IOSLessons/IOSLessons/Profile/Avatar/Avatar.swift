@@ -9,9 +9,6 @@ import UIKit
 
 @IBDesignable
 class Avatar: UIControl {
-
-    var avatarImageView: UIImageView?
-
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -25,16 +22,13 @@ class Avatar: UIControl {
     }
 
     fileprivate func sharedInit(){
-//        translatesAutoresizingMaskIntoConstraints = false
 
         backgroundColor = UIColor.clear
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowColor = shadowColor.cgColor
         layer.shadowOffset = CGSize(width: 3, height: 3)
-        layer.shadowOpacity = 0.7
-        layer.shadowRadius = 4.0
+        layer.shadowOpacity = shadowOpacity
+        layer.shadowRadius = shadowRadius
 
-
-        // add the border to subview
         let borderView = UIView()
         borderView.frame = bounds
         borderView.layer.cornerRadius = frame.width/2
@@ -43,7 +37,6 @@ class Avatar: UIControl {
         borderView.layer.masksToBounds = true
         addSubview(borderView)
 
-        // add any other subcontent that you want clipped
         let otherSubContent = UIImageView()
         otherSubContent.image = UIImage(named: "DarkHedgehog")
         otherSubContent.frame = borderView.bounds
@@ -68,7 +61,7 @@ class Avatar: UIControl {
         }
     }
     /// прозрачность тени
-    @IBInspectable var shadowOpacity: Float = 0 {
+    @IBInspectable var shadowOpacity: Float = 0.7 {
        didSet {
            self.layer.shadowOpacity = shadowOpacity
        }
