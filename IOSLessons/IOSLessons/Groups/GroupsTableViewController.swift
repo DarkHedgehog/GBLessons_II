@@ -14,7 +14,7 @@ class GroupsTableViewController: UITableViewController {
            let indexPath = source.tableView.indexPathForSelectedRow {
             let group = availableGroups[indexPath.row]
             let groupId = group.id
-            currentUserProfile.groupIds.append(groupId)
+            currentUser.profile.groupIds.append(groupId)
             tableView.reloadData()
         }
     }
@@ -38,7 +38,7 @@ class GroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return currentUserProfile.groupIds.count
+        return currentUser.profile.groupIds.count
     }
 
 
@@ -47,7 +47,7 @@ class GroupsTableViewController: UITableViewController {
             preconditionFailure("Error cast to GroupTableViewCell")
         }
 
-        guard let group = availableGroups.first(where: {$0.id == currentUserProfile.groupIds[indexPath.row]}) else {
+        guard let group = availableGroups.first(where: {$0.id == currentUser.profile.groupIds[indexPath.row]}) else {
             cell.nameLabel.text = "unknown group"
             return cell
         }
@@ -72,8 +72,8 @@ class GroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let groupId = currentUserProfile.groupIds[indexPath.row]
-            currentUserProfile.groupIds.removeAll(where: {$0 == groupId })
+            let groupId = currentUser.profile.groupIds[indexPath.row]
+            currentUser.profile.groupIds.removeAll(where: {$0 == groupId })
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

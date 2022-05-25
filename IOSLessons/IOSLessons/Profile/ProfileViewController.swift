@@ -13,13 +13,10 @@ class ProfileViewController: UIViewController {
 //    @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var profileText: UILabel!
 
-    var userProfile: User?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         groupsTable.dataSource = self
-        userProfile = currentUserProfile
-        profileText.text = userProfile?.name
+        profileText.text = currentUser.profile.name
     }
     
 
@@ -36,9 +33,9 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = userProfile?.groupIds.count else { return 0 }
-        return count
+        return currentUser.profile.groupIds.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,7 +43,7 @@ extension ProfileViewController: UITableViewDataSource {
             preconditionFailure("Error cast to GroupTableViewCell")
         }
 
-        guard let group = availableGroups.first(where: {$0.id == userProfile?.groupIds[indexPath.row]}) else {
+        guard let group = availableGroups.first(where: {$0.id == currentUser.profile.groupIds[indexPath.row]}) else {
             cell.label.text = "unknown group"
             return cell
         }
