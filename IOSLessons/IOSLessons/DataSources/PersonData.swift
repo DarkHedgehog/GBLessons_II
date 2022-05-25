@@ -10,9 +10,19 @@ import UIKit
 
 
 
-let personDataSource: [User] = [
+let personsDataSource: [User] = [
     User(id: "0", image: UIImage.init(systemName: "sun.max.fill"), name: "Вася Пупкин"),
     User(id: "1", image: UIImage.init(systemName: "person"), name: "Пупа Васькин"),
+    User(id: "2", image: UIImage.init(systemName: "person"), name: "Василий Алибабаевич"),
+    User(id: "3", image: UIImage.init(systemName: "person"), name: "Иванов Алекс"),
+    User(id: "4", image: UIImage.init(systemName: "person"), name: "Кукота Владимир"),
+    User(id: "5", image: UIImage.init(systemName: "person"), name: "Нупин Влад"),
+    User(id: "6", image: UIImage.init(systemName: "person"), name: "Пунин Гладиолус"),
+    User(id: "7", image: UIImage.init(systemName: "person"), name: "Яковлев Жижа"),
+    User(id: "8", image: UIImage.init(systemName: "person"), name: "Гройсман Святослав"),
+    User(id: "9", image: UIImage.init(systemName: "person"), name: "Ковалев Моисей"),
+    User(id: "10", image: UIImage.init(systemName: "person"), name: "Крысоловов Боря"),
+    User(id: "11", image: UIImage.init(systemName: "person"), name: "Гнездов Алексей"),
 ]
 
 let personImagesDataSource: [UserPost] = [

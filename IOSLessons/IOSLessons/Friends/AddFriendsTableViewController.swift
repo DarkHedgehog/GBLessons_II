@@ -9,9 +9,25 @@ import UIKit
 
 class AddFriendsTableViewController: UITableViewController {
 
+    var sortesPersons = [Character:[User]]()
+    var sortedKeys = [Character]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
+
+        for persona in personsDataSource {
+            guard let firstCharacter = persona.name.first else { continue }
+
+            if sortesPersons[firstCharacter] == nil {
+                sortesPersons[firstCharacter] = [persona]
+            } else {
+                sortesPersons[firstCharacter]?.append(persona)
+            }
+        }
+        sortedKeys = sortesPersons.keys.sorted()
+        tableView.reloadData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -22,24 +38,42 @@ class AddFriendsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return sortedKeys.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let record = sortesPersons[sortedKeys[section]] else { return 0 }
+
+        return record.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "\(sortedKeys[section])"
+    }
 
-        // Configure the cell...
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as? FriendTableViewCell else {
+            preconditionFailure("Error cast to FriendTableViewCell")
+        }
+
+        let keyCharacter = sortedKeys[indexPath.section]
+
+        guard let persona = sortesPersons[keyCharacter]?[indexPath.row] else {
+            cell.labelView.text = "unknown persona"
+            return cell
+        }
+
+        cell.labelView.text = persona.name
+        cell.pictureView.image = persona.image
 
         return cell
     }
-    */
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "AddSelectedFriends", sender: self)
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

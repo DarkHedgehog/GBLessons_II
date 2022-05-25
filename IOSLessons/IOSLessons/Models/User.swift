@@ -13,4 +13,5 @@ struct User {
     var image: UIImage?
     var name: String
     var groupIds: [String] = []
+    var friendsIds: [String] = []
 }

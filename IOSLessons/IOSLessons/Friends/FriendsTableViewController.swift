@@ -9,11 +9,31 @@ import UIKit
 
 class FriendsTableViewController: UITableViewController {
 
-    var personsData = personDataSource
+    @IBAction func addSelectedFriends(segue: UIStoryboardSegue) {
+        if let source = segue.source as? AddFriendsTableViewController,
+           let indexPath = source.tableView.indexPathForSelectedRow,
+           let friend = source.sortesPersons[source.sortedKeys[indexPath.section]]?[indexPath.row],
+            var profile = userProfile
+        {
+
+            let friendId = friend.id
+            profile.friendsIds.append(friendId)
+            userProfile?.friendsIds = profile.friendsIds
+
+            tableView.reloadData()
+        }
+    }
+
+
+    var userProfile: User?
+
+
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        userProfile = currentUserProfile
         tableView.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
 
         // Uncomment the following line to preserve selection between presentations
@@ -30,7 +50,8 @@ class FriendsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return personsData.count
+        guard let count = userProfile?.friendsIds.count else { return 0 }
+        return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,17 +59,17 @@ class FriendsTableViewController: UITableViewController {
             preconditionFailure("Error cast to FriendTableViewCell")
         }
 
-        cell.labelView.text = personsData[indexPath.row].name
-        cell.pictureView.image = personsData[indexPath.row].image
+        guard let friend = personsDataSource.first(where: {$0.id == userProfile?.friendsIds[indexPath.row]}) else {
+            cell.labelView.text = "unknown persona"
+            return cell
+        }
+
+        cell.labelView.text = friend.name
+        cell.pictureView.image = friend.image
 //        cell.inputViewController?.performSegue(withIdentifier: "showHomeCollection", sender: tableView)
 
         return cell
     }
-
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return true
-    }
-
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showHomeCollection", sender: tableView)
@@ -98,8 +119,11 @@ class FriendsTableViewController: UITableViewController {
         if segue.identifier == "showHomeCollection",
            let destination = segue.destination as? FeedCollectionViewController,
            let indexPath = tableView.indexPathForSelectedRow {
-            destination.title = personsData[indexPath.row].name
-            destination.personId = personsData[indexPath.row].id
+            guard let friend = personsDataSource.first(where: {$0.id == userProfile?.friendsIds[indexPath.row]}) else {
+                return
+            }
+            destination.title = friend.name
+            destination.personId = friend.id
         }
     }
 

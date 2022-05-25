@@ -219,6 +219,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="BJh-FI-sf0" kind="unwind" identifier="AddSelectedFriends" unwindAction="addSelectedFriendsWithSegue:" id="Z3G-qx-seg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -229,6 +232,7 @@
                     <navigationItem key="navigationItem" id="err-jQ-oXj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SgK-yR-OAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="BJh-FI-sf0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4226" y="-878"/>
         </scene>

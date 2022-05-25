@@ -19,10 +19,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         groupsTable.dataSource = self
         userProfile = currentUserProfile
-//        avatarImage.image = userProfile?.image
         profileText.text = userProfile?.name
-
-        // Do any additional setup after loading the view.
     }
     
 
@@ -55,8 +52,6 @@ extension ProfileViewController: UITableViewDataSource {
         }
         cell.picture.image = group.image
         cell.label.text = group.name
-//        cell.labelView.text = personsData[indexPath.row].label
-//        cell.pictureView.image = personsData[indexPath.row].image
 
         return cell
     }
