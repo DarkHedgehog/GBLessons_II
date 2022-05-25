@@ -9,15 +9,36 @@ import UIKit
 
 class AddFriendsTableViewController: UITableViewController {
 
+    @IBOutlet weak var friendsSearchBar: UISearchBar! {
+        didSet {
+            friendsSearchBar.delegate = self
+        }
+    }
+
     var sortesPersons = [Character:[User]]()
     var sortedKeys = [Character]()
+    var filteredPersons = [User]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
 
-        for persona in personsDataSource {
+        filteredPersons = personsDataSource
+
+        updateSortedPersons()
+        tableView.reloadData()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    private func updateSortedPersons() {
+        sortesPersons =  [Character:[User]]()
+        for persona in filteredPersons {
             guard let firstCharacter = persona.name.first else { continue }
 
             if sortesPersons[firstCharacter] == nil {
@@ -27,13 +48,8 @@ class AddFriendsTableViewController: UITableViewController {
             }
         }
         sortedKeys = sortesPersons.keys.sorted()
-        tableView.reloadData()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+
 
     // MARK: - Table view data source
 
@@ -120,4 +136,19 @@ class AddFriendsTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension AddFriendsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        if searchText.isEmpty {
+            filteredPersons = personsDataSource
+        } else {
+            filteredPersons = personsDataSource.filter  {
+                $0.name.lowercased().contains(searchText.lowercased())
+            }
+        }
+        updateSortedPersons()
+        tableView.reloadData()
+    }
 }
