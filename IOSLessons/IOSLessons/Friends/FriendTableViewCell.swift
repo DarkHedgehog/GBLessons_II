@@ -1,13 +1,13 @@
 //
-//  HomeCellTableViewCell.swift
+//  FriendTableViewCell.swift
 //  IOSLessons
 //
-//  Created by Aleksandr Derevenskih on 16.05.2022.
+//  Created by Aleksandr Derevenskih on 25.05.2022.
 //
 
 import UIKit
 
-class HomeCell: UITableViewCell {
+class FriendTableViewCell: UITableViewCell {
 
     @IBOutlet var labelView: UILabel!
     @IBOutlet var pictureView: UIImageView!
@@ -22,5 +22,5 @@ class HomeCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

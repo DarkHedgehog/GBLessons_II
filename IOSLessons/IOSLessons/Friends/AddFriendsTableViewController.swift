@@ -1,15 +1,13 @@
 //
-//  TableTableViewController.swift
+//  AddFriendsTableViewController.swift
 //  IOSLessons
 //
-//  Created by Aleksandr Derevenskih on 03.05.2022.
+//  Created by Aleksandr Derevenskih on 25.05.2022.
 //
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
-
-    var personsData = personDataSource
+class AddFriendsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,23 +22,24 @@ class HomeTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return personsData.count
+        // #warning Incomplete implementation, return the number of rows
+        return 0
     }
 
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "homeCells", for: indexPath) as? HomeCell else {
-            preconditionFailure("Error cast to HomeCell")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        cell.labelView.text = personsData[indexPath.row].name
-        cell.pictureView.image = personsData[indexPath.row].image
+        // Configure the cell...
 
         return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -77,20 +76,14 @@ class HomeTableViewController: UITableViewController {
     }
     */
 
-
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "showHomeCollection",
-           let destination = segue.destination as? FeedCollectionViewController,
-           let indexPath = tableView.indexPathForSelectedRow {
-            destination.title = personsData[indexPath.row].name
-            destination.personId = personsData[indexPath.row].id
-        }
     }
-
+    */
 
 }
