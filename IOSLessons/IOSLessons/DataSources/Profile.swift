@@ -16,7 +16,7 @@ final class UserProfile {
         image: UIImage(systemName: "person.fill.checkmark"),
         name: "Петр Петрович",
         groupIds: ["1", "2"],
-        friendsIds: ["1", "3", "5"]
+        friendsIds: ["0", "1", "5"]
 
     )
 
