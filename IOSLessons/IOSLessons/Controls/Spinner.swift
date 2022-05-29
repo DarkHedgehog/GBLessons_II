@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-class Spinner: UIView {
+final class Spinner: UIView {
 
     /// Цвет точек
     @IBInspectable var spinCount: Int = 5 {
@@ -55,7 +55,7 @@ class Spinner: UIView {
         sharedInit();
     }
 
-    func sharedInit() {
+    private func sharedInit() {
         layer.sublayers?.removeAll()
         layer.removeAllAnimations();
 
@@ -74,7 +74,7 @@ class Spinner: UIView {
 
     }
 
-    func spinnerDotLayer(_ rect: CGRect) -> CALayer {
+    private func spinnerDotLayer(_ rect: CGRect) -> CALayer {
         let circlePath = UIBezierPath(ovalIn: rect)
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.cgPath
@@ -85,7 +85,7 @@ class Spinner: UIView {
         return shapeLayer
     }
 
-    func spinnerAnimation(syncTime: CFTimeInterval, index: Int) -> CAAnimation {
+    private func spinnerAnimation(syncTime: CFTimeInterval, index: Int) -> CAAnimation {
         let animation = CABasicAnimation(keyPath: "opacity")
         animation.beginTime = syncTime + (loopDuration/Double(spinCount) * Double(index))
         animation.fromValue = 1
