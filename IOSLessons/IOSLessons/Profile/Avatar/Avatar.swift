@@ -9,7 +9,26 @@ import UIKit
 
 @IBDesignable
 class Avatar: UIControl {
-    
+    /// Радиус тени
+    @IBInspectable var shadowRadius: CGFloat = 4.0 {
+        didSet {
+            layer.shadowRadius = shadowRadius
+        }
+    }
+    /// прозрачность тени
+    @IBInspectable var shadowOpacity: Float = 0.7 {
+       didSet {
+           self.layer.shadowOpacity = shadowOpacity
+       }
+    }
+
+    /// Цвет тени
+    @IBInspectable var shadowColor: UIColor = .black {
+        didSet {
+            self.layer.shadowColor = shadowColor.cgColor
+        }
+    }
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         sharedInit()
@@ -41,11 +60,31 @@ class Avatar: UIControl {
         otherSubContent.image = UIImage(named: "DarkHedgehog")
         otherSubContent.frame = borderView.bounds
         borderView.addSubview(otherSubContent)
+
+        self.isUserInteractionEnabled = true
     }
 
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         sharedInit()
+    }
+
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear) {
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       usingSpringWithDamping: 0.1,
+                       initialSpringVelocity: 5,
+                       options: .curveLinear
+        ) {
+            self.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }
     }
 
     // Only override draw() if you perform custom drawing.
@@ -54,23 +93,5 @@ class Avatar: UIControl {
         super.draw(rect)
     }
 
-    /// Радиус тени
-    @IBInspectable var shadowRadius: CGFloat = 4.0 {
-        didSet {
-            layer.shadowRadius = shadowRadius
-        }
-    }
-    /// прозрачность тени
-    @IBInspectable var shadowOpacity: Float = 0.7 {
-       didSet {
-           self.layer.shadowOpacity = shadowOpacity
-       }
-    }
 
-    /// Цвет тени
-    @IBInspectable var shadowColor: UIColor = .black {
-            didSet {
-                self.layer.shadowColor = shadowColor.cgColor
-            }
-        }
 }
