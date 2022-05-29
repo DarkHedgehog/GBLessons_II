@@ -259,21 +259,22 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCollectionCell" id="R05-zO-3aM" customClass="FeedCollectionViewCell" customModule="IOSLessons" customModuleProvider="target">
-                                <rect key="frame" x="1" y="0.0" width="412" height="392"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="HomeCollectionCell" id="R05-zO-3aM" customClass="FeedCollectionViewCell" customModule="IOSLessons" customModuleProvider="target">
+                                <rect key="frame" x="11" y="0.0" width="392" height="392"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9di-fL-khE">
-                                    <rect key="frame" x="0.0" y="0.0" width="412" height="392"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ryx-lh-Di1">
+                                    <rect key="frame" x="0.0" y="0.0" width="392" height="392"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EbH-3q-dRN">
-                                            <rect key="frame" x="0.0" y="1" width="412" height="291"/>
+                                            <rect key="frame" x="0.0" y="1" width="392" height="291"/>
                                             <constraints>
+                                                <constraint firstAttribute="width" constant="392" id="F2V-Re-jZb"/>
                                                 <constraint firstAttribute="height" constant="292" id="vr4-22-rkQ"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lLr-qS-haW">
-                                            <rect key="frame" x="8" y="292.5" width="404" height="36"/>
+                                            <rect key="frame" x="8" y="292.5" width="384" height="36"/>
                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="36" id="Yzd-XC-aE5"/>
@@ -282,50 +283,50 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wR-WR-Hgj" customClass="LikeControl" customModule="IOSLessons" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="336.5" width="141" height="51.5"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="likeCount">
-                                                    <integer key="value" value="10"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isLiked" value="NO"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BDz-Bh-LiK">
-                                            <rect key="frame" x="167" y="343" width="40" height="39.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="4Ju-cY-inu"/>
-                                                <constraint firstAttribute="height" constant="40" id="SpP-po-E3E"/>
-                                            </constraints>
-                                        </imageView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="g5K-uw-yzp">
-                                            <rect key="frame" x="215" y="341.5" width="40" height="41"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="A61-i9-WNh"/>
-                                                <constraint firstAttribute="width" constant="40" id="OgF-gp-FPe"/>
-                                            </constraints>
-                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="jka-WT-oHO">
+                                            <rect key="frame" x="8" y="336.5" width="227" height="40"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wR-WR-Hgj" customClass="LikeControl" customModule="IOSLessons" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="121" height="40"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="likeCount">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isLiked" value="NO"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BDz-Bh-LiK">
+                                                    <rect key="frame" x="134" y="0.5" width="40" height="39.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="4Ju-cY-inu"/>
+                                                        <constraint firstAttribute="height" constant="40" id="SpP-po-E3E"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="g5K-uw-yzp">
+                                                    <rect key="frame" x="187" y="-1" width="40" height="41"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="A61-i9-WNh"/>
+                                                        <constraint firstAttribute="width" constant="40" id="OgF-gp-FPe"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="BDz-Bh-LiK" firstAttribute="leading" secondItem="8wR-WR-Hgj" secondAttribute="trailing" constant="18" id="3Wz-6m-8T7"/>
-                                        <constraint firstAttribute="trailing" secondItem="8wR-WR-Hgj" secondAttribute="trailing" constant="263" id="9tW-5H-EzJ"/>
-                                        <constraint firstItem="EbH-3q-dRN" firstAttribute="leading" secondItem="9di-fL-khE" secondAttribute="leading" id="CPo-Lr-XNc"/>
-                                        <constraint firstAttribute="bottom" secondItem="8wR-WR-Hgj" secondAttribute="bottom" constant="4" id="Lcw-9i-50l"/>
-                                        <constraint firstItem="g5K-uw-yzp" firstAttribute="leading" secondItem="BDz-Bh-LiK" secondAttribute="trailing" constant="8" symbolic="YES" id="VK4-Rk-PPx"/>
-                                        <constraint firstAttribute="trailing" secondItem="lLr-qS-haW" secondAttribute="trailing" id="Wxa-gd-xLP"/>
-                                        <constraint firstItem="EbH-3q-dRN" firstAttribute="top" secondItem="9di-fL-khE" secondAttribute="top" constant="0.5" id="Xju-Ei-v5I"/>
-                                        <constraint firstItem="lLr-qS-haW" firstAttribute="top" secondItem="EbH-3q-dRN" secondAttribute="bottom" id="gOG-jg-8ta"/>
-                                        <constraint firstItem="8wR-WR-Hgj" firstAttribute="top" secondItem="lLr-qS-haW" secondAttribute="bottom" constant="8" symbolic="YES" id="lR4-E3-5Xd"/>
-                                        <constraint firstItem="BDz-Bh-LiK" firstAttribute="centerY" secondItem="8wR-WR-Hgj" secondAttribute="centerY" id="nEz-H1-VOa"/>
-                                        <constraint firstItem="lLr-qS-haW" firstAttribute="leading" secondItem="9di-fL-khE" secondAttribute="leading" constant="8" id="pVY-1z-UuC"/>
-                                        <constraint firstItem="EbH-3q-dRN" firstAttribute="centerX" secondItem="9di-fL-khE" secondAttribute="centerX" id="qar-Uw-XBC"/>
-                                        <constraint firstItem="g5K-uw-yzp" firstAttribute="centerY" secondItem="8wR-WR-Hgj" secondAttribute="centerY" id="slu-za-obp"/>
-                                        <constraint firstAttribute="trailing" secondItem="EbH-3q-dRN" secondAttribute="trailing" id="z1E-ZG-MYg"/>
-                                        <constraint firstItem="8wR-WR-Hgj" firstAttribute="leading" secondItem="lLr-qS-haW" secondAttribute="leading" id="zgb-Pr-daz"/>
+                                        <constraint firstItem="lLr-qS-haW" firstAttribute="leading" secondItem="Ryx-lh-Di1" secondAttribute="leading" constant="8" id="70W-6w-Gft"/>
+                                        <constraint firstAttribute="trailing" secondItem="EbH-3q-dRN" secondAttribute="trailing" id="96s-wV-GZa"/>
+                                        <constraint firstItem="jka-WT-oHO" firstAttribute="top" secondItem="lLr-qS-haW" secondAttribute="bottom" constant="8" symbolic="YES" id="Bf6-4i-bms"/>
+                                        <constraint firstItem="jka-WT-oHO" firstAttribute="leading" secondItem="Ryx-lh-Di1" secondAttribute="leading" constant="8" id="CEj-mK-rhW"/>
+                                        <constraint firstAttribute="bottom" secondItem="jka-WT-oHO" secondAttribute="bottom" constant="15.5" id="EYJ-Ak-kpQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="jka-WT-oHO" secondAttribute="trailing" constant="157" id="Hg0-G3-S0b"/>
+                                        <constraint firstItem="EbH-3q-dRN" firstAttribute="top" secondItem="Ryx-lh-Di1" secondAttribute="top" constant="0.5" id="NNf-wY-QEL"/>
+                                        <constraint firstItem="lLr-qS-haW" firstAttribute="top" secondItem="EbH-3q-dRN" secondAttribute="bottom" id="fAM-lN-DDd"/>
+                                        <constraint firstAttribute="trailing" secondItem="lLr-qS-haW" secondAttribute="trailing" id="g2s-wr-f0D"/>
+                                        <constraint firstItem="EbH-3q-dRN" firstAttribute="leading" secondItem="Ryx-lh-Di1" secondAttribute="leading" id="rbQ-AX-Lm9"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="412" height="392"/>
+                                <size key="customSize" width="392" height="392"/>
                                 <connections>
                                     <outlet property="imageView" destination="EbH-3q-dRN" id="spd-OO-W4j"/>
                                     <outlet property="labelView" destination="lLr-qS-haW" id="u45-eN-Wn4"/>

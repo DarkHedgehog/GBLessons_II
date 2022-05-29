@@ -30,7 +30,7 @@ class LikeControl: UIControl {
 
     fileprivate func sharedInit(){
 
-        backgroundColor = UIColor.lightGray
+        backgroundColor = UIColor.green
 
         updateHeartImage()
 
