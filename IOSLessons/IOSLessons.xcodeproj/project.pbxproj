@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		750CA7872837AFC70005D656 /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CA7862837AFC70005D656 /* LikeControl.swift */; };
 		751B73952832D2C200AE62E3 /* PersonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B73942832D2C200AE62E3 /* PersonData.swift */; };
+		751D25E528431F58000601D0 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751D25E428431F58000601D0 /* Spinner.swift */; };
 		754399C12832DCB20021B5E3 /* FeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754399C02832DCB20021B5E3 /* FeedCollectionViewController.swift */; };
 		754399C32832DD7D0021B5E3 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754399C22832DD7D0021B5E3 /* FeedCollectionViewCell.swift */; };
 		754D9029282144D900FC3413 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D9028282144D900FC3413 /* FriendsTableViewController.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		750CA7862837AFC70005D656 /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
 		751B73942832D2C200AE62E3 /* PersonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonData.swift; sourceTree = "<group>"; };
+		751D25E428431F58000601D0 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		754399C02832DCB20021B5E3 /* FeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewController.swift; sourceTree = "<group>"; };
 		754399C22832DD7D0021B5E3 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		754D9028282144D900FC3413 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,15 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
+		751D25E328431F3C000601D0 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				754E6F48283788CE00F4A920 /* DravingTestView.swift */,
+				751D25E428431F58000601D0 /* Spinner.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		754E6F4A28378FE900F4A920 /* Avatar */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +165,7 @@
 		75862828281C0AFF006B1D4E /* IOSLessons */ = {
 			isa = PBXGroup;
 			children = (
+				751D25E328431F3C000601D0 /* Controls */,
 				751C446A2837A90100E3EB0D /* Feed */,
 				75A693272834E11800419C4C /* Groups */,
 				75A6931E2834DB0300419C4C /* Profile */,
@@ -181,7 +193,6 @@
 				75A693232834DC2F00419C4C /* GroupTableView.swift */,
 				75A693252834DF8000419C4C /* ProfileView.swift */,
 				754E6F46283787CF00F4A920 /* CanvasViewController.swift */,
-				754E6F48283788CE00F4A920 /* DravingTestView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -293,6 +304,7 @@
 				7586282E281C0AFF006B1D4E /* ViewController.swift in Sources */,
 				75A6932F2834EDDB00419C4C /* AllGroupsTableViewController.swift in Sources */,
 				754E6F4E283792BB00F4A920 /* CircleImage.swift in Sources */,
+				751D25E528431F58000601D0 /* Spinner.swift in Sources */,
 				751B73952832D2C200AE62E3 /* PersonData.swift in Sources */,
 				75E088822832F6E700AB56A4 /* Profile.swift in Sources */,
 				75E0887E2832F3BC00AB56A4 /* Group.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jft-Kn-nip">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mOC-Le-nyY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -374,9 +374,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XcI-x0-UWt" customClass="LikeControl" customModule="IOSLessons" customModuleProvider="target">
-                                <rect key="frame" x="131" y="384" width="152" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XcI-x0-UWt" customClass="LikeControl" customModule="IOSLessons" customModuleProvider="target">
+                                <rect key="frame" x="131" y="44" width="152" height="47"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="likeCount">
@@ -385,9 +384,36 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isLiked" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="146-b4-0VK" customClass="Spinner" customModule="IOSLessons" customModuleProvider="target">
+                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="eyS-Zd-q36"/>
+                                    <constraint firstAttribute="width" constant="200" id="fL2-gD-Aun"/>
+                                    <constraint firstAttribute="width" secondItem="146-b4-0VK" secondAttribute="height" multiplier="1:1" id="fOY-ri-U2a"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spinCount">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="dotsRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Imv-EJ-0oz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XcI-x0-UWt" firstAttribute="top" secondItem="Imv-EJ-0oz" secondAttribute="top" id="BgN-Ni-E9u"/>
+                            <constraint firstItem="146-b4-0VK" firstAttribute="centerX" secondItem="cIc-8m-C6S" secondAttribute="centerX" id="Hes-RF-rFd"/>
+                            <constraint firstItem="146-b4-0VK" firstAttribute="centerY" secondItem="cIc-8m-C6S" secondAttribute="centerY" id="Pjw-rW-4al"/>
+                            <constraint firstItem="146-b4-0VK" firstAttribute="centerX" secondItem="XcI-x0-UWt" secondAttribute="centerX" id="XMe-PS-TmM"/>
+                            <constraint firstItem="146-b4-0VK" firstAttribute="centerX" secondItem="cIc-8m-C6S" secondAttribute="centerX" id="Xv2-Io-yGE"/>
+                            <constraint firstItem="XcI-x0-UWt" firstAttribute="leading" secondItem="Imv-EJ-0oz" secondAttribute="leading" constant="131" id="lnv-Dc-uxx"/>
+                            <constraint firstItem="146-b4-0VK" firstAttribute="centerY" secondItem="cIc-8m-C6S" secondAttribute="centerY" id="qdq-yF-xgX"/>
+                            <constraint firstAttribute="bottom" secondItem="XcI-x0-UWt" secondAttribute="bottom" constant="805" id="wdm-LM-N7u"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apI-SB-PGZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
