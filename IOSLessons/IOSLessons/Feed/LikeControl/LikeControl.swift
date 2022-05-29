@@ -15,7 +15,29 @@ fileprivate let HEART_NOLIKED_NAME = "heart"
 class LikeControl: UIControl {
 
     var likeCountLabel: UILabel = UILabel()
-    var likeImage: UIImageView = UIImageView()
+    var likedImage: UIImageView = UIImageView()
+
+    @IBInspectable var likeCount: Int = 0 {
+       didSet {
+//           likeCountLabel.text = String(likeCount)
+//           setNeedsDisplay()
+           UIView.transition(with: likeCountLabel,
+                             duration: 0.2,
+                             options: .transitionFlipFromTop
+           ) {
+               self.likeCountLabel.text = "\(self.likeCount)"
+           }
+
+       }
+    }
+
+    @IBInspectable var isLiked: Bool  = false {
+       didSet {
+           updateHeartImage()
+           setNeedsDisplay()
+       }
+    }
+
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -34,21 +56,15 @@ class LikeControl: UIControl {
 
         updateHeartImage()
 
-        likeImage.frame = CGRect(x: 2, y: 4, width: frame.height-4, height: frame.height-8)
-        likeImage.isUserInteractionEnabled = true
-        addSubview(likeImage)
+        likedImage.frame = CGRect(x: 2, y: 4, width: frame.height-4, height: frame.height-8)
+        likedImage.isUserInteractionEnabled = true
+        likedImage.image = UIImage(systemName: HEART_LIKED_NAME)
+//        likedImage.isHidden = !isLiked
+        addSubview(likedImage)
 
-        likeCountLabel.frame = CGRect(x: likeImage.frame.width + 5,
-                                           y: 0,
-                                           width: frame.width - 10 - likeImage.frame.width,
-                                           height: frame.height)
-
-
-        likeCountLabel.text = String(likeCount)
-        likeCountLabel.textColor = .brown
-        likeCountLabel.textAlignment = .left
-        likeCountLabel.font = likeCountLabel.font.withSize(40.0)
-        addSubview(likeCountLabel)
+        let countLabel = newLikeCountLabel(likeCount)
+        likeCountLabel = countLabel
+        addSubview(countLabel)
 
         layer.cornerRadius = 8
 
@@ -67,19 +83,21 @@ class LikeControl: UIControl {
         super.draw(rect)
     }
 
-    /// прозрачность тени
-    @IBInspectable var likeCount: Int = 0 {
-       didSet {
-           likeCountLabel.text = String(likeCount)
-           setNeedsDisplay()
-       }
-    }
 
-    @IBInspectable var isLiked: Bool  = false {
-       didSet {
-           updateHeartImage()
-           setNeedsDisplay()
-       }
+    private func newLikeCountLabel(_ count: Int) -> UILabel {
+        let countLabel = UILabel()
+        countLabel.frame = CGRect(x: likedImage.frame.width + 5,
+                                           y: 0,
+                                           width: frame.width - 10 - likedImage.frame.width,
+                                           height: frame.height)
+
+
+        countLabel.text = String(count)
+        countLabel.textColor = .brown
+        countLabel.textAlignment = .left
+        countLabel.font = countLabel.font.withSize(40.0)
+//        addSubview(countLabel)
+        return countLabel
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -87,9 +105,9 @@ class LikeControl: UIControl {
             for touch in touches {
                 let point = touch.location(in: subview)
                 if !subview.isHidden && subview.alpha > 0 && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
-                    if subview === likeImage {
+                    if subview === likedImage {
                         isLiked = !isLiked
-                        likeCount += isLiked ? +1 : -1                        
+                        likeCount += isLiked ? +1 : -1
                         return
                     }
                 }
@@ -111,7 +129,7 @@ class LikeControl: UIControl {
 //    }
 
     private func updateHeartImage() {
-        likeImage.image = UIImage(systemName: isLiked ? HEART_LIKED_NAME : HEART_NOLIKED_NAME)
-        likeImage.tintColor = isLiked ? .systemRed : .black
+        likedImage.image = UIImage(systemName: isLiked ? HEART_LIKED_NAME : HEART_NOLIKED_NAME)
+        likedImage.tintColor = isLiked ? .systemRed : .black
     }
 }
