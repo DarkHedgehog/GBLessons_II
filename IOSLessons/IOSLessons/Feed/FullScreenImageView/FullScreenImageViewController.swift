@@ -122,17 +122,15 @@ class FullScreenImageViewController: UIViewController {
 //        currentImage.transform = CGAffineTransform(scaleX: 1, y: 1)
 //        UIView.animateKeyframes(withDuration: 3.0, delay: 0, options: .calculationModeLinear, animations: {
 //
-//            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1.50) {
-//                UIView.animate(withDuration: 1.50, animations: {
+//            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1.0) {
+//                UIView.animate(withDuration: 1.0, animations: {
 //                    currentImage.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
 //                })
 //            }
-//            UIView.addKeyframe(withRelativeStartTime: 2.0, relativeDuration: 1.50) {
-//                UIView.animate(withDuration: 1.50, animations: {
-////                    currentImage.frame = prevEndFrame
-////                    currentImage.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+//            UIView.addKeyframe(withRelativeStartTime: 1.0, relativeDuration: 2.0) {
+//                UIView.animate(withDuration: 2.0, animations: {
+//                    currentImage.frame = prevEndFrame
 //                    nextImage.frame = centerFrame
-////                    currentImage.transform = CGAffineTransform(scaleX: 5, y: 5)
 //                }) { _ in
 //                    self.imageView.removeFromSuperview()
 //                    self.imageView = nextImage
@@ -140,7 +138,6 @@ class FullScreenImageViewController: UIViewController {
 //                }
 //            }
 //        }, completion: { _ in
-////            self.imageView.alpha = 0
 //        })
 
     }
