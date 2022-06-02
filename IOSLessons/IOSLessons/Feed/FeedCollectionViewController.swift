@@ -52,8 +52,8 @@ class FeedCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionCell", for: indexPath) as? FeedCollectionViewCell else {
-            preconditionFailure("Error cast to HomeCollectionViewCell")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCollectionViewCell", for: indexPath) as? FeedCollectionViewCell else {
+            preconditionFailure("Error cast to FeedCollectionViewCell")
         }
 
         cell.labelView.text = personsData[indexPath.row].description
@@ -97,10 +97,29 @@ class FeedCollectionViewController: UICollectionViewController {
     }
     */
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        guard let FullScreenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FullScreenImageViewController") as? FullScreenImageViewController else { return }
+
+        guard let cellTapped = collectionView.cellForItem(at: indexPath) as? FeedCollectionViewCell else { return }
+
+
+
+        FullScreenVC.setStartFrame(view.convert(cellTapped.imageView.frame, from: cellTapped))
+        FullScreenVC.setImagesCollection(["nature-0x01", "nature-0x02", "nature-0x03"])
+        FullScreenVC.transitioningDelegate = FullScreenVC
+        FullScreenVC.modalPresentationStyle = .custom
+//        FullScreenVC.modalPresentationStyle = .fullScreen
+
+        self.present(FullScreenVC, animated: true)
+//        self.navigationController?.pushViewController(FullScreenVC, animated: true)
+    }
+
 }
 
-extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.width)
-    }
-}
+//extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: view.frame.width, height: view.frame.width)
+//    }
+//}
+
