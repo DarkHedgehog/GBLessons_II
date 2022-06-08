@@ -45,6 +45,8 @@ class MultipleImagesView: UIView {
             let newImageView = UIImageView.init(frame: newImageRect)
             newImageView.clipsToBounds = true
             newImageView.contentMode = .scaleAspectFill
+            newImageView.layer.borderWidth = 3
+            newImageView.layer.borderColor = UIColor.systemBackground.cgColor
             newImageView.image = newImage
             newImageView.isUserInteractionEnabled = true
             newImageView.bounds = newImageRect
@@ -59,18 +61,10 @@ class MultipleImagesView: UIView {
         layer.masksToBounds = true
         isUserInteractionEnabled = true
     }
-//    func topMostController() -> UIViewController {
-//        var topController: UIViewController = UIApplication.shared.keyWindow!.rootViewController!
-//            while (topController.presentedViewController != nil) {
-//                topController = topController.presentedViewController!
-//            }
-//            return topController
-//        }
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let FullScreenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FullScreenImageViewController") as? FullScreenImageViewController else { return }
-//
-//        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FeedCollectionViewController") as? FeedCollectionViewController else { return }
+
 
         guard let delegate = delegate else { return }
 
@@ -79,12 +73,7 @@ class MultipleImagesView: UIView {
                 let point = touch.location(in: subview)
                 if !subview.isHidden && subview.alpha > 0 && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
                     delegate.tapOnImage(frame: subview.frame)
-//                    FullScreenVC.setStartFrame(subview.frame)
-//                    FullScreenVC.setImagesCollection(imageNames)
-//                    FullScreenVC.transitioningDelegate = FullScreenVC
-//                    FullScreenVC.modalPresentationStyle = .custom
-//                    let topVC = topMostController()
-//                    topVC.present(FullScreenVC, animated: true)
+
 
                     return;
 
