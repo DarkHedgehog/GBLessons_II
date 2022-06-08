@@ -9,20 +9,29 @@ import UIKit
 
 class FeedCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var imagesView: MultipleImagesView!
     @IBOutlet var labelView: UILabel!
     @IBOutlet weak var likeControl: LikeControl!
 
-    override func draw(_ rect: CGRect) {
-//        var frame = imageView.frame;
-//        imageView.contentMode = .scaleAspectFill
-    }
+    //    override func draw(_ rect: CGRect) {
+    ////        var frame = imageView.frame;
+    ////        imageView.contentMode = .scaleAspectFill
+    //    }
 
-    public func changeImages() {
-//        let rect = imageView.frame
-//        imageView.bounds = rect
-        imageView.contentMode = .scaleAspectFill
 
-//        imageView.frame = CGRect(x: -200.0, y: -200.0, width: rect.width+200, height: rect.height+200)
+}
+
+extension FeedCollectionViewCell: MultipleImagesViewDelegate {
+    func tapOnImage(frame: CGRect) {
+        guard let FullScreenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FullScreenImageViewController") as? FullScreenImageViewController else { return }
+
+        let absFrame = convert(frame, to: self.window?.rootViewController?.view)
+        FullScreenVC.setStartFrame(absFrame)
+        FullScreenVC.setImagesCollection(imagesView.imageNames)
+        FullScreenVC.transitioningDelegate = FullScreenVC
+        FullScreenVC.modalPresentationStyle = .custom
+        //        FullScreenVC.modalPresentationStyle = .fullScreen
+        self.window?.rootViewController?.present(FullScreenVC, animated: true)
+
     }
 }

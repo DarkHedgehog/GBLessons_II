@@ -26,19 +26,19 @@ let personsDataSource: [User] = [
 ]
 
 let personImagesDataSource: [UserPost] = [
-    UserPost(personId: "0", image: UIImage(named: "nature-0x01"), description: "Горизонт завален", likeCount: 10, isLiked: false),
-    UserPost(personId: "0", image: UIImage(named: "nature-0x02"), description: "Горизонт завален", likeCount: 10, isLiked: false),
-    UserPost(personId: "0", image: UIImage(named: "nature-0x03"), description: "Люблю вареники", likeCount: 1, isLiked: true),
-    UserPost(personId: "0", image: UIImage(named: "nature-0x04"), description: "Не люблю Пупу", likeCount: 20, isLiked: false),
-    UserPost(personId: "1", image: UIImage(named: "nature-0x05"), description: "Вася у машины", likeCount: 321, isLiked: false),
-    UserPost(personId: "1", image: UIImage(named: "nature-0x06"),  description: "Просто мужик", likeCount: 100, isLiked: true),
-    UserPost(personId: "1", image: UIImage(named: "nature-0x07"),  description: "Радуга зацените", likeCount: 100, isLiked: false),
-    UserPost(personId: "1", image: UIImage(named: "nature-0x08"),  description: "Радуга зацените", likeCount: 100, isLiked: false),
-    UserPost(personId: "5", image: UIImage(named: "nature-0x09"),  description: "Радуга зацените", likeCount: 100, isLiked: false),
-    UserPost(personId: "5", image: UIImage(named: "nature-0x0A"),  description: "Радуга зацените", likeCount: 100, isLiked: false),
-    UserPost(personId: "5", image: UIImage(named: "nature-0x0B"),  description: "Радуга зацените", likeCount: 100, isLiked: false),
-    UserPost(personId: "5", image: UIImage(named: "nature-0x0C"),  description: "Радуга зацените", likeCount: 100, isLiked: false),
-    UserPost(personId: "0", image: UIImage(named: "nature-0x0D"),  description: "Радуга зацените", likeCount: 100, isLiked: false),
-    UserPost(personId: "0", image: UIImage(named: "nature-0x0E"),  description: "Радуга зацените", likeCount: 100, isLiked: false),
+    UserPost(personId: "0", postImageNames: ["nature-0x01", "nature-0x02", "nature-0x03", ], description: "Горизонт завален", likeCount: 10, isLiked: false),
+    UserPost(personId: "0", postImageNames: ["nature-0x04", "nature-0x05", ], description: "Горизонт завален", likeCount: 10, isLiked: false),
+    UserPost(personId: "0", postImageNames: ["nature-0x06", ], description: "Люблю вареники", likeCount: 1, isLiked: true),
+    UserPost(personId: "0", postImageNames: ["nature-0x07", "nature-0x08", "nature-0x09", "nature-0x0A", ], description: "Не люблю Пупу", likeCount: 20, isLiked: false),
+    UserPost(personId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Вася у машины", likeCount: 321, isLiked: false),
+    UserPost(personId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Просто мужик", likeCount: 100, isLiked: true),
+    UserPost(personId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+    UserPost(personId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+    UserPost(personId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+    UserPost(personId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+    UserPost(personId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+    UserPost(personId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+    UserPost(personId: "0", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+    UserPost(personId: "0", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
 
 ]

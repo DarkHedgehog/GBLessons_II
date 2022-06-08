@@ -21,6 +21,8 @@
 		754E6F49283788CE00F4A920 /* DravingTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E6F48283788CE00F4A920 /* DravingTestView.swift */; };
 		754E6F4C283791C300F4A920 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E6F4B283791C300F4A920 /* Avatar.swift */; };
 		754E6F4E283792BB00F4A920 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E6F4D283792BB00F4A920 /* CircleImage.swift */; };
+		7556D6D8284E99EB006162AA /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7556D6D7284E99EB006162AA /* SpinnerViewController.swift */; };
+		7556D6DC284E9C9D006162AA /* MultipleImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7556D6DB284E9C9D006162AA /* MultipleImagesView.swift */; };
 		7586282A281C0AFF006B1D4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75862829281C0AFF006B1D4E /* AppDelegate.swift */; };
 		7586282C281C0AFF006B1D4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7586282B281C0AFF006B1D4E /* SceneDelegate.swift */; };
 		7586282E281C0AFF006B1D4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7586282D281C0AFF006B1D4E /* ViewController.swift */; };
@@ -43,6 +45,7 @@
 		75E74921283EAACB009E4DF6 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7491F283EAACB009E4DF6 /* FriendTableViewCell.swift */; };
 		75E74922283EAACB009E4DF6 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E74920283EAACB009E4DF6 /* FriendTableViewCell.xib */; };
 		75E74924283EADCE009E4DF6 /* AddFriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E74923283EADCE009E4DF6 /* AddFriendsTableViewController.swift */; };
+		75FC49AD284EBA2C00E0584C /* MultipleImagesViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC49AC284EBA2C00E0584C /* MultipleImagesViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,8 @@
 		754E6F48283788CE00F4A920 /* DravingTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DravingTestView.swift; sourceTree = "<group>"; };
 		754E6F4B283791C300F4A920 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		754E6F4D283792BB00F4A920 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		7556D6D7284E99EB006162AA /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		7556D6DB284E9C9D006162AA /* MultipleImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleImagesView.swift; sourceTree = "<group>"; };
 		75862826281C0AFF006B1D4E /* IOSLessons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSLessons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75862829281C0AFF006B1D4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7586282B281C0AFF006B1D4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +89,7 @@
 		75E7491F283EAACB009E4DF6 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		75E74920283EAACB009E4DF6 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		75E74923283EADCE009E4DF6 /* AddFriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewController.swift; sourceTree = "<group>"; };
+		75FC49AC284EBA2C00E0584C /* MultipleImagesViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleImagesViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,8 +144,11 @@
 		751D25E328431F3C000601D0 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				7556D6DB284E9C9D006162AA /* MultipleImagesView.swift */,
 				754E6F48283788CE00F4A920 /* DravingTestView.swift */,
 				751D25E428431F58000601D0 /* Spinner.swift */,
+				7556D6D7284E99EB006162AA /* SpinnerViewController.swift */,
+				75FC49AC284EBA2C00E0584C /* MultipleImagesViewDelegate.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -321,6 +330,7 @@
 				753261A32847EC9C0047A46D /* FullScreenAnimator.swift in Sources */,
 				7586282E281C0AFF006B1D4E /* ViewController.swift in Sources */,
 				75A6932F2834EDDB00419C4C /* AllGroupsTableViewController.swift in Sources */,
+				7556D6DC284E9C9D006162AA /* MultipleImagesView.swift in Sources */,
 				754E6F4E283792BB00F4A920 /* CircleImage.swift in Sources */,
 				751D25E528431F58000601D0 /* Spinner.swift in Sources */,
 				751B73952832D2C200AE62E3 /* PersonData.swift in Sources */,
@@ -339,6 +349,7 @@
 				75E0887A2832F35D00AB56A4 /* User.swift in Sources */,
 				75A693202834DB5C00419C4C /* ProfileViewController.swift in Sources */,
 				75E088802832F53E00AB56A4 /* GroupsData.swift in Sources */,
+				7556D6D8284E99EB006162AA /* SpinnerViewController.swift in Sources */,
 				75A693292834E14100419C4C /* ProfileTableViewCell.swift in Sources */,
 				7586282C281C0AFF006B1D4E /* SceneDelegate.swift in Sources */,
 				75A6932B2834E89F00419C4C /* GroupsTableViewController.swift in Sources */,
@@ -347,6 +358,7 @@
 				75A6932D2834E9C400419C4C /* GroupTableViewCell.swift in Sources */,
 				7532619A2847E8DE0047A46D /* ImagesCollectionView.swift in Sources */,
 				750CA7872837AFC70005D656 /* LikeControl.swift in Sources */,
+				75FC49AD284EBA2C00E0584C /* MultipleImagesViewDelegate.swift in Sources */,
 				75A693312834F36D00419C4C /* AllGroupTableViewCell.swift in Sources */,
 				75E74921283EAACB009E4DF6 /* FriendTableViewCell.swift in Sources */,
 			);

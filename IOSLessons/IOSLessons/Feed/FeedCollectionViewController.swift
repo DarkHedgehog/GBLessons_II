@@ -57,11 +57,12 @@ class FeedCollectionViewController: UICollectionViewController {
         }
 
         cell.labelView.text = personsData[indexPath.row].description
-        cell.imageView.image = personsData[indexPath.row].image
+
         cell.likeControl.isLiked = personsData[indexPath.row].isLiked
         cell.likeControl.likeCount = personsData[indexPath.row].likeCount
         cell.backgroundColor = .lightGray
-        cell.changeImages()
+        cell.imagesView.loadImagesNamed(personsData[indexPath.row].postImageNames)
+        cell.imagesView.delegate = cell
 
         return cell
     }
@@ -99,21 +100,21 @@ class FeedCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        guard let FullScreenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FullScreenImageViewController") as? FullScreenImageViewController else { return }
-
-        guard let cellTapped = collectionView.cellForItem(at: indexPath) as? FeedCollectionViewCell else { return }
-
-
-
-        FullScreenVC.setStartFrame(view.convert(cellTapped.imageView.frame, from: cellTapped))
-        FullScreenVC.setImagesCollection(["nature-0x01", "nature-0x02", "nature-0x03"])
-        FullScreenVC.transitioningDelegate = FullScreenVC
-        FullScreenVC.modalPresentationStyle = .custom
-//        FullScreenVC.modalPresentationStyle = .fullScreen
-
-        self.present(FullScreenVC, animated: true)
+//        guard let FullScreenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FullScreenImageViewController") as? FullScreenImageViewController else { return }
+//
+//        guard let cellTapped = collectionView.cellForItem(at: indexPath) as? FeedCollectionViewCell else { return }
+//
+//
+//
+////        FullScreenVC.setStartFrame(view.convert(cellTapped.imageView.frame, from: cellTapped))
+//        FullScreenVC.setStartFrame(view.convert(cellTapped.imagesView.frame, from: cellTapped))
+//        FullScreenVC.setImagesCollection(personsData[indexPath.row].postImageNames)
+//        FullScreenVC.transitioningDelegate = FullScreenVC
+//        FullScreenVC.modalPresentationStyle = .custom
+////        FullScreenVC.modalPresentationStyle = .fullScreen
+//
+//        self.present(FullScreenVC, animated: true)
 //        self.navigationController?.pushViewController(FullScreenVC, animated: true)
     }
 
 }
-

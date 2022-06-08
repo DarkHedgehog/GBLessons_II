@@ -27,7 +27,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="IOSLessons" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="IOSLessons" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,12 +157,12 @@
                     <connections>
                         <outlet property="loginField" destination="8Re-2O-Roy" id="aJN-fP-sws"/>
                         <outlet property="passwordField" destination="Bfi-4e-nNT" id="NQT-LR-CYh"/>
-                        <segue destination="1Gu-E9-Cqi" kind="show" identifier="Login" id="IZQ-IR-tGu"/>
+                        <segue destination="C1D-UR-iti" kind="show" identifier="Login" id="ViZ-Yw-Noc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-83" y="108"/>
+            <point key="canvasLocation" x="-226" y="108"/>
         </scene>
         <!--Friends Table View Controller-->
         <scene sceneID="PlV-nk-chd">
@@ -247,7 +247,7 @@
         <!--Feed Collection View Controller-->
         <scene sceneID="W8E-Vb-1ae">
             <objects>
-                <collectionViewController id="4Qo-Mf-Le4" customClass="FeedCollectionViewController" customModule="IOSLessons" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="FeedCollectionViewController" id="4Qo-Mf-Le4" customClass="FeedCollectionViewController" customModule="IOSLessons" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="YM1-Hp-719">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -266,69 +266,80 @@
                                     <rect key="frame" x="0.0" y="0.0" width="392" height="392"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EbH-3q-dRN">
-                                            <rect key="frame" x="0.0" y="1" width="392" height="291"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="392" id="F2V-Re-jZb"/>
-                                                <constraint firstAttribute="height" constant="292" id="vr4-22-rkQ"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lLr-qS-haW">
-                                            <rect key="frame" x="8" y="292.5" width="384" height="36"/>
-                                            <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="36" id="Yzd-XC-aE5"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="jka-WT-oHO">
-                                            <rect key="frame" x="8" y="336.5" width="227" height="40"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BKa-ZY-EFw">
+                                            <rect key="frame" x="0.0" y="0.0" width="392" height="392"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wR-WR-Hgj" customClass="LikeControl" customModule="IOSLessons" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="121" height="40"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="likeCount">
-                                                            <integer key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isLiked" value="NO"/>
-                                                    </userDefinedRuntimeAttributes>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zok-95-yq0" customClass="MultipleImagesView" customModule="IOSLessons" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="392" height="316"/>
+                                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="316" id="xuS-0E-gQi"/>
+                                                    </constraints>
                                                 </view>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BDz-Bh-LiK">
-                                                    <rect key="frame" x="134" y="0.5" width="40" height="39.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lLr-qS-haW">
+                                                    <rect key="frame" x="0.0" y="316" width="392" height="36"/>
+                                                    <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="4Ju-cY-inu"/>
-                                                        <constraint firstAttribute="height" constant="40" id="SpP-po-E3E"/>
+                                                        <constraint firstAttribute="height" constant="36" id="Yzd-XC-aE5"/>
                                                     </constraints>
-                                                </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="g5K-uw-yzp">
-                                                    <rect key="frame" x="187" y="-1" width="40" height="41"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="left" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="jka-WT-oHO">
+                                                    <rect key="frame" x="0.0" y="352" width="392" height="40"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wR-WR-Hgj" customClass="LikeControl" customModule="IOSLessons" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="286" height="40"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="likeCount">
+                                                                    <integer key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isLiked" value="NO"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BDz-Bh-LiK">
+                                                            <rect key="frame" x="299" y="0.5" width="40" height="39.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="40" id="4Ju-cY-inu"/>
+                                                                <constraint firstAttribute="height" constant="40" id="SpP-po-E3E"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="g5K-uw-yzp">
+                                                            <rect key="frame" x="352" y="-1" width="40" height="41"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="A61-i9-WNh"/>
+                                                                <constraint firstAttribute="width" constant="40" id="OgF-gp-FPe"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="A61-i9-WNh"/>
-                                                        <constraint firstAttribute="width" constant="40" id="OgF-gp-FPe"/>
+                                                        <constraint firstAttribute="height" constant="40" id="YZ9-gX-0bS"/>
                                                     </constraints>
-                                                </imageView>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="BKa-ZY-EFw" secondAttribute="height" multiplier="1:1" id="0Hx-he-e94"/>
+                                                <constraint firstItem="Zok-95-yq0" firstAttribute="top" secondItem="BKa-ZY-EFw" secondAttribute="top" id="Kmy-rE-SrN"/>
+                                                <constraint firstItem="Zok-95-yq0" firstAttribute="leading" secondItem="BKa-ZY-EFw" secondAttribute="leading" id="OtB-W6-LcD"/>
+                                                <constraint firstItem="Zok-95-yq0" firstAttribute="top" secondItem="BKa-ZY-EFw" secondAttribute="top" id="Ykd-gY-hOn"/>
+                                                <constraint firstItem="Zok-95-yq0" firstAttribute="leading" secondItem="BKa-ZY-EFw" secondAttribute="leading" id="bwH-8Z-xPV"/>
+                                                <constraint firstAttribute="trailing" secondItem="Zok-95-yq0" secondAttribute="trailing" id="deT-Up-g4f"/>
+                                                <constraint firstAttribute="trailing" secondItem="Zok-95-yq0" secondAttribute="trailing" id="mGP-u5-5HN"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="lLr-qS-haW" firstAttribute="leading" secondItem="Ryx-lh-Di1" secondAttribute="leading" constant="8" id="70W-6w-Gft"/>
-                                        <constraint firstAttribute="trailing" secondItem="EbH-3q-dRN" secondAttribute="trailing" id="96s-wV-GZa"/>
-                                        <constraint firstItem="jka-WT-oHO" firstAttribute="top" secondItem="lLr-qS-haW" secondAttribute="bottom" constant="8" symbolic="YES" id="Bf6-4i-bms"/>
-                                        <constraint firstItem="jka-WT-oHO" firstAttribute="leading" secondItem="Ryx-lh-Di1" secondAttribute="leading" constant="8" id="CEj-mK-rhW"/>
-                                        <constraint firstAttribute="bottom" secondItem="jka-WT-oHO" secondAttribute="bottom" constant="15.5" id="EYJ-Ak-kpQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="jka-WT-oHO" secondAttribute="trailing" constant="157" id="Hg0-G3-S0b"/>
-                                        <constraint firstItem="EbH-3q-dRN" firstAttribute="top" secondItem="Ryx-lh-Di1" secondAttribute="top" constant="0.5" id="NNf-wY-QEL"/>
-                                        <constraint firstItem="lLr-qS-haW" firstAttribute="top" secondItem="EbH-3q-dRN" secondAttribute="bottom" id="fAM-lN-DDd"/>
-                                        <constraint firstAttribute="trailing" secondItem="lLr-qS-haW" secondAttribute="trailing" id="g2s-wr-f0D"/>
-                                        <constraint firstItem="EbH-3q-dRN" firstAttribute="leading" secondItem="Ryx-lh-Di1" secondAttribute="leading" id="rbQ-AX-Lm9"/>
+                                        <constraint firstAttribute="trailing" secondItem="BKa-ZY-EFw" secondAttribute="trailing" id="IId-tW-vdh"/>
+                                        <constraint firstItem="BKa-ZY-EFw" firstAttribute="leading" secondItem="Ryx-lh-Di1" secondAttribute="leading" id="fg4-Nh-aRi"/>
+                                        <constraint firstItem="BKa-ZY-EFw" firstAttribute="top" secondItem="Ryx-lh-Di1" secondAttribute="top" id="uEn-0e-sF0"/>
+                                        <constraint firstAttribute="bottom" secondItem="BKa-ZY-EFw" secondAttribute="bottom" id="y8o-8K-TFB"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="392" height="392"/>
                                 <connections>
-                                    <outlet property="imageView" destination="EbH-3q-dRN" id="spd-OO-W4j"/>
+                                    <outlet property="imagesView" destination="Zok-95-yq0" id="2gn-lV-zSB"/>
                                     <outlet property="labelView" destination="lLr-qS-haW" id="u45-eN-Wn4"/>
                                     <outlet property="likeControl" destination="8wR-WR-Hgj" id="Ds6-Az-dgj"/>
                                 </connections>
@@ -353,7 +364,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature-0x04" translatesAutoresizingMaskIntoConstraints="NO" id="XVR-uQ-h1f">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nature-0x04" translatesAutoresizingMaskIntoConstraints="NO" id="XVR-uQ-h1f">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -369,6 +380,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5O-OP-hrZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5357" y="-241"/>
+        </scene>
+        <!--Spinner View Controller-->
+        <scene sceneID="Jka-38-kBo">
+            <objects>
+                <viewController id="C1D-UR-iti" customClass="SpinnerViewController" customModule="IOSLessons" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YWn-HG-YFb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MbX-Tw-Ign" customClass="Spinner" customModule="IOSLessons" customModuleProvider="target">
+                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="OPN-e9-Ju3"/>
+                                    <constraint firstAttribute="width" constant="200" id="ibp-EU-de4"/>
+                                    <constraint firstAttribute="width" secondItem="MbX-Tw-Ign" secondAttribute="height" multiplier="1:1" id="sXb-aw-HTz"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spinCount">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="dotsRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="loopDuration">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="dotsInterval">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ahe-lI-Yao"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MbX-Tw-Ign" firstAttribute="width" secondItem="MbX-Tw-Ign" secondAttribute="height" multiplier="1:1" id="3N5-H0-UIj"/>
+                            <constraint firstItem="MbX-Tw-Ign" firstAttribute="centerX" secondItem="YWn-HG-YFb" secondAttribute="centerX" id="7S1-SU-pBX"/>
+                            <constraint firstItem="MbX-Tw-Ign" firstAttribute="centerY" secondItem="YWn-HG-YFb" secondAttribute="centerY" id="RKK-TZ-qrX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ojr-al-2fr"/>
+                    <connections>
+                        <segue destination="1Gu-E9-Cqi" kind="show" identifier="Login1" id="hk5-jl-sDO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fus-Zf-hC9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="604" y="110"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kOu-3C-T0q">
@@ -389,7 +449,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1el-pF-Ejs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="108"/>
+            <point key="canvasLocation" x="1378" y="108"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ebC-us-y2g">
@@ -878,6 +938,35 @@
             </objects>
             <point key="canvasLocation" x="3295.652173913044" y="417.85714285714283"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ofu-i9-KOD">
+            <objects>
+                <viewController id="IlD-dL-cQo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dzS-TS-eKl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Md7-cx-LT9" customClass="MultipleImagesView" customModule="IOSLessons" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Md7-cx-LT9" secondAttribute="height" multiplier="1:1" priority="999" id="rxR-X8-3QY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pRe-6z-ec0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Md7-cx-LT9" firstAttribute="centerX" secondItem="dzS-TS-eKl" secondAttribute="centerX" id="9ya-xR-o78"/>
+                            <constraint firstItem="Md7-cx-LT9" firstAttribute="centerY" secondItem="dzS-TS-eKl" secondAttribute="centerY" id="IyD-Kd-cdL"/>
+                            <constraint firstItem="pRe-6z-ec0" firstAttribute="trailing" secondItem="Md7-cx-LT9" secondAttribute="trailing" id="NbQ-Bt-8fg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NQi-rq-jnq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-758" y="-625"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bubble.right" catalog="system" width="128" height="110"/>
@@ -887,7 +976,6 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="square.and.arrow.up.circle" catalog="system" width="128" height="121"/>
-        <image name="square.and.arrow.up.circle.fill" catalog="system" width="128" height="121"/>
         <image name="world" width="512" height="512"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

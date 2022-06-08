@@ -10,7 +10,7 @@ import UIKit
 
 struct UserPost {
     var personId: String
-    var image: UIImage?
+    var postImageNames: [String]
     var description: String
     var likeCount: Int
     var isLiked: Bool
