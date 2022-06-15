@@ -24,7 +24,7 @@ class AddFriendsTableViewController: UITableViewController {
 
         tableView.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
 
-        filteredPersons = personsDataSource
+        filteredPersons = ApiDataService.instance.getUsers()
 
         updateSortedPersons()
         tableView.reloadData()
@@ -142,9 +142,9 @@ extension AddFriendsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
         if searchText.isEmpty {
-            filteredPersons = personsDataSource
+            filteredPersons = ApiDataService.instance.getUsers()
         } else {
-            filteredPersons = personsDataSource.filter  {
+            filteredPersons = ApiDataService.instance.getUsers().filter  {
                 $0.name.lowercased().contains(searchText.lowercased())
             }
         }

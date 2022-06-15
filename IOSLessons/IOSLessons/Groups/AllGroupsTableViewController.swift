@@ -29,7 +29,8 @@ class AllGroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return availableGroups.count
+        let api = ApiDataService.instance
+        return api.getAvailableGroups().count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,7 +38,8 @@ class AllGroupsTableViewController: UITableViewController {
             preconditionFailure("Error cast to GroupTableViewCell")
         }
 
-        let group = availableGroups[indexPath.row]
+        let api = ApiDataService.instance
+        let group = api.getAvailableGroups()[indexPath.row]
 
         cell.picture.image = group.image
         cell.nameLabel.text = group.name

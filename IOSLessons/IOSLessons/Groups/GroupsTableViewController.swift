@@ -9,12 +9,15 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 
+    let availableGroups = ApiDataService.instance.getAvailableGroups()
+    var currentUser = ApiDataService.instance.getCurrentUser()
+
     @IBAction func addSelectedGroup(segue: UIStoryboardSegue) {
         if let source = segue.source as? AllGroupsTableViewController,
            let indexPath = source.tableView.indexPathForSelectedRow {
             let group = availableGroups[indexPath.row]
             let groupId = group.id
-            currentUser.profile.groupIds.append(groupId)
+            currentUser.groupIds.append(groupId)
             tableView.reloadData()
         }
     }
@@ -38,7 +41,7 @@ class GroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return currentUser.profile.groupIds.count
+        return currentUser.groupIds.count
     }
 
 
@@ -47,7 +50,7 @@ class GroupsTableViewController: UITableViewController {
             preconditionFailure("Error cast to GroupTableViewCell")
         }
 
-        guard let group = availableGroups.first(where: {$0.id == currentUser.profile.groupIds[indexPath.row]}) else {
+        guard let group = availableGroups.first(where: {$0.id == currentUser.groupIds[indexPath.row]}) else {
             cell.nameLabel.text = "unknown group"
             return cell
         }
@@ -72,8 +75,8 @@ class GroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let groupId = currentUser.profile.groupIds[indexPath.row]
-            currentUser.profile.groupIds.removeAll(where: {$0 == groupId })
+            let groupId = currentUser.groupIds[indexPath.row]
+            currentUser.groupIds.removeAll(where: {$0 == groupId })
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

@@ -16,7 +16,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         groupsTable.dataSource = self
-        profileText.text = currentUser.profile.name
+        let api = ApiDataService.instance
+        profileText.text = api.getCurrentUser().name
     }
     
 
@@ -35,7 +36,8 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentUser.profile.groupIds.count
+        let profile = ApiDataService.instance.getCurrentUser()
+        return profile.groupIds.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,7 +45,9 @@ extension ProfileViewController: UITableViewDataSource {
             preconditionFailure("Error cast to GroupTableViewCell")
         }
 
-        guard let group = availableGroups.first(where: {$0.id == currentUser.profile.groupIds[indexPath.row]}) else {
+        let profile = ApiDataService.instance.getCurrentUser()
+        let availableGroups = ApiDataService.instance.getAvailableGroups()
+        guard let group = availableGroups.first(where: {$0.id == profile.groupIds[indexPath.row]}) else {
             cell.label.text = "unknown group"
             return cell
         }

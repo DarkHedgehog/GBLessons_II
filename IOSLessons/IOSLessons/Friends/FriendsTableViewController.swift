@@ -16,7 +16,7 @@ class FriendsTableViewController: UITableViewController {
         {
 
             let friendId = friend.id
-            currentUser.addFriend(id: friendId);
+            ApiDataService.instance.addFriend(id: friendId);
 
             tableView.reloadData()
         }
@@ -41,7 +41,7 @@ class FriendsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentUser.profile.friendsIds.count
+        return ApiDataService.instance.getCurrentUser().friendsIds.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,7 +49,8 @@ class FriendsTableViewController: UITableViewController {
             preconditionFailure("Error cast to FriendTableViewCell")
         }
 
-        guard let friend = personsDataSource.first(where: {$0.id == currentUser.profile.friendsIds[indexPath.row]}) else {
+        let api = ApiDataService.instance
+        guard let friend = api.getUsers().first(where: {$0.id == api.getCurrentUser().friendsIds[indexPath.row]}) else {
             cell.labelView.text = "unknown persona"
             return cell
         }
@@ -109,7 +110,8 @@ class FriendsTableViewController: UITableViewController {
         if segue.identifier == "showHomeCollection",
            let destination = segue.destination as? FeedCollectionViewController,
            let indexPath = tableView.indexPathForSelectedRow {
-            guard let friend = personsDataSource.first(where: {$0.id == currentUser.profile.friendsIds[indexPath.row]}) else {
+            let currentUser = ApiDataService.instance.getCurrentUser()
+            guard let friend = ApiDataService.instance.getUsers().first(where: {$0.id == currentUser.friendsIds[indexPath.row]}) else {
                 return
             }
             destination.title = friend.name
