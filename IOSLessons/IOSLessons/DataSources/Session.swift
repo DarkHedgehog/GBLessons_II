@@ -7,7 +7,11 @@
 
 import Foundation
 
+
 final class Session {
+    static let clientId = "8194842"
+
+
     static var instance = Session()
 
     private init() { }
