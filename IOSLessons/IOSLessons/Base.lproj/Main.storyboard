@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jft-Kn-nip">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uz8-Rr-h2u">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -242,7 +242,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SgK-yR-OAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="BJh-FI-sf0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4226" y="-878"/>
+            <point key="canvasLocation" x="5134.7826086956529" y="-878.57142857142856"/>
         </scene>
         <!--Feed Collection View Controller-->
         <scene sceneID="W8E-Vb-1ae">
@@ -966,6 +966,107 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQi-rq-jnq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-758" y="-625"/>
+        </scene>
+        <!--Authorization View Controller-->
+        <scene sceneID="svG-DC-Jpx">
+            <objects>
+                <viewController id="AdB-Bd-3R3" customClass="VKAuthorizationViewController" customModule="IOSLessons" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Oe-Am-1p9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMk-zu-Za1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mKj-lU-N4N"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yMk-zu-Za1" firstAttribute="trailing" secondItem="mKj-lU-N4N" secondAttribute="trailing" id="9gd-JX-wfK"/>
+                            <constraint firstItem="yMk-zu-Za1" firstAttribute="top" secondItem="0Oe-Am-1p9" secondAttribute="top" id="WHy-XZ-PTk"/>
+                            <constraint firstItem="yMk-zu-Za1" firstAttribute="leading" secondItem="mKj-lU-N4N" secondAttribute="leading" id="Zgz-EY-vF3"/>
+                            <constraint firstAttribute="bottom" secondItem="yMk-zu-Za1" secondAttribute="bottom" id="qfc-aH-ZGx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="4OJ-2T-ud0"/>
+                    <connections>
+                        <outlet property="webView" destination="yMk-zu-Za1" id="5eE-1m-knP"/>
+                        <segue destination="wPZ-zG-jzI" kind="show" identifier="loadDataSegue" id="a9h-50-9pD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ctA-vR-Jl6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076.8115942028987" y="-1298.4375"/>
+        </scene>
+        <!--Load View Controller-->
+        <scene sceneID="3e4-uR-6je">
+            <objects>
+                <viewController id="wPZ-zG-jzI" customClass="VKLoadViewController" customModule="IOSLessons" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e9l-Og-8vn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gf-Gn-Pzs" customClass="Spinner" customModule="IOSLessons" customModuleProvider="target">
+                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="A0G-Nc-DKO"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="FqD-Dz-byc"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="UlA-xN-VI9"/>
+                                    <constraint firstAttribute="width" constant="200" id="WST-6G-q2l"/>
+                                    <constraint firstAttribute="width" secondItem="6gf-Gn-Pzs" secondAttribute="height" multiplier="1:1" id="hY0-OV-u9m"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spinCount">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="dotsRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="loopDuration">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="dotsInterval">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Imu-T9-1tH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6gf-Gn-Pzs" firstAttribute="centerX" secondItem="e9l-Og-8vn" secondAttribute="centerX" id="67z-fr-hfH"/>
+                            <constraint firstItem="6gf-Gn-Pzs" firstAttribute="centerY" secondItem="e9l-Og-8vn" secondAttribute="centerY" id="NWI-b8-d08"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HQA-oT-kKJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bv4-Yy-NFa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1960.8695652173915" y="-1298.4375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XLf-jv-LnG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uz8-Rr-h2u" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IJ6-pR-hGL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AdB-Bd-3R3" kind="relationship" relationship="rootViewController" id="WBR-7p-HPk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fw8-sT-mVy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="166.66666666666669" y="-1298.4375"/>
         </scene>
     </scenes>
     <resources>

@@ -20,6 +20,9 @@
 		754E6F49283788CE00F4A920 /* DravingTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E6F48283788CE00F4A920 /* DravingTestView.swift */; };
 		754E6F4C283791C300F4A920 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E6F4B283791C300F4A920 /* Avatar.swift */; };
 		754E6F4E283792BB00F4A920 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754E6F4D283792BB00F4A920 /* CircleImage.swift */; };
+		75530B80285A5609001C62AE /* VKAuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75530B7F285A5609001C62AE /* VKAuthorizationViewController.swift */; };
+		75530B82285B7B75001C62AE /* VKLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75530B81285B7B75001C62AE /* VKLoadViewController.swift */; };
+		75530B84285B7C5D001C62AE /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75530B83285B7C5D001C62AE /* VKApi.swift */; };
 		7556D6D8284E99EB006162AA /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7556D6D7284E99EB006162AA /* SpinnerViewController.swift */; };
 		7556D6DC284E9C9D006162AA /* MultipleImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7556D6DB284E9C9D006162AA /* MultipleImagesView.swift */; };
 		756AFEEC28579ACE0054E2C5 /* ApiDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AFEEB28579ACE0054E2C5 /* ApiDataService.swift */; };
@@ -61,6 +64,9 @@
 		754E6F48283788CE00F4A920 /* DravingTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DravingTestView.swift; sourceTree = "<group>"; };
 		754E6F4B283791C300F4A920 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		754E6F4D283792BB00F4A920 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		75530B7F285A5609001C62AE /* VKAuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAuthorizationViewController.swift; sourceTree = "<group>"; };
+		75530B81285B7B75001C62AE /* VKLoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoadViewController.swift; sourceTree = "<group>"; };
+		75530B83285B7C5D001C62AE /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
 		7556D6D7284E99EB006162AA /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		7556D6DB284E9C9D006162AA /* MultipleImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleImagesView.swift; sourceTree = "<group>"; };
 		756AFEEB28579ACE0054E2C5 /* ApiDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiDataService.swift; sourceTree = "<group>"; };
@@ -170,6 +176,15 @@
 			path = Avatar;
 			sourceTree = "<group>";
 		};
+		75530B7E285A55E8001C62AE /* VK */ = {
+			isa = PBXGroup;
+			children = (
+				75530B7F285A5609001C62AE /* VKAuthorizationViewController.swift */,
+				75530B81285B7B75001C62AE /* VKLoadViewController.swift */,
+			);
+			path = VK;
+			sourceTree = "<group>";
+		};
 		7586281D281C0AFF006B1D4E = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +204,7 @@
 		75862828281C0AFF006B1D4E /* IOSLessons */ = {
 			isa = PBXGroup;
 			children = (
+				75530B7E285A55E8001C62AE /* VK */,
 				751D25E328431F3C000601D0 /* Controls */,
 				751C446A2837A90100E3EB0D /* Feed */,
 				75A693272834E11800419C4C /* Groups */,
@@ -237,6 +253,7 @@
 			children = (
 				756AFEEB28579ACE0054E2C5 /* ApiDataService.swift */,
 				756AFEED285A4DDF0054E2C5 /* Session.swift */,
+				75530B83285B7C5D001C62AE /* VKApi.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -336,13 +353,16 @@
 				7586282A281C0AFF006B1D4E /* AppDelegate.swift in Sources */,
 				75E74924283EADCE009E4DF6 /* AddFriendsTableViewController.swift in Sources */,
 				75E0887C2832F3A300AB56A4 /* UserPost.swift in Sources */,
+				75530B82285B7B75001C62AE /* VKLoadViewController.swift in Sources */,
 				754399C32832DD7D0021B5E3 /* FeedCollectionViewCell.swift in Sources */,
 				75A693262834DF8000419C4C /* ProfileView.swift in Sources */,
 				754D902B2821475600FC3413 /* UIViewController+showAlert.swift in Sources */,
 				754E6F4C283791C300F4A920 /* Avatar.swift in Sources */,
 				754399C12832DCB20021B5E3 /* FeedCollectionViewController.swift in Sources */,
 				756AFEEE285A4DDF0054E2C5 /* Session.swift in Sources */,
+				75530B80285A5609001C62AE /* VKAuthorizationViewController.swift in Sources */,
 				753261982847E69B0047A46D /* FullScreenImageViewController.swift in Sources */,
+				75530B84285B7C5D001C62AE /* VKApi.swift in Sources */,
 				75E0887A2832F35D00AB56A4 /* User.swift in Sources */,
 				75A693202834DB5C00419C4C /* ProfileViewController.swift in Sources */,
 				7556D6D8284E99EB006162AA /* SpinnerViewController.swift in Sources */,
