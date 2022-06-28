@@ -52,18 +52,6 @@ final class ApiDataService {
 
     private init() { }
 
-//    public func update() {
-//        updateProfile()
-        //        updateFriends()
-        //        updatePhotos()
-        //        updateGroups()
-        //        searchGroups(query: "qwer")
-//    }
-
-
-
-
-
     // MARK: - Profile API
 
     public func getProfile( _ completion: @escaping (Profile?) -> Void ) {
@@ -96,32 +84,50 @@ final class ApiDataService {
 
     }
 
-    //    private func updateProfile() {
-    //        var urlComponents = URLComponents()
-    //        urlComponents.scheme = "https"
-    //        urlComponents.host = VKApi.getProfileInfo.host
-    //        urlComponents.path = VKApi.getProfileInfo.endPoint
-    //        urlComponents.queryItems = [
-    //            URLQueryItem(name: "access_token", value: Session.instance.token),
-    //            URLQueryItem(name: "v", value: "5.81") ]
-    //        let request = URLRequest(url: urlComponents.url!)
-    //        let session = URLSession.shared
-    //        let task = session.dataTask(with: request) { (data, response, error) in
-    //            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
-    //
-    //            print(json)
-    //
-    //            guard let data = data else { return }
-    //            do {
-    //                let response = try JSONDecoder().decode(ProfileResponse.self, from: data)
-    //                self.profile = response.user
-    //            } catch {
-    //                print(error)
-    //            }
-    //        }
-    //        task.resume()
-    //
-    //    }
+    public func getFriends( _ completion: @escaping ([Profile]?) -> Void ) {
+        guard let requestURL = makeUrl(method: VKApi.getFriends,
+                                       params: [
+                                        URLQueryItem(name: "fields", value: "photo_100,nickname"),
+                                       ]) else {
+            completion(nil)
+            return
+        }
+
+        AF.request(requestURL).response { response in
+            guard let data = response.data else {
+                completion(nil)
+                return
+            }
+
+            do {
+                let json = try JSON(data: data)
+                let responseObject = json["response"]
+                let items = responseObject["items"].arrayValue
+
+                var result = [Profile]()
+
+                for item in items {
+                    let id = item["id"].intValue
+                    let firstName = item["first_name"].stringValue
+                    let lastName = item["last_name"].stringValue
+                    var friend = Profile(id: id, firstName: firstName, lastName: lastName)
+                    friend.imageURL = item["photo_100"].stringValue
+                    if firstName != "DELETED" {
+                        result.append(friend)
+                    }
+
+                }
+
+                completion(result)
+
+            } catch {
+                completion(nil)
+                return
+            }
+        }
+    }
+
+
     //    private func updateFriends() {
     //        var urlComponents = URLComponents()
     //        urlComponents.scheme = "https"

@@ -10,7 +10,8 @@ import UIKit
 class FriendsTableViewController: UITableViewController {
 
     var groupIds: [String] = []
-    var friendsIds: [Int] = []
+
+    var friends: [Profile] = []
 
     @IBAction func addSelectedFriends(segue: UIStoryboardSegue) {
         if let source = segue.source as? AddFriendsTableViewController,
@@ -30,9 +31,16 @@ class FriendsTableViewController: UITableViewController {
 
         tableView.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
 
-//        ApiDataService.instance.getFriends() {
-//
-//        }
+        ApiDataService.instance.getFriends() { friends in
+            guard let friends = friends else { return }
+
+            self.friends = friends
+            DispatchQueue.main.async() {
+                self.tableView.reloadData()
+            }
+
+
+        }
     }
 
     // MARK: - Table view data source
@@ -42,7 +50,7 @@ class FriendsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friendsIds.count
+        return friends.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,14 +58,15 @@ class FriendsTableViewController: UITableViewController {
             preconditionFailure("Error cast to FriendTableViewCell")
         }
 
-        let api = ApiDataService.instance
-        guard let friend = api.getUsers().first(where: {$0.id == friendsIds[indexPath.row]}) else {
-            cell.labelView.text = "unknown persona"
-            return cell
-        }
+        let friend = friends[indexPath.row]
 
         cell.labelView.text = friend.fullname
-        cell.pictureView.image = friend.image
+
+        if let imageUrlString = friend.imageURL,
+           let imageUrl = URL(string: imageUrlString) {
+            cell.pictureView.kf.setImage(with: imageUrl)
+        }
+
 //        cell.inputViewController?.performSegue(withIdentifier: "showHomeCollection", sender: tableView)
 
         return cell
@@ -112,7 +121,7 @@ class FriendsTableViewController: UITableViewController {
            let destination = segue.destination as? FeedCollectionViewController,
            let indexPath = tableView.indexPathForSelectedRow {
             let currentUser = StoredDataSourse.instance.profile
-            guard let friend = ApiDataService.instance.getUsers().first(where: {$0.id == currentUser.friendsIds[indexPath.row]}) else {
+            guard let friend = friends.first(where: {$0.id == currentUser.friendsIds[indexPath.row]}) else {
                 return
             }
             destination.title = friend.fullname

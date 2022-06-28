@@ -20,6 +20,8 @@ enum VKApi {
     case getGroups
 
     case searchGroups
+
+    case searchUsers
 }
 
 extension VKApi {
@@ -30,7 +32,7 @@ extension VKApi {
         case .getFriends: return "/method/friends.get"
         case .getPhotos: return "/method/photos.get"
         case .getGroups: return "/method/groups.get"
-        case .searchGroups: return "/method/search.getHints"
+        case .searchGroups, .searchUsers: return "/method/search.getHints"        
         }
     }
 }
