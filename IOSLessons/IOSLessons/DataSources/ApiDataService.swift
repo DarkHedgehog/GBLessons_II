@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 final class ApiDataService {
 
@@ -63,18 +64,18 @@ final class ApiDataService {
 
     public func update() {
         updateProfile()
-        updateFriends()
-        updatePhotos()
-        updateGroups()
-        searchGroups(query: "qwer")
+//        updateFriends()
+//        updatePhotos()
+//        updateGroups()
+//        searchGroups(query: "qwer")
     }
 
 
     private func makeUrl( method: VKApi, params: [URLQueryItem] = []) -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
-        urlComponents.host = VKApi.getProfile.host
-        urlComponents.path = VKApi.getProfile.endPoint
+        urlComponents.host = method.host
+        urlComponents.path = method.endPoint
         var queryItems = params
 
         if queryItems.first(where: {$0.name == "v"}) == nil {
@@ -84,20 +85,101 @@ final class ApiDataService {
             queryItems.append(URLQueryItem(name: "access_token", value: Session.instance.token))
         }
 
-        urlComponents.queryItems = params
+        urlComponents.queryItems = queryItems
 
         return urlComponents.url
     }
 
+    private func getProfilePhoto(_ completion: @escaping (String?) -> Void ) {
+        guard let profilePhotoURL = makeUrl(method: VKApi.getPhotos, params: [URLQueryItem(name: "album_id", value: "profile")]) else {
+            completion(nil)
+            return
+        }
 
-    public func getProfile(_ completion: (Profile?) -> Void ) {
-        guard let profileURL = makeUrl(method: VKApi.getProfile) else {
+        AF.request(profilePhotoURL).response { response in
+            guard let data = response.data else {
+                completion(nil)
+                return
+            }
+
+            do {
+                let json = try JSON(data: data)
+                debugPrint(json)
+                let responseObject = json["response"]
+                let items = responseObject["items"].arrayValue
+
+                if items.count > 0,
+                   let xSizeImage = items[0]["sizes"].arrayValue.first(where: {$0["type"] == "x"}) {
+                    let imageURL = xSizeImage["url"].stringValue
+                    completion(imageURL)
+                    return
+                }
+
+            } catch {
+                completion(nil)
+                return
+            }
+            completion(nil)
+        }
+    }
+
+    private func getProfileBase(_ completion: @escaping (Profile?) -> Void ) {
+        guard let profileURL = makeUrl(method: VKApi.getProfileInfo) else {
             completion(nil)
             return
         }
 
         AF.request(profileURL).response { response in
-            debugPrint(response)
+            guard let data = response.data else {
+                completion(nil)
+                return
+            }
+
+            do {
+                let json = try JSON(data: data)
+                let responseObject = json["response"]
+                let id = responseObject["id"].intValue
+                let firstName = responseObject["first_name"].stringValue
+                let lastName = responseObject["last_name"].stringValue
+
+                let profile = Profile(id: id, firstName: firstName, lastName: lastName)
+                completion(profile)
+
+            } catch {
+                completion(nil)
+                return
+            }
+        }
+
+    }
+
+    public func getProfile( _ completion: @escaping (Profile?) -> Void ) {
+
+        var profile = Profile(id: -1, firstName: "", lastName: "")
+
+        let group = DispatchGroup()
+        group.enter()
+        DispatchQueue.global().async {
+            self.getProfileBase { profileBase in
+                defer { group.leave() }
+                guard let profileBase = profileBase else { return }
+                profile.id = profileBase.id
+                profile.lastName = profileBase.lastName
+                profile.firstName = profileBase.firstName
+            }//
+        }
+        group.enter()
+        DispatchQueue.global().async {
+            self.getProfilePhoto { photoUrl in
+                defer { group.leave() }
+                guard let photoUrl = photoUrl else { return }
+                profile.imageURL = photoUrl
+            }
+        }
+
+        group.notify(queue: DispatchQueue.global()) {
+            debugPrint(profile)
+            completion (profile)
         }
 
     }
@@ -105,8 +187,8 @@ final class ApiDataService {
     private func updateProfile() {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
-        urlComponents.host = VKApi.getProfile.host
-        urlComponents.path = VKApi.getProfile.endPoint
+        urlComponents.host = VKApi.getProfileInfo.host
+        urlComponents.path = VKApi.getProfileInfo.endPoint
         urlComponents.queryItems = [
             URLQueryItem(name: "access_token", value: Session.instance.token),
             URLQueryItem(name: "v", value: "5.81") ]
