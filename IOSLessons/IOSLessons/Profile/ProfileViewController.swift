@@ -9,15 +9,17 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+
+
+    @IBOutlet weak var avatar: Avatar!
     @IBOutlet weak var groupsTable: UITableView!
-//    @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var profileText: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         groupsTable.dataSource = self
-        let api = ApiDataService.instance
-        profileText.text = api.getCurrentUser().fullname
+        profileText.text = StoredDataSourse.instance.profile.fullname
+        avatar.imageUrl = StoredDataSourse.instance.profile.imageURL
     }
     
 
@@ -36,7 +38,7 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let profile = ApiDataService.instance.getCurrentUser()
+        let profile = StoredDataSourse.instance.profile
         return profile.groupIds.count
     }
 
@@ -45,7 +47,7 @@ extension ProfileViewController: UITableViewDataSource {
             preconditionFailure("Error cast to GroupTableViewCell")
         }
 
-        let profile = ApiDataService.instance.getCurrentUser()
+        let profile = StoredDataSourse.instance.profile
         let availableGroups = ApiDataService.instance.getAvailableGroups()
         guard let group = availableGroups.first(where: {$0.id == profile.groupIds[indexPath.row]}) else {
             cell.label.text = "unknown group"

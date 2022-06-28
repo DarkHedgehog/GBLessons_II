@@ -8,5 +8,6 @@ target 'IOSLessons' do
   # Pods for IOSLessons
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'Kingfisher'
 
 end

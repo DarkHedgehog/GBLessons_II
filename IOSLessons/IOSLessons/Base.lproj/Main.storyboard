@@ -509,7 +509,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apI-SB-PGZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="202.89855072463769" y="-625.44642857142856"/>
+            <point key="canvasLocation" x="-4010" y="-1225"/>
         </scene>
         <!--Canvas View Controller-->
         <scene sceneID="hwo-D8-4Ku">
@@ -538,7 +538,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aex-nb-dWd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1157" y="-625"/>
+            <point key="canvasLocation" x="-3199" y="-1225"/>
         </scene>
         <!--Friends-->
         <scene sceneID="1O0-aK-rcb">
@@ -930,6 +930,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="JbM-Qb-ZGT"/>
                     <connections>
+                        <outlet property="avatar" destination="ea0-vy-szM" id="YVn-XO-CDm"/>
                         <outlet property="groupsTable" destination="oQ6-W7-30V" id="kyE-q3-jdk"/>
                         <outlet property="profileText" destination="cPO-9c-wc4" id="Pvu-mA-L7a"/>
                     </connections>
@@ -965,7 +966,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQi-rq-jnq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-758" y="-625"/>
+            <point key="canvasLocation" x="-4791" y="-1225"/>
         </scene>
         <!--Authorization View Controller-->
         <scene sceneID="svG-DC-Jpx">
@@ -1001,7 +1002,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctA-vR-Jl6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076.8115942028987" y="-1298.4375"/>
+            <point key="canvasLocation" x="-226" y="-644"/>
         </scene>
         <!--Load View Controller-->
         <scene sceneID="3e4-uR-6je">
@@ -1045,10 +1046,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HQA-oT-kKJ"/>
+                    <connections>
+                        <segue destination="1Gu-E9-Cqi" kind="show" identifier="Login2" id="S06-44-O5j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bv4-Yy-NFa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1960.8695652173915" y="-1298.4375"/>
+            <point key="canvasLocation" x="603" y="-644"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XLf-jv-LnG">
@@ -1066,17 +1070,20 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fw8-sT-mVy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166.66666666666669" y="-1298.4375"/>
+            <point key="canvasLocation" x="-955" y="-644"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="S06-44-O5j"/>
+    </inferredMetricsTieBreakers>
     <resources>
-        <image name="bubble.right" catalog="system" width="128" height="110"/>
-        <image name="folder" catalog="system" width="128" height="97"/>
+        <image name="bubble.right" catalog="system" width="32" height="32"/>
+        <image name="folder" catalog="system" width="32" height="32"/>
         <image name="nature-0x04" width="474" height="305"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <image name="square.and.arrow.up.circle" catalog="system" width="128" height="121"/>
+        <image name="pencil" catalog="system" width="32" height="32"/>
+        <image name="plus" catalog="system" width="32" height="32"/>
+        <image name="square.and.arrow.up" catalog="system" width="32" height="32"/>
+        <image name="square.and.arrow.up.circle" catalog="system" width="32" height="32"/>
         <image name="world" width="512" height="512"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

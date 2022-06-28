@@ -16,4 +16,6 @@ struct Profile {
     }
     var firstName: String
     var lastName: String
+    var groupIds: [String] = []
+    var friendsIds: [Int] = []
 }

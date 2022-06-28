@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 @IBDesignable
 class Avatar: UIControl {
@@ -26,6 +27,12 @@ class Avatar: UIControl {
     @IBInspectable var shadowColor: UIColor = .black {
         didSet {
             self.layer.shadowColor = shadowColor.cgColor
+        }
+    }
+
+    var imageUrl: String? {
+        didSet {
+            sharedInit()
         }
     }
 
@@ -58,6 +65,12 @@ class Avatar: UIControl {
 
         let otherSubContent = UIImageView()
         otherSubContent.image = UIImage(named: "DarkHedgehog")
+        if let imageUrlString = imageUrl,
+           let imageUrl = URL(string: imageUrlString) {
+
+            otherSubContent.kf.setImage(with: imageUrl)
+        }
+
         otherSubContent.frame = borderView.bounds
         borderView.addSubview(otherSubContent)
 

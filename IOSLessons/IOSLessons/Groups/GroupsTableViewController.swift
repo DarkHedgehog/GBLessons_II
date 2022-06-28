@@ -10,7 +10,8 @@ import UIKit
 class GroupsTableViewController: UITableViewController {
 
     let availableGroups = ApiDataService.instance.getAvailableGroups()
-    var currentUser = ApiDataService.instance.getCurrentUser()
+
+    var currentUser = StoredDataSourse.instance.profile
 
     @IBAction func addSelectedGroup(segue: UIStoryboardSegue) {
         if let source = segue.source as? AllGroupsTableViewController,

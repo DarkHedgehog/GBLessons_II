@@ -12,17 +12,7 @@ import SwiftyJSON
 
 final class ApiDataService {
 
-    static let instance = ApiDataService()
-
-    public var profile = User(
-        id: 2342135,
-        firstName: "Петр",
-        lastName: "Петрович"
-        //        first_name: "Петр",
-        //        last_name: "Петрович",
-        //        groupIds: ["1", "2"],
-        //        friendsIds: ["0", "1", "5"]
-    )
+    static let instance = ApiDataService()   
 
     private var personsDataSource: [User] = [
         //        User(id: "0", image: UIImage.init(systemName: "sun.max.fill"), name: "Вася Пупкин"),
@@ -62,15 +52,202 @@ final class ApiDataService {
 
     private init() { }
 
-    public func update() {
-        updateProfile()
-//        updateFriends()
-//        updatePhotos()
-//        updateGroups()
-//        searchGroups(query: "qwer")
+//    public func update() {
+//        updateProfile()
+        //        updateFriends()
+        //        updatePhotos()
+        //        updateGroups()
+        //        searchGroups(query: "qwer")
+//    }
+
+
+
+
+
+    // MARK: - Profile API
+
+    public func getProfile( _ completion: @escaping (Profile?) -> Void ) {
+
+        var profile = Profile(id: -1, firstName: "", lastName: "")
+
+        let group = DispatchGroup()
+        group.enter()
+        DispatchQueue.global().async {
+            self.getProfileBase { profileBase in
+                defer { group.leave() }
+                guard let profileBase = profileBase else { return }
+                profile.id = profileBase.id
+                profile.lastName = profileBase.lastName
+                profile.firstName = profileBase.firstName
+            }
+        }
+        group.enter()
+        DispatchQueue.global().async {
+            self.getProfilePhoto { photoUrl in
+                defer { group.leave() }
+                guard let photoUrl = photoUrl else { return }
+                profile.imageURL = photoUrl
+            }
+        }
+
+        group.notify(queue: DispatchQueue.global()) {
+            completion (profile)
+        }
+
+    }
+
+    //    private func updateProfile() {
+    //        var urlComponents = URLComponents()
+    //        urlComponents.scheme = "https"
+    //        urlComponents.host = VKApi.getProfileInfo.host
+    //        urlComponents.path = VKApi.getProfileInfo.endPoint
+    //        urlComponents.queryItems = [
+    //            URLQueryItem(name: "access_token", value: Session.instance.token),
+    //            URLQueryItem(name: "v", value: "5.81") ]
+    //        let request = URLRequest(url: urlComponents.url!)
+    //        let session = URLSession.shared
+    //        let task = session.dataTask(with: request) { (data, response, error) in
+    //            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
+    //
+    //            print(json)
+    //
+    //            guard let data = data else { return }
+    //            do {
+    //                let response = try JSONDecoder().decode(ProfileResponse.self, from: data)
+    //                self.profile = response.user
+    //            } catch {
+    //                print(error)
+    //            }
+    //        }
+    //        task.resume()
+    //
+    //    }
+    //    private func updateFriends() {
+    //        var urlComponents = URLComponents()
+    //        urlComponents.scheme = "https"
+    //        urlComponents.host = VKApi.getFriends.host
+    //        urlComponents.path = VKApi.getFriends.endPoint
+    //        urlComponents.queryItems = [
+    //            URLQueryItem(name: "fields", value: "photo_50"),
+    //            URLQueryItem(name: "access_token", value: Session.instance.token),
+    //            URLQueryItem(name: "v", value: "5.81") ]
+    //        let request = URLRequest(url: urlComponents.url!)
+    //        let session = URLSession.shared
+    //        let task = session.dataTask(with: request) { (data, response, error) in
+    //
+    //            guard let data = data else { return }
+    //            do {
+    //                let friendsResponse = try JSONDecoder().decode(UsersResponse.self, from: data)
+    //                self.personsDataSource = friendsResponse.users
+    //            } catch {
+    //                print(error)
+    //            }
+    //        }
+    //        task.resume()
+    //    }
+    //
+    //    private func updatePhotos() {
+    //        var urlComponents = URLComponents()
+    //        urlComponents.scheme = "https"
+    //        urlComponents.host = VKApi.getPhotos.host
+    //        urlComponents.path = VKApi.getPhotos.endPoint
+    //        urlComponents.queryItems = [
+    //            URLQueryItem(name: "access_token", value: Session.instance.token),
+    //            URLQueryItem(name: "album_id", value: "profile"),
+    //            URLQueryItem(name: "v", value: "5.81") ]
+    //        let request = URLRequest(url: urlComponents.url!)
+    //        let session = URLSession.shared
+    //        let task = session.dataTask(with: request) { (data, response, error) in
+    //            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
+    //
+    //            print(json)
+    //        }
+    //        task.resume()
+    //    }
+    //
+    //    private func updateGroups() {
+    //        var urlComponents = URLComponents()
+    //        urlComponents.scheme = "https"
+    //        urlComponents.host = VKApi.getGroups.host
+    //        urlComponents.path = VKApi.getGroups.endPoint
+    //        urlComponents.queryItems = [
+    //            URLQueryItem(name: "extended", value: "1"),
+    //            URLQueryItem(name: "access_token", value: Session.instance.token),
+    //            URLQueryItem(name: "v", value: "5.81") ]
+    //        let request = URLRequest(url: urlComponents.url!)
+    //        let session = URLSession.shared
+    //        let task = session.dataTask(with: request) { (data, response, error) in
+    //            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
+    //
+    //            print(json)
+    //        }
+    //        task.resume()
+    //    }
+    //
+    //    private func searchGroups(query: String) {
+    //        var urlComponents = URLComponents()
+    //        urlComponents.scheme = "https"
+    //        urlComponents.host = VKApi.searchGroups.host
+    //        urlComponents.path = VKApi.searchGroups.endPoint
+    //        urlComponents.queryItems = [
+    //            URLQueryItem(name: "q", value: query),
+    //            URLQueryItem(name: "filters", value: "groups"),
+    //            URLQueryItem(name: "access_token", value: Session.instance.token),
+    //            URLQueryItem(name: "v", value: "5.81") ]
+    //        let request = URLRequest(url: urlComponents.url!)
+    //        let session = URLSession.shared
+    //        let task = session.dataTask(with: request) { (data, response, error) in
+    //            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
+    //
+    //            print(json)
+    //        }
+    //        task.resume()
+    //    }
+
+//    public func getCurrentUser () -> User {
+//        return profile
+//    }
+
+    public func addFriend(id: Int) {
+//        profile.friendsIds.append(id)
     }
 
 
+    // MARK: - Users API
+    public func getUser (id: Int) -> User? {
+        return personsDataSource.first { user in
+            return user.id == id
+        }
+    }
+
+    public func getUsers () -> [User] {
+        return personsDataSource
+    }
+
+    // MARK: - Post API
+    public func getPosts (userId: Int) -> [UserPost] {
+        return personImagesDataSource.filter { $0.userId == userId }
+    }
+
+    // MARK: - Groups API
+    public func getAvailableGroups () -> [Group] {
+
+        let availableGroups: [Group] = [
+            Group(id: "0", image: UIImage.init(systemName: "globe.europe.africa.fill"), name: "Диванные войска", description: "Ни дня без ругани"),
+            Group(id: "1", image: UIImage.init(systemName: "heart.circle"), name: "Любовь-морковь", description: "Клуб любителей продолговатых предметов"),
+            Group(id: "2", image: UIImage.init(systemName: "facemask.fill"), name: "Ковид", description: "Доколе?!!"),
+            Group(id: "3", image: UIImage.init(systemName: "bag.circle"), name: "Сумки и круги", description: "Кидаем портфели в люки"),
+            Group(id: "4", image: UIImage.init(systemName: "command"), name: "Macos и все-все-все", description: "Windows suxx"),
+            Group(id: "5", image: UIImage.init(systemName: "seal.fill"), name: "Футбол и Россия", description: "Мяч виноват"),
+        ]
+
+        return availableGroups
+    }
+
+
+    // MARK: - privates
+
+    /// Создает урл с заданными параметрами, с версией VKAPI по умолчанию и ранее сохранненным токеном
     private func makeUrl( method: VKApi, params: [URLQueryItem] = []) -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
@@ -89,6 +266,7 @@ final class ApiDataService {
 
         return urlComponents.url
     }
+
 
     private func getProfilePhoto(_ completion: @escaping (String?) -> Void ) {
         guard let profilePhotoURL = makeUrl(method: VKApi.getPhotos, params: [URLQueryItem(name: "album_id", value: "profile")]) else {
@@ -151,185 +329,5 @@ final class ApiDataService {
             }
         }
 
-    }
-
-    public func getProfile( _ completion: @escaping (Profile?) -> Void ) {
-
-        var profile = Profile(id: -1, firstName: "", lastName: "")
-
-        let group = DispatchGroup()
-        group.enter()
-        DispatchQueue.global().async {
-            self.getProfileBase { profileBase in
-                defer { group.leave() }
-                guard let profileBase = profileBase else { return }
-                profile.id = profileBase.id
-                profile.lastName = profileBase.lastName
-                profile.firstName = profileBase.firstName
-            }//
-        }
-        group.enter()
-        DispatchQueue.global().async {
-            self.getProfilePhoto { photoUrl in
-                defer { group.leave() }
-                guard let photoUrl = photoUrl else { return }
-                profile.imageURL = photoUrl
-            }
-        }
-
-        group.notify(queue: DispatchQueue.global()) {
-            debugPrint(profile)
-            completion (profile)
-        }
-
-    }
-
-    private func updateProfile() {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = VKApi.getProfileInfo.host
-        urlComponents.path = VKApi.getProfileInfo.endPoint
-        urlComponents.queryItems = [
-            URLQueryItem(name: "access_token", value: Session.instance.token),
-            URLQueryItem(name: "v", value: "5.81") ]
-        let request = URLRequest(url: urlComponents.url!)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
-
-            print(json)
-
-            guard let data = data else { return }
-            do {
-                let response = try JSONDecoder().decode(ProfileResponse.self, from: data)
-                self.profile = response.user
-            } catch {
-                print(error)
-            }
-        }
-        task.resume()
-        
-    }
-    private func updateFriends() {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = VKApi.getFriends.host
-        urlComponents.path = VKApi.getFriends.endPoint
-        urlComponents.queryItems = [
-            URLQueryItem(name: "fields", value: "photo_50"),
-            URLQueryItem(name: "access_token", value: Session.instance.token),
-            URLQueryItem(name: "v", value: "5.81") ]
-        let request = URLRequest(url: urlComponents.url!)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, response, error) in
-
-            guard let data = data else { return }
-            do {
-                let friendsResponse = try JSONDecoder().decode(UsersResponse.self, from: data)
-                self.personsDataSource = friendsResponse.users
-            } catch {
-                print(error)
-            }
-        }
-        task.resume()
-    }
-    
-    private func updatePhotos() {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = VKApi.getPhotos.host
-        urlComponents.path = VKApi.getPhotos.endPoint
-        urlComponents.queryItems = [
-            URLQueryItem(name: "access_token", value: Session.instance.token),
-            URLQueryItem(name: "album_id", value: "profile"),
-            URLQueryItem(name: "v", value: "5.81") ]
-        let request = URLRequest(url: urlComponents.url!)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
-
-            print(json)
-        }
-        task.resume()
-    }
-
-    private func updateGroups() {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = VKApi.getGroups.host
-        urlComponents.path = VKApi.getGroups.endPoint
-        urlComponents.queryItems = [
-            URLQueryItem(name: "extended", value: "1"),
-            URLQueryItem(name: "access_token", value: Session.instance.token),
-            URLQueryItem(name: "v", value: "5.81") ]
-        let request = URLRequest(url: urlComponents.url!)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
-
-            print(json)
-        }
-        task.resume()
-    }
-
-    private func searchGroups(query: String) {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = VKApi.searchGroups.host
-        urlComponents.path = VKApi.searchGroups.endPoint
-        urlComponents.queryItems = [
-            URLQueryItem(name: "q", value: query),
-            URLQueryItem(name: "filters", value: "groups"),
-            URLQueryItem(name: "access_token", value: Session.instance.token),
-            URLQueryItem(name: "v", value: "5.81") ]
-        let request = URLRequest(url: urlComponents.url!)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
-
-            print(json)
-        }
-        task.resume()
-    }
-
-    // MARK: - Profile API
-    public func getCurrentUser () -> User {
-        return profile
-    }
-
-    public func addFriend(id: Int) {
-        profile.friendsIds.append(id)
-    }
-
-
-    // MARK: - Users API
-    public func getUser (id: Int) -> User? {
-        return personsDataSource.first { user in
-            return user.id == id
-        }
-    }
-
-    public func getUsers () -> [User] {
-        return personsDataSource
-    }
-
-    // MARK: - Post API
-    public func getPosts (userId: Int) -> [UserPost] {
-        return personImagesDataSource.filter { $0.userId == userId }
-    }
-
-    // MARK: - Groups API
-    public func getAvailableGroups () -> [Group] {
-
-        let availableGroups: [Group] = [
-            Group(id: "0", image: UIImage.init(systemName: "globe.europe.africa.fill"), name: "Диванные войска", description: "Ни дня без ругани"),
-            Group(id: "1", image: UIImage.init(systemName: "heart.circle"), name: "Любовь-морковь", description: "Клуб любителей продолговатых предметов"),
-            Group(id: "2", image: UIImage.init(systemName: "facemask.fill"), name: "Ковид", description: "Доколе?!!"),
-            Group(id: "3", image: UIImage.init(systemName: "bag.circle"), name: "Сумки и круги", description: "Кидаем портфели в люки"),
-            Group(id: "4", image: UIImage.init(systemName: "command"), name: "Macos и все-все-все", description: "Windows suxx"),
-            Group(id: "5", image: UIImage.init(systemName: "seal.fill"), name: "Футбол и Россия", description: "Мяч виноват"),
-        ]
-
-        return availableGroups
     }
 }

@@ -12,10 +12,21 @@ class VKLoadViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ApiDataService.instance.getProfile { profile in
-            debugPrint(profile)
-        }
+            // TODO: Сообщение об ошибке
+            defer {
+                // пока игнорим ошибки
 
-        ApiDataService.instance.update()
+                DispatchQueue.main.async() {
+                    self.performSegue(withIdentifier: "Login2", sender: nil)
+                }
+
+            }
+            guard let profile = profile else { return }
+
+            StoredDataSourse.instance.profile = profile
+
+
+        }
     }
 
 

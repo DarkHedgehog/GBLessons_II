@@ -10,6 +10,7 @@
 		750CA7872837AFC70005D656 /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750CA7862837AFC70005D656 /* LikeControl.swift */; };
 		751D25E528431F58000601D0 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751D25E428431F58000601D0 /* Spinner.swift */; };
 		75299BFB286B542300E45774 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75299BFA286B542300E45774 /* Profile.swift */; };
+		75299BFD286B857500E45774 /* StoredDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75299BFC286B857500E45774 /* StoredDataSource.swift */; };
 		753261982847E69B0047A46D /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753261972847E69B0047A46D /* FullScreenImageViewController.swift */; };
 		7532619A2847E8DE0047A46D /* ImagesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753261992847E8DE0047A46D /* ImagesCollectionView.swift */; };
 		753261A32847EC9C0047A46D /* FullScreenAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753261A22847EC9C0047A46D /* FullScreenAnimator.swift */; };
@@ -57,6 +58,7 @@
 		750CA7862837AFC70005D656 /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
 		751D25E428431F58000601D0 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		75299BFA286B542300E45774 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		75299BFC286B857500E45774 /* StoredDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredDataSource.swift; sourceTree = "<group>"; };
 		753261972847E69B0047A46D /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
 		753261992847E8DE0047A46D /* ImagesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionView.swift; sourceTree = "<group>"; };
 		753261A22847EC9C0047A46D /* FullScreenAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenAnimator.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				756AFEEB28579ACE0054E2C5 /* ApiDataService.swift */,
 				756AFEED285A4DDF0054E2C5 /* Session.swift */,
 				75530B83285B7C5D001C62AE /* VKApi.swift */,
+				75299BFC286B857500E45774 /* StoredDataSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				75A6932D2834E9C400419C4C /* GroupTableViewCell.swift in Sources */,
 				7532619A2847E8DE0047A46D /* ImagesCollectionView.swift in Sources */,
 				750CA7872837AFC70005D656 /* LikeControl.swift in Sources */,
+				75299BFD286B857500E45774 /* StoredDataSource.swift in Sources */,
 				75FC49AD284EBA2C00E0584C /* MultipleImagesViewDelegate.swift in Sources */,
 				75299BFB286B542300E45774 /* Profile.swift in Sources */,
 				75A693312834F36D00419C4C /* AllGroupTableViewCell.swift in Sources */,

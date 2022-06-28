@@ -9,6 +9,9 @@ import UIKit
 
 class FriendsTableViewController: UITableViewController {
 
+    var groupIds: [String] = []
+    var friendsIds: [Int] = []
+
     @IBAction func addSelectedFriends(segue: UIStoryboardSegue) {
         if let source = segue.source as? AddFriendsTableViewController,
            let indexPath = source.tableView.indexPathForSelectedRow,
@@ -27,11 +30,9 @@ class FriendsTableViewController: UITableViewController {
 
         tableView.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+//        ApiDataService.instance.getFriends() {
+//
+//        }
     }
 
     // MARK: - Table view data source
@@ -41,7 +42,7 @@ class FriendsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ApiDataService.instance.getCurrentUser().friendsIds.count
+        return friendsIds.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,7 +51,7 @@ class FriendsTableViewController: UITableViewController {
         }
 
         let api = ApiDataService.instance
-        guard let friend = api.getUsers().first(where: {$0.id == api.getCurrentUser().friendsIds[indexPath.row]}) else {
+        guard let friend = api.getUsers().first(where: {$0.id == friendsIds[indexPath.row]}) else {
             cell.labelView.text = "unknown persona"
             return cell
         }
@@ -110,7 +111,7 @@ class FriendsTableViewController: UITableViewController {
         if segue.identifier == "showHomeCollection",
            let destination = segue.destination as? FeedCollectionViewController,
            let indexPath = tableView.indexPathForSelectedRow {
-            let currentUser = ApiDataService.instance.getCurrentUser()
+            let currentUser = StoredDataSourse.instance.profile
             guard let friend = ApiDataService.instance.getUsers().first(where: {$0.id == currentUser.friendsIds[indexPath.row]}) else {
                 return
             }
