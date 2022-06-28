@@ -11,6 +11,10 @@ class VKLoadViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ApiDataService.instance.getProfile { profile in
+            debugPrint(profile)
+        }
+
         ApiDataService.instance.update()
     }
 

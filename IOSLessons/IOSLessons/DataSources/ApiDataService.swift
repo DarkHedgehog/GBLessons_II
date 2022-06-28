@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 final class ApiDataService {
 
@@ -16,44 +17,44 @@ final class ApiDataService {
         id: 2342135,
         firstName: "Петр",
         lastName: "Петрович"
-//        first_name: "Петр",
-//        last_name: "Петрович",
-//        groupIds: ["1", "2"],
-//        friendsIds: ["0", "1", "5"]
+        //        first_name: "Петр",
+        //        last_name: "Петрович",
+        //        groupIds: ["1", "2"],
+        //        friendsIds: ["0", "1", "5"]
     )
 
     private var personsDataSource: [User] = [
-//        User(id: "0", image: UIImage.init(systemName: "sun.max.fill"), name: "Вася Пупкин"),
-//        User(id: "1", image: UIImage.init(systemName: "person"), name: "Пупа Васькин"),
-//        User(id: "2", image: UIImage.init(systemName: "person"), name: "Василий Алибабаевич"),
-//        User(id: "3", image: UIImage.init(systemName: "person"), name: "Иванов Алекс"),
-//        User(id: "4", image: UIImage.init(systemName: "person"), name: "Кукота Владимир"),
-//        User(id: "5", image: UIImage.init(systemName: "person"), name: "Нупин Влад"),
-//        User(id: "6", image: UIImage.init(systemName: "person"), name: "Пунин Гладиолус"),
-//        User(id: "7", image: UIImage.init(systemName: "person"), name: "Яковлев Жижа"),
-//        User(id: "8", image: UIImage.init(systemName: "person"), name: "Гройсман Святослав"),
-//        User(id: "9", image: UIImage.init(systemName: "person"), name: "Ковалев Моисей"),
-//        User(id: "10", image: UIImage.init(systemName: "person"), name: "Крысоловов Боря"),
-//        User(id: "11", image: UIImage.init(systemName: "person"), name: "Гнездов Алексей"),
+        //        User(id: "0", image: UIImage.init(systemName: "sun.max.fill"), name: "Вася Пупкин"),
+        //        User(id: "1", image: UIImage.init(systemName: "person"), name: "Пупа Васькин"),
+        //        User(id: "2", image: UIImage.init(systemName: "person"), name: "Василий Алибабаевич"),
+        //        User(id: "3", image: UIImage.init(systemName: "person"), name: "Иванов Алекс"),
+        //        User(id: "4", image: UIImage.init(systemName: "person"), name: "Кукота Владимир"),
+        //        User(id: "5", image: UIImage.init(systemName: "person"), name: "Нупин Влад"),
+        //        User(id: "6", image: UIImage.init(systemName: "person"), name: "Пунин Гладиолус"),
+        //        User(id: "7", image: UIImage.init(systemName: "person"), name: "Яковлев Жижа"),
+        //        User(id: "8", image: UIImage.init(systemName: "person"), name: "Гройсман Святослав"),
+        //        User(id: "9", image: UIImage.init(systemName: "person"), name: "Ковалев Моисей"),
+        //        User(id: "10", image: UIImage.init(systemName: "person"), name: "Крысоловов Боря"),
+        //        User(id: "11", image: UIImage.init(systemName: "person"), name: "Гнездов Алексей"),
     ]
 
 
 
     private var personImagesDataSource: [UserPost] = [
-//        UserPost(userId: "0", postImageNames: ["nature-0x01", "nature-0x02", "nature-0x03", ], description: "Горизонт завален", likeCount: 10, isLiked: false),
-//        UserPost(userId: "0", postImageNames: ["nature-0x04", "nature-0x05", ], description: "Горизонт завален", likeCount: 10, isLiked: false),
-//        UserPost(userId: "0", postImageNames: ["nature-0x06", ], description: "Люблю вареники", likeCount: 1, isLiked: true),
-//        UserPost(userId: "0", postImageNames: ["nature-0x07", "nature-0x08", "nature-0x09", "nature-0x0A", ], description: "Не люблю Пупу", likeCount: 20, isLiked: false),
-//        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Вася у машины", likeCount: 321, isLiked: false),
-//        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Просто мужик", likeCount: 100, isLiked: true),
-//        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-//        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-//        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-//        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-//        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-//        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-//        UserPost(userId: "0", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-//        UserPost(userId: "0", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+        //        UserPost(userId: "0", postImageNames: ["nature-0x01", "nature-0x02", "nature-0x03", ], description: "Горизонт завален", likeCount: 10, isLiked: false),
+        //        UserPost(userId: "0", postImageNames: ["nature-0x04", "nature-0x05", ], description: "Горизонт завален", likeCount: 10, isLiked: false),
+        //        UserPost(userId: "0", postImageNames: ["nature-0x06", ], description: "Люблю вареники", likeCount: 1, isLiked: true),
+        //        UserPost(userId: "0", postImageNames: ["nature-0x07", "nature-0x08", "nature-0x09", "nature-0x0A", ], description: "Не люблю Пупу", likeCount: 20, isLiked: false),
+        //        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Вася у машины", likeCount: 321, isLiked: false),
+        //        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Просто мужик", likeCount: 100, isLiked: true),
+        //        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+        //        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+        //        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+        //        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+        //        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+        //        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+        //        UserPost(userId: "0", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
+        //        UserPost(userId: "0", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
 
     ]
 
@@ -66,6 +67,39 @@ final class ApiDataService {
         updatePhotos()
         updateGroups()
         searchGroups(query: "qwer")
+    }
+
+
+    private func makeUrl( method: VKApi, params: [URLQueryItem] = []) -> URL? {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = VKApi.getProfile.host
+        urlComponents.path = VKApi.getProfile.endPoint
+        var queryItems = params
+
+        if queryItems.first(where: {$0.name == "v"}) == nil {
+            queryItems.append(URLQueryItem(name: "v", value: "5.81"))
+        }
+        if queryItems.first(where: {$0.name == "access_token"}) == nil {
+            queryItems.append(URLQueryItem(name: "access_token", value: Session.instance.token))
+        }
+
+        urlComponents.queryItems = params
+
+        return urlComponents.url
+    }
+
+
+    public func getProfile(_ completion: (Profile?) -> Void ) {
+        guard let profileURL = makeUrl(method: VKApi.getProfile) else {
+            completion(nil)
+            return
+        }
+
+        AF.request(profileURL).response { response in
+            debugPrint(response)
+        }
+
     }
 
     private func updateProfile() {
@@ -188,7 +222,7 @@ final class ApiDataService {
 
     // MARK: - Users API
     public func getUser (id: Int) -> User? {
-        return personsDataSource.first { user in 
+        return personsDataSource.first { user in
             return user.id == id
         }
     }
