@@ -13,7 +13,7 @@ class FeedCollectionViewController: UICollectionViewController {
 
     var personsData = [UserPost]()
 
-    var personId: String? {
+    var personId: Int? {
         didSet {
             guard let personId = personId else { return }
 

@@ -74,8 +74,10 @@ extension VKAuthorizationViewController: WKNavigationDelegate {
                 return dict
             }
 
-        if let token = params["access_token"] {
+        if let token = params["access_token"],
+            let userId = params["user_id"] {
             Session.instance.token = token
+            Session.instance.userId = Int(userId) ?? -1
             decisionHandler(.cancel)
             performSegue(withIdentifier: "loadDataSegue", sender: nil)
         } else {

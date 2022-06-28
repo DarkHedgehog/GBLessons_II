@@ -39,7 +39,7 @@ class AddFriendsTableViewController: UITableViewController {
     private func updateSortedPersons() {
         sortesPersons =  [Character:[User]]()
         for persona in filteredPersons {
-            guard let firstCharacter = persona.name.first else { continue }
+            guard let firstCharacter = persona.fullname.first else { continue }
 
             if sortesPersons[firstCharacter] == nil {
                 sortesPersons[firstCharacter] = [persona]
@@ -80,7 +80,7 @@ class AddFriendsTableViewController: UITableViewController {
             return cell
         }
 
-        cell.labelView.text = persona.name
+        cell.labelView.text = persona.fullname
         cell.pictureView.image = persona.image
 
         return cell
@@ -145,7 +145,7 @@ extension AddFriendsTableViewController: UISearchBarDelegate {
             filteredPersons = ApiDataService.instance.getUsers()
         } else {
             filteredPersons = ApiDataService.instance.getUsers().filter  {
-                $0.name.lowercased().contains(searchText.lowercased())
+                $0.fullname.lowercased().contains(searchText.lowercased())
             }
         }
         updateSortedPersons()

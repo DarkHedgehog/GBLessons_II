@@ -55,7 +55,7 @@ class FriendsTableViewController: UITableViewController {
             return cell
         }
 
-        cell.labelView.text = friend.name
+        cell.labelView.text = friend.fullname
         cell.pictureView.image = friend.image
 //        cell.inputViewController?.performSegue(withIdentifier: "showHomeCollection", sender: tableView)
 
@@ -114,7 +114,7 @@ class FriendsTableViewController: UITableViewController {
             guard let friend = ApiDataService.instance.getUsers().first(where: {$0.id == currentUser.friendsIds[indexPath.row]}) else {
                 return
             }
-            destination.title = friend.name
+            destination.title = friend.fullname
             destination.personId = friend.id
         }
     }

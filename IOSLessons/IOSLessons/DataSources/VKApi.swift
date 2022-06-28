@@ -13,6 +13,8 @@ enum VKApi {
     /// Получение списка друзей
     case getFriends
 
+    case getProfile
+
     case getPhotos
 
     case getGroups
@@ -24,6 +26,7 @@ extension VKApi {
     var endPoint: String {
         switch self {
         case .authorize: return "/authorize"
+        case .getProfile: return "/method/account.getProfileInfo"
         case .getFriends: return "/method/friends.get"
         case .getPhotos: return "/method/photos.get"
         case .getGroups: return "/method/groups.get"

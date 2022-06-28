@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         groupsTable.dataSource = self
         let api = ApiDataService.instance
-        profileText.text = api.getCurrentUser().name
+        profileText.text = api.getCurrentUser().fullname
     }
     
 

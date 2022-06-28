@@ -9,9 +9,12 @@ import Foundation
 import UIKit
 
 struct UserPost {
-    var userId: String
+    var userId: Int
     var postImageNames: [String]
     var description: String
     var likeCount: Int
     var isLiked: Bool
 }
+
+
+
