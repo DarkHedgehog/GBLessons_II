@@ -22,5 +22,10 @@ class FriendTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
+    override func prepareForReuse() {
+        self.pictureView.kf.cancelDownloadTask()
+    }
+
     
 }

@@ -54,6 +54,7 @@ final class ApiDataService {
 
     // MARK: - Profile API
 
+    /// Возвращает текущий профиль
     public func getProfile( _ completion: @escaping (Profile?) -> Void ) {
 
         var profile = Profile(id: -1, firstName: "", lastName: "")
@@ -84,6 +85,7 @@ final class ApiDataService {
 
     }
 
+    /// Возвращает друзей текущего профиля
     public func getFriends( _ completion: @escaping ([Profile]?) -> Void ) {
         guard let requestURL = makeUrl(method: VKApi.getFriends,
                                        params: [

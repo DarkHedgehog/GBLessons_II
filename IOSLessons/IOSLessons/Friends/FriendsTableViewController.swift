@@ -121,9 +121,8 @@ class FriendsTableViewController: UITableViewController {
            let destination = segue.destination as? FeedCollectionViewController,
            let indexPath = tableView.indexPathForSelectedRow {
             let currentUser = StoredDataSourse.instance.profile
-            guard let friend = friends.first(where: {$0.id == currentUser.friendsIds[indexPath.row]}) else {
-                return
-            }
+            let friend = friends[indexPath.row]
+            
             destination.title = friend.fullname
             destination.personId = friend.id
         }
