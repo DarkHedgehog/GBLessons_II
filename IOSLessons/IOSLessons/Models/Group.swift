@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 struct Group {
-    var id: String
-    var image: UIImage?
+    var id: Int
     var name: String
     var description: String
+    var imageURL: String?
 }

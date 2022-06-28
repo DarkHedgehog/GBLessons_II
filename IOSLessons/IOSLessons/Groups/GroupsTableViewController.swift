@@ -9,28 +9,39 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
 
-    let availableGroups = ApiDataService.instance.getAvailableGroups()
+//    let availableGroups = ApiDataService.instance.getAvailableGroups()
 
-    var currentUser = StoredDataSourse.instance.profile
+//    var currentUser = StoredDataSourse.instance.profile
+
+    var groups = [Group]()
 
     @IBAction func addSelectedGroup(segue: UIStoryboardSegue) {
         if let source = segue.source as? AllGroupsTableViewController,
            let indexPath = source.tableView.indexPathForSelectedRow {
-            let group = availableGroups[indexPath.row]
-            let groupId = group.id
-            currentUser.groupIds.append(groupId)
-            tableView.reloadData()
+            if let groupId = source.tableView.cellForRow(at: indexPath)?.tag {
+                ApiDataService.instance.addGroup(groupId) { _ in
+                    self.updateGroups()
+                }
+            }
+
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateGroups()
+    }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    private func updateGroups () {
+        ApiDataService.instance.getProfileGroups() { groups in
+            guard let groups = groups else { return }
+
+            self.groups = groups
+            DispatchQueue.main.async() {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -42,7 +53,7 @@ class GroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return currentUser.groupIds.count
+        return groups.count
     }
 
 
@@ -51,12 +62,13 @@ class GroupsTableViewController: UITableViewController {
             preconditionFailure("Error cast to GroupTableViewCell")
         }
 
-        guard let group = availableGroups.first(where: {$0.id == currentUser.groupIds[indexPath.row]}) else {
-            cell.nameLabel.text = "unknown group"
-            return cell
+        let group = groups[indexPath.row]
+
+        if let imageUrlString = group.imageURL,
+           let imageUrl = URL(string: imageUrlString) {
+            cell.picture.kf.setImage(with: imageUrl)
         }
 
-        cell.picture.image = group.image
         cell.nameLabel.text = group.name
         cell.descriptionLabel.text = group.description
 
@@ -76,9 +88,17 @@ class GroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let groupId = currentUser.groupIds[indexPath.row]
-            currentUser.groupIds.removeAll(where: {$0 == groupId })
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let groupId = groups[indexPath.row].id
+
+            ApiDataService.instance.leaveGroup(groupId) { _ in
+//                self.updateGroups()
+                DispatchQueue.main.async() {
+                    self.groups.removeAll(where: {$0.id == groupId })
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
+
+
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    

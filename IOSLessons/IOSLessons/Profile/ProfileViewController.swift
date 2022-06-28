@@ -9,8 +9,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-
-
     @IBOutlet weak var avatar: Avatar!
     @IBOutlet weak var groupsTable: UITableView!
     @IBOutlet weak var profileText: UILabel!
@@ -21,7 +19,6 @@ class ProfileViewController: UIViewController {
         profileText.text = StoredDataSourse.instance.profile.fullname
         avatar.imageUrl = StoredDataSourse.instance.profile.imageURL
     }
-    
 
     /*
     // MARK: - Navigation
@@ -47,14 +44,14 @@ extension ProfileViewController: UITableViewDataSource {
             preconditionFailure("Error cast to GroupTableViewCell")
         }
 
-        let profile = StoredDataSourse.instance.profile
-        let availableGroups = ApiDataService.instance.getAvailableGroups()
-        guard let group = availableGroups.first(where: {$0.id == profile.groupIds[indexPath.row]}) else {
-            cell.label.text = "unknown group"
-            return cell
-        }
-        cell.picture.image = group.image
-        cell.label.text = group.name
+//        let profile = StoredDataSourse.instance.profile
+//        let availableGroups = ApiDataService.instance.getAvailableGroups()
+//        guard let group = availableGroups.first(where: {$0.id == profile.groupIds[indexPath.row]}) else {
+//            cell.label.text = "unknown group"
+//            return cell
+//        }
+//        cell.picture.image = group.image
+//        cell.label.text = group.name
 
         return cell
     }

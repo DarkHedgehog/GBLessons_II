@@ -14,40 +14,11 @@ final class ApiDataService {
 
     static let instance = ApiDataService()   
 
-    private var personsDataSource: [User] = [
-        //        User(id: "0", image: UIImage.init(systemName: "sun.max.fill"), name: "Вася Пупкин"),
-        //        User(id: "1", image: UIImage.init(systemName: "person"), name: "Пупа Васькин"),
-        //        User(id: "2", image: UIImage.init(systemName: "person"), name: "Василий Алибабаевич"),
-        //        User(id: "3", image: UIImage.init(systemName: "person"), name: "Иванов Алекс"),
-        //        User(id: "4", image: UIImage.init(systemName: "person"), name: "Кукота Владимир"),
-        //        User(id: "5", image: UIImage.init(systemName: "person"), name: "Нупин Влад"),
-        //        User(id: "6", image: UIImage.init(systemName: "person"), name: "Пунин Гладиолус"),
-        //        User(id: "7", image: UIImage.init(systemName: "person"), name: "Яковлев Жижа"),
-        //        User(id: "8", image: UIImage.init(systemName: "person"), name: "Гройсман Святослав"),
-        //        User(id: "9", image: UIImage.init(systemName: "person"), name: "Ковалев Моисей"),
-        //        User(id: "10", image: UIImage.init(systemName: "person"), name: "Крысоловов Боря"),
-        //        User(id: "11", image: UIImage.init(systemName: "person"), name: "Гнездов Алексей"),
-    ]
+    @available(*, deprecated, message: "Rework this to api")
+    private var personsDataSource: [User] = []
 
-
-
-    private var personImagesDataSource: [UserPost] = [
-        //        UserPost(userId: "0", postImageNames: ["nature-0x01", "nature-0x02", "nature-0x03", ], description: "Горизонт завален", likeCount: 10, isLiked: false),
-        //        UserPost(userId: "0", postImageNames: ["nature-0x04", "nature-0x05", ], description: "Горизонт завален", likeCount: 10, isLiked: false),
-        //        UserPost(userId: "0", postImageNames: ["nature-0x06", ], description: "Люблю вареники", likeCount: 1, isLiked: true),
-        //        UserPost(userId: "0", postImageNames: ["nature-0x07", "nature-0x08", "nature-0x09", "nature-0x0A", ], description: "Не люблю Пупу", likeCount: 20, isLiked: false),
-        //        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Вася у машины", likeCount: 321, isLiked: false),
-        //        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Просто мужик", likeCount: 100, isLiked: true),
-        //        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-        //        UserPost(userId: "1", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-        //        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-        //        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-        //        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-        //        UserPost(userId: "5", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-        //        UserPost(userId: "0", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-        //        UserPost(userId: "0", postImageNames: ["nature-0x01", "nature-0x02", ], description: "Радуга зацените", likeCount: 100, isLiked: false),
-
-    ]
+    @available(*, deprecated, message: "Rework this to api")
+    private var personImagesDataSource: [UserPost] = []
 
 
     private init() { }
@@ -87,10 +58,11 @@ final class ApiDataService {
 
     /// Возвращает друзей текущего профиля
     public func getFriends( _ completion: @escaping ([Profile]?) -> Void ) {
-        guard let requestURL = makeUrl(method: VKApi.getFriends,
-                                       params: [
-                                        URLQueryItem(name: "fields", value: "photo_100,nickname"),
-                                       ]) else {
+        let queryParams = [
+            URLQueryItem(name: "fields", value: "photo_100,nickname"),
+        ]
+
+        guard let requestURL = makeUrl(method: VKApi.getFriends, params: queryParams) else {
             completion(nil)
             return
         }
@@ -117,7 +89,6 @@ final class ApiDataService {
                     if firstName != "DELETED" {
                         result.append(friend)
                     }
-
                 }
 
                 completion(result)
@@ -129,69 +100,62 @@ final class ApiDataService {
         }
     }
 
+    // MARK: - Groups
+    /// Возвращает группы текущего профиля
+    public func getProfileGroups( _ completion: @escaping ([Group]?) -> Void ) {
+        let queryParams = [
+            URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "fields", value: "description"),
+        ]
 
-    //    private func updateFriends() {
-    //        var urlComponents = URLComponents()
-    //        urlComponents.scheme = "https"
-    //        urlComponents.host = VKApi.getFriends.host
-    //        urlComponents.path = VKApi.getFriends.endPoint
-    //        urlComponents.queryItems = [
-    //            URLQueryItem(name: "fields", value: "photo_50"),
-    //            URLQueryItem(name: "access_token", value: Session.instance.token),
-    //            URLQueryItem(name: "v", value: "5.81") ]
-    //        let request = URLRequest(url: urlComponents.url!)
-    //        let session = URLSession.shared
-    //        let task = session.dataTask(with: request) { (data, response, error) in
-    //
-    //            guard let data = data else { return }
-    //            do {
-    //                let friendsResponse = try JSONDecoder().decode(UsersResponse.self, from: data)
-    //                self.personsDataSource = friendsResponse.users
-    //            } catch {
-    //                print(error)
-    //            }
-    //        }
-    //        task.resume()
-    //    }
-    //
-    //    private func updatePhotos() {
-    //        var urlComponents = URLComponents()
-    //        urlComponents.scheme = "https"
-    //        urlComponents.host = VKApi.getPhotos.host
-    //        urlComponents.path = VKApi.getPhotos.endPoint
-    //        urlComponents.queryItems = [
-    //            URLQueryItem(name: "access_token", value: Session.instance.token),
-    //            URLQueryItem(name: "album_id", value: "profile"),
-    //            URLQueryItem(name: "v", value: "5.81") ]
-    //        let request = URLRequest(url: urlComponents.url!)
-    //        let session = URLSession.shared
-    //        let task = session.dataTask(with: request) { (data, response, error) in
-    //            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
-    //
-    //            print(json)
-    //        }
-    //        task.resume()
-    //    }
-    //
-    //    private func updateGroups() {
-    //        var urlComponents = URLComponents()
-    //        urlComponents.scheme = "https"
-    //        urlComponents.host = VKApi.getGroups.host
-    //        urlComponents.path = VKApi.getGroups.endPoint
-    //        urlComponents.queryItems = [
-    //            URLQueryItem(name: "extended", value: "1"),
-    //            URLQueryItem(name: "access_token", value: Session.instance.token),
-    //            URLQueryItem(name: "v", value: "5.81") ]
-    //        let request = URLRequest(url: urlComponents.url!)
-    //        let session = URLSession.shared
-    //        let task = session.dataTask(with: request) { (data, response, error) in
-    //            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
-    //
-    //            print(json)
-    //        }
-    //        task.resume()
-    //    }
-    //
+        guard let requestURL = makeUrl(method: VKApi.getGroups, params: queryParams) else {
+            completion(nil)
+            return
+        }
+
+        AF.request(requestURL).response { response in
+            guard let data = response.data else {
+                completion(nil)
+                return
+            }
+
+            do {
+                let json = try JSON(data: data)
+                let responseObject = json["response"]
+                let items = responseObject["items"].arrayValue
+                debugPrint(json)
+                var result = [Group]()
+
+                for item in items {
+                    debugPrint(item)
+                    let id = item["id"].intValue
+                    let name = item["name"].stringValue
+                    let description = item["description"].stringValue
+                    var group = Group(id: id, name: name, description: description)
+                    group.imageURL = item["photo_100"].stringValue
+                    if name != "DELETED" {
+                        result.append(group)
+                    }
+                }
+
+                completion(result)
+
+            } catch {
+                completion(nil)
+                return
+            }
+        }
+    }
+
+    public func addGroup(_ id: Int, _ completion: @escaping (Bool) -> Void ) {
+        completion(true)
+    }
+
+    public func leaveGroup(_ id: Int, _ completion: @escaping (Bool) -> Void ) {
+        completion(true)
+    }
+
+
     //    private func searchGroups(query: String) {
     //        var urlComponents = URLComponents()
     //        urlComponents.scheme = "https"
@@ -212,41 +176,32 @@ final class ApiDataService {
     //        task.resume()
     //    }
 
-//    public func getCurrentUser () -> User {
-//        return profile
-//    }
 
     public func addFriend(id: Int) {
 //        profile.friendsIds.append(id)
     }
 
-
-    // MARK: - Users API
-    public func getUser (id: Int) -> User? {
-        return personsDataSource.first { user in
-            return user.id == id
-        }
-    }
-
+    @available(*, deprecated, message: "Rework this to api")
     public func getUsers () -> [User] {
         return personsDataSource
     }
 
     // MARK: - Post API
+    @available(*, deprecated, message: "Rework this to api")
     public func getPosts (userId: Int) -> [UserPost] {
         return personImagesDataSource.filter { $0.userId == userId }
     }
 
-    // MARK: - Groups API
+    @available(*, deprecated, message: "Rework this to search")
     public func getAvailableGroups () -> [Group] {
 
         let availableGroups: [Group] = [
-            Group(id: "0", image: UIImage.init(systemName: "globe.europe.africa.fill"), name: "Диванные войска", description: "Ни дня без ругани"),
-            Group(id: "1", image: UIImage.init(systemName: "heart.circle"), name: "Любовь-морковь", description: "Клуб любителей продолговатых предметов"),
-            Group(id: "2", image: UIImage.init(systemName: "facemask.fill"), name: "Ковид", description: "Доколе?!!"),
-            Group(id: "3", image: UIImage.init(systemName: "bag.circle"), name: "Сумки и круги", description: "Кидаем портфели в люки"),
-            Group(id: "4", image: UIImage.init(systemName: "command"), name: "Macos и все-все-все", description: "Windows suxx"),
-            Group(id: "5", image: UIImage.init(systemName: "seal.fill"), name: "Футбол и Россия", description: "Мяч виноват"),
+//            Group(id: "0", image: UIImage.init(systemName: "globe.europe.africa.fill"), name: "Диванные войска", description: "Ни дня без ругани"),
+//            Group(id: "1", image: UIImage.init(systemName: "heart.circle"), name: "Любовь-морковь", description: "Клуб любителей продолговатых предметов"),
+//            Group(id: "2", image: UIImage.init(systemName: "facemask.fill"), name: "Ковид", description: "Доколе?!!"),
+//            Group(id: "3", image: UIImage.init(systemName: "bag.circle"), name: "Сумки и круги", description: "Кидаем портфели в люки"),
+//            Group(id: "4", image: UIImage.init(systemName: "command"), name: "Macos и все-все-все", description: "Windows suxx"),
+//            Group(id: "5", image: UIImage.init(systemName: "seal.fill"), name: "Футбол и Россия", description: "Мяч виноват"),
         ]
 
         return availableGroups
@@ -275,9 +230,13 @@ final class ApiDataService {
         return urlComponents.url
     }
 
-
+    /// возвращает первое фото для профиля
     private func getProfilePhoto(_ completion: @escaping (String?) -> Void ) {
-        guard let profilePhotoURL = makeUrl(method: VKApi.getPhotos, params: [URLQueryItem(name: "album_id", value: "profile")]) else {
+        let queryParams = [
+            URLQueryItem(name: "album_id", value: "profile"),
+            URLQueryItem(name: "count", value: "1")
+        ]
+        guard let profilePhotoURL = makeUrl(method: VKApi.getPhotos, params: queryParams) else {
             completion(nil)
             return
         }
@@ -290,7 +249,6 @@ final class ApiDataService {
 
             do {
                 let json = try JSON(data: data)
-                debugPrint(json)
                 let responseObject = json["response"]
                 let items = responseObject["items"].arrayValue
 
@@ -309,6 +267,7 @@ final class ApiDataService {
         }
     }
 
+    /// возвращает профиль, заполненный методом method: VKApi.getProfileInfo (без фото)
     private func getProfileBase(_ completion: @escaping (Profile?) -> Void ) {
         guard let profileURL = makeUrl(method: VKApi.getProfileInfo) else {
             completion(nil)

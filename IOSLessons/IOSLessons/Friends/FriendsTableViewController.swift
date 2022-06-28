@@ -38,8 +38,6 @@ class FriendsTableViewController: UITableViewController {
             DispatchQueue.main.async() {
                 self.tableView.reloadData()
             }
-
-
         }
     }
 
@@ -122,7 +120,7 @@ class FriendsTableViewController: UITableViewController {
            let indexPath = tableView.indexPathForSelectedRow {
             let currentUser = StoredDataSourse.instance.profile
             let friend = friends[indexPath.row]
-            
+
             destination.title = friend.fullname
             destination.personId = friend.id
         }

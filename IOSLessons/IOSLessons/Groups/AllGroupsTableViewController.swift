@@ -41,7 +41,12 @@ class AllGroupsTableViewController: UITableViewController {
         let api = ApiDataService.instance
         let group = api.getAvailableGroups()[indexPath.row]
 
-        cell.picture.image = group.image
+        if let imageUrlString = group.imageURL,
+           let imageUrl = URL(string: imageUrlString) {
+            cell.picture.kf.setImage(with: imageUrl)
+        }
+
+//        cell.picture.image = group.image
         cell.nameLabel.text = group.name
         cell.descriptionLabel.text = group.description
 
