@@ -13,6 +13,8 @@ enum VKApi {
     /// Получение списка друзей
     case getFriends
 
+    case getPosts
+
     case getProfileInfo
 
     case getPhotos
@@ -32,6 +34,7 @@ extension VKApi {
         case .getFriends: return "/method/friends.get"
         case .getPhotos: return "/method/photos.get"
         case .getGroups: return "/method/groups.get"
+        case .getPosts: return "/method/wall.get"
         case .searchGroups, .searchUsers: return "/method/search.getHints"        
         }
     }

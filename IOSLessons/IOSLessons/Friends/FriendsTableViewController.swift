@@ -122,7 +122,7 @@ class FriendsTableViewController: UITableViewController {
             let friend = friends[indexPath.row]
 
             destination.title = friend.fullname
-            destination.personId = friend.id
+            destination.userId = friend.id
         }
     }
 

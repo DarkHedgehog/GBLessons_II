@@ -13,12 +13,6 @@ class FeedCollectionViewCell: UICollectionViewCell {
     @IBOutlet var labelView: UILabel!
     @IBOutlet weak var likeControl: LikeControl!
 
-    //    override func draw(_ rect: CGRect) {
-    ////        var frame = imageView.frame;
-    ////        imageView.contentMode = .scaleAspectFill
-    //    }
-
-
 }
 
 extension FeedCollectionViewCell: MultipleImagesViewDelegate {
@@ -27,7 +21,7 @@ extension FeedCollectionViewCell: MultipleImagesViewDelegate {
 
         let absFrame = convert(frame, to: self.window?.rootViewController?.view)
         FullScreenVC.setStartFrame(absFrame)
-        FullScreenVC.setImagesCollection(imagesView.imageNames)
+        FullScreenVC.setImagesCollection(imagesView.imageUrls)
         FullScreenVC.transitioningDelegate = FullScreenVC
         FullScreenVC.modalPresentationStyle = .custom
         //        FullScreenVC.modalPresentationStyle = .fullScreen

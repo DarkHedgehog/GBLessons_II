@@ -13,7 +13,7 @@ class MultipleImagesView: UIView {
 
 
 //    @IBInspectable
-    public var imageNames = [String]()
+    public var imageUrls = [String]()
 
     public var delegate: MultipleImagesViewDelegate?
 
@@ -26,8 +26,8 @@ class MultipleImagesView: UIView {
         super.init(coder: coder)
     }
 
-    public func loadImagesNamed(_ imageNames: [String]) {
-        self.imageNames = imageNames
+    public func loadImagesNamed(_ imageUrls: [String]) {
+        self.imageUrls = imageUrls
 
         for imageView in images {
             imageView.removeFromSuperview()
@@ -37,17 +37,19 @@ class MultipleImagesView: UIView {
 
         var index = 0
         let baseFrame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
-        for imageName in imageNames {
+        for imageUrlString in imageUrls {
             if index >= 4 { break }
-            let newImage = UIImage.init(named: imageName)
+//            let newImage = UIImage.init(named: imageUrl)
 
-            let newImageRect = calculateRectForImage(index: index, totalOf: imageNames.count, frame: baseFrame)
+            let newImageRect = calculateRectForImage(index: index, totalOf: imageUrls.count, frame: baseFrame)
             let newImageView = UIImageView.init(frame: newImageRect)
             newImageView.clipsToBounds = true
             newImageView.contentMode = .scaleAspectFill
             newImageView.layer.borderWidth = 3
             newImageView.layer.borderColor = UIColor.systemBackground.cgColor
-            newImageView.image = newImage
+            if let imageUrl = URL(string: imageUrlString) {
+                newImageView.kf.setImage(with: imageUrl)
+            }
             newImageView.isUserInteractionEnabled = true
             newImageView.bounds = newImageRect
 

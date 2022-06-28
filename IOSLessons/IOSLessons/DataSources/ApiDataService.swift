@@ -55,7 +55,7 @@ final class ApiDataService {
         }
 
     }
-
+    // MARK: - Friends
     /// Возвращает друзей текущего профиля
     public func getFriends( _ completion: @escaping ([Profile]?) -> Void ) {
         let queryParams = [
@@ -88,6 +88,61 @@ final class ApiDataService {
                     friend.imageURL = item["photo_100"].stringValue
                     if firstName != "DELETED" {
                         result.append(friend)
+                    }
+                }
+
+                completion(result)
+
+            } catch {
+                completion(nil)
+                return
+            }
+        }
+    }
+
+    public func getFriendPosts(userId: Int,  _ completion: @escaping ([UserPost]?) -> Void ) {
+        let queryParams = [
+            URLQueryItem(name: "owner_id", value: String(userId)),
+            URLQueryItem(name: "filter", value: "owner"),
+        ]
+
+        guard let requestURL = makeUrl(method: VKApi.getPosts, params: queryParams) else {
+            completion(nil)
+            return
+        }
+
+        AF.request(requestURL).response { response in
+            guard let data = response.data else {
+                completion(nil)
+                return
+            }
+
+            do {
+                let json = try JSON(data: data)
+                let responseObject = json["response"]
+                let items = responseObject["items"].arrayValue
+
+                var result = [UserPost]()
+
+                for item in items {
+                    let id = item["id"].intValue
+                    let userId = item["owner_id"].intValue
+                    let likes = item["likes"]["count"].intValue
+                    let text = item["text"].stringValue
+                    let date = item["date"].intValue
+                    let attachments = item["attachments"].arrayValue.filter( { !$0["photo"].isEmpty} )
+                    if attachments.count > 0 {
+                        let imageUrls = attachments.map ({
+                            $0["photo"]["sizes"].arrayValue.first(where: { $0["type"] == "x"})?["url"].stringValue ?? ""
+                        })
+                        let post = UserPost(id: id,
+                                            userId: userId,
+                                            date: date,
+                                            text: text,
+                                            imageUrls: imageUrls,
+                                            likeCount: likes,
+                                            isLiked: false)
+                        result.append(post)
                     }
                 }
 
@@ -186,11 +241,6 @@ final class ApiDataService {
         return personsDataSource
     }
 
-    // MARK: - Post API
-    @available(*, deprecated, message: "Rework this to api")
-    public func getPosts (userId: Int) -> [UserPost] {
-        return personImagesDataSource.filter { $0.userId == userId }
-    }
 
     @available(*, deprecated, message: "Rework this to search")
     public func getAvailableGroups () -> [Group] {

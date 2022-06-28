@@ -11,18 +11,27 @@ import UIKit
 
 class FeedCollectionViewController: UICollectionViewController {
 
-    var personsData = [UserPost]()
+    var posts = [UserPost]()
 
-    var personId: Int? {
+    var userId: Int? {
         didSet {
-            guard let personId = personId else { return }
-
-            personsData = ApiDataService.instance.getPosts(userId: personId)
+//            guard let personId = personId else { return }
+//            posts = ApiDataService.instance.getPosts(userId: personId)
         }
     }
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        guard let userId = userId else { return }
+
+        ApiDataService.instance.getFriendPosts(userId: userId) { posts in
+            guard let posts = posts else { return }
+            self.posts = posts
+            DispatchQueue.main.async() {
+                self.collectionView.reloadData()
+            }
+        }
 //
 //        // Uncomment the following line to preserve selection between presentations
 //        // self.clearsSelectionOnViewWillAppear = false
@@ -31,7 +40,7 @@ class FeedCollectionViewController: UICollectionViewController {
 //        //        self.collectionView!.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 //
 //        // Do any additional setup after loading the view.
-//    }
+    }
 
     /*
     // MARK: - Navigation
@@ -53,7 +62,7 @@ class FeedCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return personsData.count
+        return posts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,12 +70,13 @@ class FeedCollectionViewController: UICollectionViewController {
             preconditionFailure("Error cast to FeedCollectionViewCell")
         }
 
-        cell.labelView.text = personsData[indexPath.row].description
+        cell.labelView.text = posts[indexPath.row].text
 
-        cell.likeControl.isLiked = personsData[indexPath.row].isLiked
-        cell.likeControl.likeCount = personsData[indexPath.row].likeCount
+        cell.likeControl.isLiked = posts[indexPath.row].isLiked
+        cell.likeControl.likeCount = posts[indexPath.row].likeCount
         cell.backgroundColor = .lightGray
-        cell.imagesView.loadImagesNamed(personsData[indexPath.row].postImageNames)
+
+        cell.imagesView.loadImagesNamed(posts[indexPath.row].imageUrls)
         cell.imagesView.delegate = cell
 
         return cell
