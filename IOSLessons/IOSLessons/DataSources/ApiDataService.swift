@@ -23,6 +23,17 @@ final class ApiDataService {
 
     private init() { }
 
+
+
+    @available(*, deprecated, message: "Rework this to search")
+    public func getAvailableGroups () -> [Group] {
+
+        let availableGroups: [Group] = [
+        ]
+
+        return availableGroups
+    }
+
     // MARK: - Profile API
 
     /// Возвращает текущий профиль
@@ -55,6 +66,7 @@ final class ApiDataService {
         }
 
     }
+    
     // MARK: - Friends
     /// Возвращает друзей текущего профиля
     public func getFriends( _ completion: @escaping ([Profile]?) -> Void ) {
@@ -242,20 +254,6 @@ final class ApiDataService {
     }
 
 
-    @available(*, deprecated, message: "Rework this to search")
-    public func getAvailableGroups () -> [Group] {
-
-        let availableGroups: [Group] = [
-//            Group(id: "0", image: UIImage.init(systemName: "globe.europe.africa.fill"), name: "Диванные войска", description: "Ни дня без ругани"),
-//            Group(id: "1", image: UIImage.init(systemName: "heart.circle"), name: "Любовь-морковь", description: "Клуб любителей продолговатых предметов"),
-//            Group(id: "2", image: UIImage.init(systemName: "facemask.fill"), name: "Ковид", description: "Доколе?!!"),
-//            Group(id: "3", image: UIImage.init(systemName: "bag.circle"), name: "Сумки и круги", description: "Кидаем портфели в люки"),
-//            Group(id: "4", image: UIImage.init(systemName: "command"), name: "Macos и все-все-все", description: "Windows suxx"),
-//            Group(id: "5", image: UIImage.init(systemName: "seal.fill"), name: "Футбол и Россия", description: "Мяч виноват"),
-        ]
-
-        return availableGroups
-    }
 
 
     // MARK: - privates
