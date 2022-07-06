@@ -15,9 +15,9 @@ class AddFriendsTableViewController: UITableViewController {
         }
     }
 
-    var sortesPersons = [Character:[User]]()
+    var sortesPersons = [Character:[Profile]]()
     var sortedKeys = [Character]()
-    var filteredPersons = [User]()
+    var filteredPersons = [Profile]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class AddFriendsTableViewController: UITableViewController {
     }
 
     private func updateSortedPersons() {
-        sortesPersons =  [Character:[User]]()
+        sortesPersons =  [Character:[Profile]]()
         for persona in filteredPersons {
             guard let firstCharacter = persona.fullname.first else { continue }
 
@@ -75,13 +75,17 @@ class AddFriendsTableViewController: UITableViewController {
 
         let keyCharacter = sortedKeys[indexPath.section]
 
-        guard let persona = sortesPersons[keyCharacter]?[indexPath.row] else {
+        guard let user = sortesPersons[keyCharacter]?[indexPath.row] else {
             cell.labelView.text = "unknown persona"
             return cell
         }
 
-        cell.labelView.text = persona.fullname
-        cell.pictureView.image = persona.image
+        cell.labelView.text = user.fullname
+
+        if let imageUrlString = user.imageURL,
+           let imageUrl = URL(string: imageUrlString) {
+            cell.pictureView.kf.setImage(with: imageUrl)
+        }
 
         return cell
     }

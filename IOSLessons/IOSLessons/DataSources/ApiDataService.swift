@@ -15,7 +15,7 @@ final class ApiDataService {
     static let instance = ApiDataService()   
 
     @available(*, deprecated, message: "Rework this to api")
-    private var personsDataSource: [User] = []
+    private var personsDataSource: [Profile] = []
 
     @available(*, deprecated, message: "Rework this to api")
     private var personImagesDataSource: [UserPost] = []
@@ -249,7 +249,7 @@ final class ApiDataService {
     }
 
     @available(*, deprecated, message: "Rework this to api")
-    public func getUsers () -> [User] {
+    public func getUsers () -> [Profile] {
         return personsDataSource
     }
 

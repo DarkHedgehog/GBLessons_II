@@ -35,6 +35,10 @@
 		75862831281C0AFF006B1D4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7586282F281C0AFF006B1D4E /* Main.storyboard */; };
 		75862833281C0B01006B1D4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75862832281C0B01006B1D4E /* Assets.xcassets */; };
 		75862836281C0B01006B1D4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75862834281C0B01006B1D4E /* LaunchScreen.storyboard */; };
+		7595EB55287578AB00B9CD38 /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595EB54287578AB00B9CD38 /* RealmController.swift */; };
+		7595EB5628757AA500B9CD38 /* DBProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595EB53287577ED00B9CD38 /* DBProfile.swift */; };
+		7595EB5828761F3C00B9CD38 /* DBGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595EB5728761F3C00B9CD38 /* DBGroup.swift */; };
+		7595EB5A287622C800B9CD38 /* DBUserPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595EB59287622C800B9CD38 /* DBUserPost.swift */; };
 		75A693202834DB5C00419C4C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6931F2834DB5C00419C4C /* ProfileViewController.swift */; };
 		75A693242834DC2F00419C4C /* GroupTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693232834DC2F00419C4C /* GroupTableView.swift */; };
 		75A693262834DF8000419C4C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693252834DF8000419C4C /* ProfileView.swift */; };
@@ -43,7 +47,6 @@
 		75A6932D2834E9C400419C4C /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6932C2834E9C400419C4C /* GroupTableViewCell.swift */; };
 		75A6932F2834EDDB00419C4C /* AllGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6932E2834EDDB00419C4C /* AllGroupsTableViewController.swift */; };
 		75A693312834F36D00419C4C /* AllGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693302834F36D00419C4C /* AllGroupTableViewCell.swift */; };
-		75E0887A2832F35D00AB56A4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E088792832F35D00AB56A4 /* User.swift */; };
 		75E0887C2832F3A300AB56A4 /* UserPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E0887B2832F3A300AB56A4 /* UserPost.swift */; };
 		75E0887E2832F3BC00AB56A4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E0887D2832F3BC00AB56A4 /* Group.swift */; };
 		75E74921283EAACB009E4DF6 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7491F283EAACB009E4DF6 /* FriendTableViewCell.swift */; };
@@ -85,6 +88,10 @@
 		75862832281C0B01006B1D4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75862835281C0B01006B1D4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75862837281C0B01006B1D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7595EB53287577ED00B9CD38 /* DBProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProfile.swift; sourceTree = "<group>"; };
+		7595EB54287578AB00B9CD38 /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
+		7595EB5728761F3C00B9CD38 /* DBGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBGroup.swift; sourceTree = "<group>"; };
+		7595EB59287622C800B9CD38 /* DBUserPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUserPost.swift; sourceTree = "<group>"; };
 		75A6931F2834DB5C00419C4C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		75A693232834DC2F00419C4C /* GroupTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableView.swift; sourceTree = "<group>"; };
 		75A693252834DF8000419C4C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -93,7 +100,6 @@
 		75A6932C2834E9C400419C4C /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		75A6932E2834EDDB00419C4C /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewController.swift; sourceTree = "<group>"; };
 		75A693302834F36D00419C4C /* AllGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupTableViewCell.swift; sourceTree = "<group>"; };
-		75E088792832F35D00AB56A4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		75E0887B2832F3A300AB56A4 /* UserPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPost.swift; sourceTree = "<group>"; };
 		75E0887D2832F3BC00AB56A4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		75E7491F283EAACB009E4DF6 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
@@ -243,6 +249,16 @@
 			path = IOSLessons;
 			sourceTree = "<group>";
 		};
+		7595EB52287577DD00B9CD38 /* DBModels */ = {
+			isa = PBXGroup;
+			children = (
+				7595EB53287577ED00B9CD38 /* DBProfile.swift */,
+				7595EB5728761F3C00B9CD38 /* DBGroup.swift */,
+				7595EB59287622C800B9CD38 /* DBUserPost.swift */,
+			);
+			path = DBModels;
+			sourceTree = "<group>";
+		};
 		75A6931E2834DB0300419C4C /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +290,7 @@
 				756AFEED285A4DDF0054E2C5 /* Session.swift */,
 				75530B83285B7C5D001C62AE /* VKApi.swift */,
 				75299BFC286B857500E45774 /* StoredDataSource.swift */,
+				7595EB54287578AB00B9CD38 /* RealmController.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -281,8 +298,8 @@
 		75E088782832F33200AB56A4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7595EB52287577DD00B9CD38 /* DBModels */,
 				75E0887B2832F3A300AB56A4 /* UserPost.swift */,
-				75E088792832F35D00AB56A4 /* User.swift */,
 				75E0887D2832F3BC00AB56A4 /* Group.swift */,
 				75299BFA286B542300E45774 /* Profile.swift */,
 			);
@@ -427,7 +444,9 @@
 				7586282A281C0AFF006B1D4E /* AppDelegate.swift in Sources */,
 				75E74924283EADCE009E4DF6 /* AddFriendsTableViewController.swift in Sources */,
 				75E0887C2832F3A300AB56A4 /* UserPost.swift in Sources */,
+				7595EB55287578AB00B9CD38 /* RealmController.swift in Sources */,
 				75530B82285B7B75001C62AE /* VKLoadViewController.swift in Sources */,
+				7595EB5A287622C800B9CD38 /* DBUserPost.swift in Sources */,
 				754399C32832DD7D0021B5E3 /* FeedCollectionViewCell.swift in Sources */,
 				75A693262834DF8000419C4C /* ProfileView.swift in Sources */,
 				754D902B2821475600FC3413 /* UIViewController+showAlert.swift in Sources */,
@@ -437,7 +456,7 @@
 				75530B80285A5609001C62AE /* VKAuthorizationViewController.swift in Sources */,
 				753261982847E69B0047A46D /* FullScreenImageViewController.swift in Sources */,
 				75530B84285B7C5D001C62AE /* VKApi.swift in Sources */,
-				75E0887A2832F35D00AB56A4 /* User.swift in Sources */,
+				7595EB5628757AA500B9CD38 /* DBProfile.swift in Sources */,
 				75A693202834DB5C00419C4C /* ProfileViewController.swift in Sources */,
 				7556D6D8284E99EB006162AA /* SpinnerViewController.swift in Sources */,
 				75A693292834E14100419C4C /* ProfileTableViewCell.swift in Sources */,
@@ -445,6 +464,7 @@
 				75A6932B2834E89F00419C4C /* GroupsTableViewController.swift in Sources */,
 				75A693242834DC2F00419C4C /* GroupTableView.swift in Sources */,
 				754E6F47283787CF00F4A920 /* CanvasViewController.swift in Sources */,
+				7595EB5828761F3C00B9CD38 /* DBGroup.swift in Sources */,
 				75A6932D2834E9C400419C4C /* GroupTableViewCell.swift in Sources */,
 				7532619A2847E8DE0047A46D /* ImagesCollectionView.swift in Sources */,
 				750CA7872837AFC70005D656 /* LikeControl.swift in Sources */,
