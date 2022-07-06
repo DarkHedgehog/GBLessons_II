@@ -13,6 +13,10 @@ class FeedCollectionViewCell: UICollectionViewCell {
     @IBOutlet var labelView: UILabel!
     @IBOutlet weak var likeControl: LikeControl!
 
+    override func prepareForReuse() {
+        imagesView.resetLoads()        
+    }
+
 }
 
 extension FeedCollectionViewCell: MultipleImagesViewDelegate {

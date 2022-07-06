@@ -23,7 +23,7 @@ class AddFriendsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         tableView.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
-
+        
         filteredPersons = ApiDataService.instance.getUsers()
 
         updateSortedPersons()

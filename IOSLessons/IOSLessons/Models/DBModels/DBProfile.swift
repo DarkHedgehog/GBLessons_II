@@ -10,7 +10,10 @@ import UIKit
 import RealmSwift
 
 class DBProfile: Object {
+    static let profilePrimariId = 0xDEADBABA
+
     @Persisted (primaryKey: true) var id: Int
+    @Persisted var userId: Int
     @Persisted var imageURL: String?
     @Persisted var firstName: String
     @Persisted var lastName: String
@@ -22,7 +25,8 @@ class DBProfile: Object {
     }
     required init(_ profile: Profile) {
         super.init()
-        id = profile.id
+        id = DBProfile.profilePrimariId
+        userId = profile.id
         imageURL = profile.imageURL
         firstName = profile.firstName
         lastName = profile.lastName
@@ -33,7 +37,7 @@ class DBProfile: Object {
     }
 
     public func toModel() -> Profile {
-        var result = Profile(id: self.id, firstName: self.firstName, lastName: self.lastName)
+        var result = Profile(id: self.userId, firstName: self.firstName, lastName: self.lastName)
         result.imageURL = imageURL
         result.friendsIds = friendsIds.map( {$0} )
         result.groupIds = groupIds.map( {$0} )

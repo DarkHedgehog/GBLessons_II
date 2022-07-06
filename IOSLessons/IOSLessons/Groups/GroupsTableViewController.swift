@@ -34,13 +34,11 @@ class GroupsTableViewController: UITableViewController {
 
 
     private func updateGroups () {
-        ApiDataService.instance.getProfileGroups() { groups in
+        RealmController.instance.getGroups { groups in
             guard let groups = groups else { return }
 
             self.groups = groups
-            DispatchQueue.main.async() {
-                self.tableView.reloadData()
-            }
+            self.tableView.reloadData()
         }
     }
 

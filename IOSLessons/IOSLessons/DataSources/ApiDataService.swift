@@ -17,20 +17,12 @@ final class ApiDataService {
     @available(*, deprecated, message: "Rework this to api")
     private var personsDataSource: [Profile] = []
 
-    @available(*, deprecated, message: "Rework this to api")
-    private var personImagesDataSource: [UserPost] = []
-
-
     private init() { }
-
-
 
     @available(*, deprecated, message: "Rework this to search")
     public func getAvailableGroups () -> [Group] {
-
         let availableGroups: [Group] = [
         ]
-
         return availableGroups
     }
 
@@ -69,7 +61,7 @@ final class ApiDataService {
     
     // MARK: - Friends
     /// Возвращает друзей текущего профиля
-    public func getFriends( _ completion: @escaping ([Profile]?) -> Void ) {
+    public func getFriends( _ completion: @escaping ([User]?) -> Void ) {
         let queryParams = [
             URLQueryItem(name: "fields", value: "photo_100,nickname"),
         ]
@@ -90,13 +82,13 @@ final class ApiDataService {
                 let responseObject = json["response"]
                 let items = responseObject["items"].arrayValue
 
-                var result = [Profile]()
+                var result = [User]()
 
                 for item in items {
                     let id = item["id"].intValue
                     let firstName = item["first_name"].stringValue
                     let lastName = item["last_name"].stringValue
-                    var friend = Profile(id: id, firstName: firstName, lastName: lastName)
+                    var friend = User(id: id, firstName: firstName, lastName: lastName)
                     friend.imageURL = item["photo_100"].stringValue
                     if firstName != "DELETED" {
                         result.append(friend)

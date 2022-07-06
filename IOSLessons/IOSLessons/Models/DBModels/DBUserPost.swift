@@ -11,7 +11,7 @@ import RealmSwift
 
 class DBUserPost: Object {
     @Persisted (primaryKey: true) var id: Int
-    @Persisted var userId: Int
+    @Persisted (indexed: true) var userId: Int
     @Persisted var date: Int
     @Persisted var text: String
     @Persisted var imageUrls: List<String>
