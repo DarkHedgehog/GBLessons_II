@@ -11,33 +11,9 @@ class VKLoadViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ApiDataService.instance.getProfile { profile in
-            // TODO: Сообщение об ошибке
-            defer {
-                // пока игнорим ошибки
-
-                DispatchQueue.main.async() {
-                    self.performSegue(withIdentifier: "Login2", sender: nil)
-                }
-
-            }
-            guard let profile = profile else { return }
-
-            StoredDataSourse.instance.profile = profile
-
-            do {
-                try RealmController.instance.storeUser(profile)
-            } catch {
-                
-            }
-
-
-
+        RealmController.instance.getProfile(updateCache: false) { profile in
+            debugPrint(profile ?? "profile empty")
+            self.performSegue(withIdentifier: "Login2", sender: nil)
         }
     }
-
-
-
-
-    
 }

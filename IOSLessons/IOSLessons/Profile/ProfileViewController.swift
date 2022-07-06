@@ -16,8 +16,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         groupsTable.dataSource = self
-        profileText.text = StoredDataSourse.instance.profile.fullname
-        avatar.imageUrl = StoredDataSourse.instance.profile.imageURL
+        profileText.text = CurrentProfile.instance.profile.fullname
+        avatar.imageUrl = CurrentProfile.instance.profile.imageURL
     }
 
     /*
@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let profile = StoredDataSourse.instance.profile
+        let profile = CurrentProfile.instance.profile
         return profile.groupIds.count
     }
 

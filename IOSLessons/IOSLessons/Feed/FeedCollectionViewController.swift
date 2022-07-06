@@ -25,12 +25,10 @@ class FeedCollectionViewController: UICollectionViewController {
 
         guard let userId = userId else { return }
 
-        ApiDataService.instance.getFriendPosts(userId: userId) { posts in
+        RealmController.instance.getFriendPosts(userId: userId) { posts in
             guard let posts = posts else { return }
             self.posts = posts
-            DispatchQueue.main.async() {
                 self.collectionView.reloadData()
-            }
         }
 //
 //        // Uncomment the following line to preserve selection between presentations

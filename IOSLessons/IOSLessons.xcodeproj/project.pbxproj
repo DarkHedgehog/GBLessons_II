@@ -39,6 +39,8 @@
 		7595EB5628757AA500B9CD38 /* DBProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595EB53287577ED00B9CD38 /* DBProfile.swift */; };
 		7595EB5828761F3C00B9CD38 /* DBGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595EB5728761F3C00B9CD38 /* DBGroup.swift */; };
 		7595EB5A287622C800B9CD38 /* DBUserPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595EB59287622C800B9CD38 /* DBUserPost.swift */; };
+		7595EB5C28763C9500B9CD38 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595EB5B28763C9500B9CD38 /* User.swift */; };
+		7595EB5E28763CB900B9CD38 /* DBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7595EB5D28763CB800B9CD38 /* DBUser.swift */; };
 		75A693202834DB5C00419C4C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6931F2834DB5C00419C4C /* ProfileViewController.swift */; };
 		75A693242834DC2F00419C4C /* GroupTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693232834DC2F00419C4C /* GroupTableView.swift */; };
 		75A693262834DF8000419C4C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A693252834DF8000419C4C /* ProfileView.swift */; };
@@ -92,6 +94,8 @@
 		7595EB54287578AB00B9CD38 /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		7595EB5728761F3C00B9CD38 /* DBGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBGroup.swift; sourceTree = "<group>"; };
 		7595EB59287622C800B9CD38 /* DBUserPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUserPost.swift; sourceTree = "<group>"; };
+		7595EB5B28763C9500B9CD38 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7595EB5D28763CB800B9CD38 /* DBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUser.swift; sourceTree = "<group>"; };
 		75A6931F2834DB5C00419C4C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		75A693232834DC2F00419C4C /* GroupTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableView.swift; sourceTree = "<group>"; };
 		75A693252834DF8000419C4C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 			children = (
 				7595EB53287577ED00B9CD38 /* DBProfile.swift */,
 				7595EB5728761F3C00B9CD38 /* DBGroup.swift */,
+				7595EB5D28763CB800B9CD38 /* DBUser.swift */,
 				7595EB59287622C800B9CD38 /* DBUserPost.swift */,
 			);
 			path = DBModels;
@@ -301,6 +306,7 @@
 				7595EB52287577DD00B9CD38 /* DBModels */,
 				75E0887B2832F3A300AB56A4 /* UserPost.swift */,
 				75E0887D2832F3BC00AB56A4 /* Group.swift */,
+				7595EB5B28763C9500B9CD38 /* User.swift */,
 				75299BFA286B542300E45774 /* Profile.swift */,
 			);
 			path = Models;
@@ -452,6 +458,7 @@
 				754D902B2821475600FC3413 /* UIViewController+showAlert.swift in Sources */,
 				754E6F4C283791C300F4A920 /* Avatar.swift in Sources */,
 				754399C12832DCB20021B5E3 /* FeedCollectionViewController.swift in Sources */,
+				7595EB5C28763C9500B9CD38 /* User.swift in Sources */,
 				756AFEEE285A4DDF0054E2C5 /* Session.swift in Sources */,
 				75530B80285A5609001C62AE /* VKAuthorizationViewController.swift in Sources */,
 				753261982847E69B0047A46D /* FullScreenImageViewController.swift in Sources */,
@@ -463,6 +470,7 @@
 				7586282C281C0AFF006B1D4E /* SceneDelegate.swift in Sources */,
 				75A6932B2834E89F00419C4C /* GroupsTableViewController.swift in Sources */,
 				75A693242834DC2F00419C4C /* GroupTableView.swift in Sources */,
+				7595EB5E28763CB900B9CD38 /* DBUser.swift in Sources */,
 				754E6F47283787CF00F4A920 /* CanvasViewController.swift in Sources */,
 				7595EB5828761F3C00B9CD38 /* DBGroup.swift in Sources */,
 				75A6932D2834E9C400419C4C /* GroupTableViewCell.swift in Sources */,

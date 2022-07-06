@@ -7,12 +7,19 @@
 
 import Foundation
 
-class StoredDataSourse {
-    static let instance = StoredDataSourse()
+class CurrentProfile {
+    static let instance = CurrentProfile()
 
     public var profile = Profile(
-        id: 2342135,
-        firstName: "Петр",
-        lastName: "Петрович"
+        id: -1,
+        firstName: "",
+        lastName: ""
     )
+
+    init () {
+        RealmController.instance.getProfile(updateCache: false) { profile in
+            guard let profile = profile else { return }
+            self.profile = profile
+        }
+    }
 }

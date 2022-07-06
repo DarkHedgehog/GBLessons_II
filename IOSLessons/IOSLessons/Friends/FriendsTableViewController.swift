@@ -11,7 +11,7 @@ class FriendsTableViewController: UITableViewController {
 
     var groupIds: [String] = []
 
-    var friends: [Profile] = []
+    var friends: [User] = []
 
     @IBAction func addSelectedFriends(segue: UIStoryboardSegue) {
         if let source = segue.source as? AddFriendsTableViewController,
@@ -31,9 +31,8 @@ class FriendsTableViewController: UITableViewController {
 
         tableView.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
 
-        ApiDataService.instance.getFriends() { friends in
+        RealmController.instance.getFriends { friends in
             guard let friends = friends else { return }
-
             self.friends = friends
             DispatchQueue.main.async() {
                 self.tableView.reloadData()
@@ -118,7 +117,7 @@ class FriendsTableViewController: UITableViewController {
         if segue.identifier == "showHomeCollection",
            let destination = segue.destination as? FeedCollectionViewController,
            let indexPath = tableView.indexPathForSelectedRow {
-            let currentUser = StoredDataSourse.instance.profile
+            let currentUser = CurrentProfile.instance.profile
             let friend = friends[indexPath.row]
 
             destination.title = friend.fullname

@@ -10,9 +10,6 @@ import UIKit
 @IBDesignable
 class MultipleImagesView: UIView {
 
-
-
-//    @IBInspectable
     public var imageUrls = [String]()
 
     public var delegate: MultipleImagesViewDelegate?
@@ -39,7 +36,6 @@ class MultipleImagesView: UIView {
         let baseFrame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         for imageUrlString in imageUrls {
             if index >= 4 { break }
-//            let newImage = UIImage.init(named: imageUrl)
 
             let newImageRect = calculateRectForImage(index: index, totalOf: imageUrls.count, frame: baseFrame)
             let newImageView = UIImageView.init(frame: newImageRect)
@@ -64,9 +60,13 @@ class MultipleImagesView: UIView {
         isUserInteractionEnabled = true
     }
 
+    public func resetLoads() {
+        for imageView in images {
+            imageView.kf.cancelDownloadTask()
+        }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
 
         guard let delegate = delegate else { return }
 
@@ -76,17 +76,11 @@ class MultipleImagesView: UIView {
                 if !subview.isHidden && subview.alpha > 0 && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
                     delegate.tapOnImage(frame: subview.frame)
 
-
                     return;
 
                 }
             }
         }
-
-
-
-
-
     }
 
     private func calculateRectForImage(index: Int, totalOf: Int, frame: CGRect) -> CGRect {
