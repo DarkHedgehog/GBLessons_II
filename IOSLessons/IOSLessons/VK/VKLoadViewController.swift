@@ -25,6 +25,13 @@ class VKLoadViewController: UIViewController {
 
             StoredDataSourse.instance.profile = profile
 
+            do {
+                try RealmController.instance.storeUser(profile)
+            } catch {
+                
+            }
+
+
 
         }
     }
