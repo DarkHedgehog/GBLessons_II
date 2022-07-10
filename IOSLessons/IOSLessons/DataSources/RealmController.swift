@@ -84,6 +84,28 @@ final class RealmController {
         }
     }
 
+    public func getFriendsSubscription(updateCache: Bool = true, _ completion: @escaping (RealmCollectionChange<Results<DBUser>>) -> Void ) -> NotificationToken? {
+        guard let realm = realm else { return nil}
+
+        let notificationToken = realm.objects(DBUser.self).observe { change in
+                completion(change)
+        }
+
+        if updateCache {
+            ApiDataService.instance.getFriends { users in
+                guard let users = users else { return }
+                DispatchQueue.main.async() {
+                    do {
+                        try self.storeFriends(users)
+                    } catch {
+
+                    }
+                }
+            }
+        }
+        return notificationToken
+    }
+
     public func getFriends(updateCache: Bool = true, _ completion: @escaping ([User]?) -> Void ) {
         guard let realm = realm else { return }
 
