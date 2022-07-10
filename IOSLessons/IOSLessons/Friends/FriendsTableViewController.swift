@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendsTableViewController: UITableViewController {
 
     var groupIds: [String] = []
 
     var friends: [User] = []
+    var usersNotificationToken: NotificationToken?
 
     @IBAction func addSelectedFriends(segue: UIStoryboardSegue) {
         if let source = segue.source as? AddFriendsTableViewController,
@@ -26,18 +28,42 @@ class FriendsTableViewController: UITableViewController {
         }
     }
 
+    deinit {
+        usersNotificationToken?.invalidate()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
 
-        RealmController.instance.getFriends { friends in
-            guard let friends = friends else { return }
-            self.friends = friends
-            DispatchQueue.main.async() {
+        usersNotificationToken = RealmController.instance.getFriendsSubscription { change in
+            switch change {
+            case .initial(let dbUsers):
+                self.friends = dbUsers.map { $0.toModel() }
                 self.tableView.reloadData()
+            case .update(let dbUsers, let deletions, let insertions, let modifications):
+                self.friends = dbUsers.map { $0.toModel() }
+                self.tableView.performBatchUpdates {
+                    self.tableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 0)}, with: .middle)
+                    self.tableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0)}, with: .middle)
+                    self.tableView.reloadRows(at: modifications.map { IndexPath(row: $0, section: 0)}, with: .middle)
+                }
+                self.tableView.reloadData()
+            case .error:
+                break
             }
         }
+
+
+
+//        RealmController.instance.getFriends { friends in
+//            guard let friends = friends else { return }
+//            self.friends = friends
+//            DispatchQueue.main.async() {
+//                self.tableView.reloadData()
+//            }
+//        }
     }
 
     // MARK: - Table view data source

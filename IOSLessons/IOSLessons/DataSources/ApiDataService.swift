@@ -60,6 +60,7 @@ final class ApiDataService {
     }
     
     // MARK: - Friends
+    
     /// Возвращает друзей текущего профиля
     public func getFriends( _ completion: @escaping ([User]?) -> Void ) {
         let queryParams = [
