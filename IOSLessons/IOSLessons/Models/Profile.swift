@@ -18,4 +18,11 @@ struct Profile {
     var lastName: String
     var groupIds: [String] = []
     var friendsIds: [Int] = []
+
+    var toAnyObject: Any {
+            return [
+                "id": id,
+                "name": fullname,
+                "groups": groupIds
+    ] }
 }

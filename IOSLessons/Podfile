@@ -11,4 +11,9 @@ target 'IOSLessons' do
   pod 'Kingfisher'
   pod 'RealmSwift'
 
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseCore'
+  pod 'FirebaseAuth'
+  pod 'FirebaseDatabase'
+
 end
