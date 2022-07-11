@@ -55,6 +55,8 @@
 		75E74922283EAACB009E4DF6 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E74920283EAACB009E4DF6 /* FriendTableViewCell.xib */; };
 		75E74924283EADCE009E4DF6 /* AddFriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E74923283EADCE009E4DF6 /* AddFriendsTableViewController.swift */; };
 		75FC49AD284EBA2C00E0584C /* MultipleImagesViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC49AC284EBA2C00E0584C /* MultipleImagesViewDelegate.swift */; };
+		75FE8234287AEF1E008F953B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75FE8233287AEF1E008F953B /* GoogleService-Info.plist */; };
+		75FE8236287C38BC008F953B /* FireBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FE8235287C38BC008F953B /* FireBaseController.swift */; };
 		813B69F79B7E325C2D2A774F /* Pods_IOSLessons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8145EFCCFE4DF3B13E229207 /* Pods_IOSLessons.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,8 @@
 		75E74920283EAACB009E4DF6 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		75E74923283EADCE009E4DF6 /* AddFriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewController.swift; sourceTree = "<group>"; };
 		75FC49AC284EBA2C00E0584C /* MultipleImagesViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleImagesViewDelegate.swift; sourceTree = "<group>"; };
+		75FE8233287AEF1E008F953B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		75FE8235287C38BC008F953B /* FireBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseController.swift; sourceTree = "<group>"; };
 		8145EFCCFE4DF3B13E229207 /* Pods_IOSLessons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSLessons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9EF365E51E710A86F08EE7A /* Pods-IOSLessons.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSLessons.debug.xcconfig"; path = "Target Support Files/Pods-IOSLessons/Pods-IOSLessons.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,6 +247,7 @@
 				751B73932832D1BD00AE62E3 /* Extensions */,
 				751B73922832D1AF00AE62E3 /* Friends */,
 				75862829281C0AFF006B1D4E /* AppDelegate.swift */,
+				75FE8233287AEF1E008F953B /* GoogleService-Info.plist */,
 				7586282B281C0AFF006B1D4E /* SceneDelegate.swift */,
 				7586282D281C0AFF006B1D4E /* ViewController.swift */,
 				7586282F281C0AFF006B1D4E /* Main.storyboard */,
@@ -296,6 +301,7 @@
 				75530B83285B7C5D001C62AE /* VKApi.swift */,
 				75299BFC286B857500E45774 /* StoredDataSource.swift */,
 				7595EB54287578AB00B9CD38 /* RealmController.swift */,
+				75FE8235287C38BC008F953B /* FireBaseController.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 			files = (
 				75862836281C0B01006B1D4E /* LaunchScreen.storyboard in Resources */,
 				75862833281C0B01006B1D4E /* Assets.xcassets in Resources */,
+				75FE8234287AEF1E008F953B /* GoogleService-Info.plist in Resources */,
 				75862831281C0AFF006B1D4E /* Main.storyboard in Resources */,
 				75E74922283EAACB009E4DF6 /* FriendTableViewCell.xib in Resources */,
 			);
@@ -442,6 +449,7 @@
 				753261A32847EC9C0047A46D /* FullScreenAnimator.swift in Sources */,
 				7586282E281C0AFF006B1D4E /* ViewController.swift in Sources */,
 				75A6932F2834EDDB00419C4C /* AllGroupsTableViewController.swift in Sources */,
+				75FE8236287C38BC008F953B /* FireBaseController.swift in Sources */,
 				7556D6DC284E9C9D006162AA /* MultipleImagesView.swift in Sources */,
 				754E6F4E283792BB00F4A920 /* CircleImage.swift in Sources */,
 				751D25E528431F58000601D0 /* Spinner.swift in Sources */,

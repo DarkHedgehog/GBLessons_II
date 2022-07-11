@@ -143,7 +143,6 @@ class FriendsTableViewController: UITableViewController {
         if segue.identifier == "showHomeCollection",
            let destination = segue.destination as? FeedCollectionViewController,
            let indexPath = tableView.indexPathForSelectedRow {
-            let currentUser = CurrentProfile.instance.profile
             let friend = friends[indexPath.row]
 
             destination.title = friend.fullname
